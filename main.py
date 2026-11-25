@@ -170,8 +170,8 @@ async def cb_terminal(callback: types.CallbackQuery):
 
     encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode()).decode()
 
-    # index.html — данные урока в URL hash, ноль сетевых запросов
-    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html#data={encoded}"
+    # ide.html — имеет no-cache заголовки, данные в URL hash
+    app_url = f"https://tigrik234.github.io/python-learn-bot/ide.html#data={encoded}"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],
