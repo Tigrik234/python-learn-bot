@@ -180,12 +180,11 @@
         let pyodide = null;
         let lessonData = {};
 
-        // Загружаем данные урока из URL-фрагмента (#data=...)
-        // Фрагмент НЕ отправляется на сервер → не кэшируется GitHub Pages
+        // Ноль сетевых запросов — данные урока только из URL hash
+        // Hash не отправляется на сервер → не кэшируется GitHub Pages / Telegram
         function loadLessonFromURL() {
             try {
-                // Сначала пробуем hash (основной путь)
-                const hash = window.location.hash.substring(1); // убираем '#'
+                const hash = window.location.hash.substring(1);
                 if (hash.startsWith('data=')) {
                     const encoded = hash.substring(5);
                     lessonData = JSON.parse(atob(decodeURIComponent(encoded)));
@@ -194,9 +193,7 @@
             } catch (e) {
                 console.error('Failed to parse URL hash:', e);
             }
-            // Fallback на localStorage
-            lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
-            return Object.keys(lessonData).length > 0;
+            return false;
         }
 
         let hintIndex = 0;

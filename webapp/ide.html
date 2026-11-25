@@ -72,8 +72,7 @@
                     return true;
                 }
             } catch (e) { console.error('Parse error:', e); }
-            lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
-            return Object.keys(lessonData).length > 0;
+            return false;
         }
 
         async function initPyodide() {
