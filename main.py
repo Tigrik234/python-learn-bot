@@ -359,15 +359,16 @@ async def cmd_next(message: Message):
     )
 
 
-@dp.web_app_data()
-async def handle_web_app_data(web_app_data: WebAppData):
+@dp.message(lambda m: hasattr(m, 'web_app_data') and m.web_app_data)
+async def handle_web_app_data(message: Message):
     """Обрабатывает данные из Mini App."""
     try:
         import json
+        web_app_data = message.web_app_data
         data = json.loads(web_app_data.data)
         if data.get('action') == 'lesson_complete':
             lesson_idx = data.get('lessonIndex', 0)
-            user_id = web_app_data.from_user.id
+            user_id = message.from_user.id
 
             # Обновляем прогресс
             update_user_progress(user_id, lesson_idx + 1, 10)
