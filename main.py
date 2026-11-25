@@ -167,11 +167,12 @@ async def cb_terminal(callback: types.CallbackQuery):
     }
     import json
     import base64
+    import time
 
     encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode()).decode()
 
-    # Используем URL-фрагмент (#) — он НЕ отправляется на сервер, значит не кэшируется GitHub Pages
-    app_url = f"https://tigrik234.github.io/python-learn-bot/#data={encoded}"
+    # ide.html — новый файл, Telegram не кэширует. timestamp — для браузера.
+    app_url = f"https://tigrik234.github.io/python-learn-bot/ide.html?t={int(time.time()*1000)}#data={encoded}"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],

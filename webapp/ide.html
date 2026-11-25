@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Python IDE</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #1e1e1e; color: #d4d4d4; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        .header { background: #2d2d2d; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #3c3c3c; }
+        .header h1 { font-size: 16px; color: #4ec9b0; }
+        .lesson-info { background: #252526; padding: 10px 15px; border-bottom: 1px solid #3c3c3c; }
+        .lesson-info h2 { font-size: 14px; color: #ce9178; margin-bottom: 5px; }
+        .lesson-info p { font-size: 12px; color: #9cdcfe; }
+        .editor-container { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .CodeMirror { flex: 1; height: auto !important; font-size: 14px; font-family: 'Consolas', 'Courier New', monospace; }
+        .output-container { background: #1a1a1a; border-top: 2px solid #3c3c3c; max-height: 35vh; display: flex; flex-direction: column; }
+        .output-header { background: #2d2d2d; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .output-header span { font-size: 13px; color: #cccccc; }
+        .output-content { padding: 10px 15px; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; color: #d4d4d4; overflow-y: auto; white-space: pre-wrap; word-break: break-word; flex: 1; }
+        .output-content.success { color: #4ec9b0; }
+        .output-content.error { color: #f44747; }
+        .footer { background: #2d2d2d; padding: 10px 15px; display: flex; gap: 10px; border-top: 1px solid #3c3c3c; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-run { background: #4ec9b0; color: #1e1e1e; }
+        .btn-run:active { background: #3da892; }
+        .btn-hint { background: #3c3c3c; color: #dcdcaa; }
+        .btn-hint:active { background: #505050; }
+        .btn-clear { background: #3c3c3c; color: #ce9178; }
+        .btn-clear:active { background: #505050; }
+        .hint-box { background: #252526; border: 1px solid #dcdcaa; border-radius: 6px; padding: 10px; margin: 10px 15px; display: none; }
+        .hint-box.show { display: block; }
+        .hint-box h3 { font-size: 13px; color: #dcdcaa; margin-bottom: 5px; }
+        .hint-box p { font-size: 12px; color: #d4d4d4; }
+        .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #ffffff33; border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 5px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #loading { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #1e1e1e; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
+        #loading h2 { color: #4ec9b0; margin-bottom: 20px; }
+        #loading p { color: #999; font-size: 14px; }
+        .progress-bar { width: 200px; height: 4px; background: #333; border-radius: 2px; margin-top: 15px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #4ec9b0; width: 0%; transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <div id="loading"><h2>🐍 Загрузка Python...</h2><p id="loading-text">Инициализация Pyodide</p><div class="progress-bar"><div class="progress-fill" id="progress"></div></div></div>
+    <div class="header"><h1>🐍 Python IDE</h1><span id="lesson-title" style="font-size:12px;color:#9cdcfe;"></span></div>
+    <div class="lesson-info"><h2 id="task-title">Задание</h2><p id="task-desc">Загрузка...</p></div>
+    <div class="hint-box" id="hint-box"><h3>💡 Подсказка</h3><p id="hint-text"></p></div>
+    <div class="editor-container"><textarea id="code-editor"></textarea></div>
+    <div class="output-container"><div class="output-header" onclick="toggleOutput()"><span>📤 Вывод</span><span id="output-toggle">▼</span></div><div class="output-content" id="output" style="display:none;"></div></div>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready(); tg.expand();
+        tg.setHeaderColor('#1e1e1e'); tg.setBackgroundColor('#1e1e1e');
+
+        let pyodide = null, lessonData = {}, hintIndex = 0, editor, outputVisible = false;
+
+        function loadLessonFromURL() {
+            try {
+                const hash = window.location.hash.substring(1);
+                if (hash.startsWith('data=')) {
+                    lessonData = JSON.parse(atob(decodeURIComponent(hash.substring(5))));
+                    return true;
+                }
+            } catch (e) { console.error('Parse error:', e); }
+            lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
+            return Object.keys(lessonData).length > 0;
+        }
+
+        async function initPyodide() {
+            try {
+                pyodide = await loadPyodide();
+                document.getElementById('loading-text').textContent = 'Python готов!';
+                document.getElementById('progress').style.width = '100%';
+                setTimeout(() => { document.getElementById('loading').style.display = 'none'; loadLessonFromURL(); init(); }, 500);
+            } catch (e) {
+                document.getElementById('loading-text').textContent = 'Ошибка: ' + e.message;
+                document.getElementById('progress').style.width = '100%';
+                document.getElementById('progress').style.background = '#f44747';
+            }
+        }
+
+        function init() {
+            document.getElementById('lesson-title').textContent = 'Урок ' + (lessonData.index + 1);
+            document.getElementById('task-title').textContent = lessonData.title;
+            document.getElementById('task-desc').textContent = 'Ожидаемый вывод: ' + lessonData.expectedOutput;
+            editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+                mode: 'python', theme: 'material-darker', lineNumbers: true, indentUnit: 4,
+                tabSize: 4, indentWithTabs: true, lineWrapping: true, autofocus: true,
+            });
+            if (lessonData.starterCode) editor.setValue(lessonData.starterCode);
+        }
+
+        function normalize(t) { return t.split('\n').map(l=>l.trim()).filter(l=>l.length).join('\n'); }
+
+        function runCode() {
+            if (!pyodide) { tg.showAlert('Python загружается...'); return; }
+            const btn = document.getElementById('run-btn');
+            btn.innerHTML = '<span class="spinner"></span> Запуск...'; btn.disabled = true;
+            const code = editor.getValue();
+            const output = document.getElementById('output');
+            output.className = 'output-content'; output.textContent = 'Выполнение...'; output.style.display = 'block';
+            pyodide.runPython('import sys; from io import StringIO; sys._stdout = sys.stdout; sys.stdout = StringIO()');
+            try {
+                pyodide.runPython(code);
+                const captured = pyodide.runPython('sys._stdout.getvalue()');
+                pyodide.runPython('sys.stdout = sys._stdout');
+                const actual = normalize(captured || '');
+                const expected = normalize(lessonData.expectedOutput || '');
+                if (actual === expected) {
+                    output.className = 'output-content success';
+                    output.textContent = '✅ Отлично! Код верный!\n\nВывод:\n' + (captured || '(пусто)');
+                    tg.HapticFeedback.notificationOccurred('success');
+                    tg.sendData(JSON.stringify({ action: 'lesson_complete', lessonIndex: lessonData.index, code: code }));
+                } else {
+                    output.className = 'output-content error';
+                    output.textContent = '❌ Неверно.\nОжидалось:\n' + lessonData.expectedOutput + '\n\nПолучено:\n' + (captured || '(пусто)');
+                    tg.HapticFeedback.notificationOccurred('error');
+                    setTimeout(() => { editor.setValue(lessonData.starterCode || ''); hintIndex = 0; document.getElementById('hint-box').classList.remove('show'); tg.showAlert('Код очищен. Попробуй ещё раз!'); }, 2000);
+                }
+            } catch (e) {
+                try { pyodide.runPython('sys.stdout = sys._stdout'); } catch(_) {}
+                output.className = 'output-content error';
+                output.textContent = '❌ Ошибка:\n' + e.message;
+                tg.HapticFeedback.notificationOccurred('error');
+                setTimeout(() => { editor.setValue(lessonData.starterCode || ''); hintIndex = 0; document.getElementById('hint-box').classList.remove('show'); tg.showAlert('Ошибка в коде. Очищаю. Попробуй ещё раз!'); }, 2000);
+            }
+            btn.innerHTML = '▶ Запустить'; btn.disabled = false;
+        }
+
+        function showHint() {
+            if (!lessonData.hints || hintIndex >= lessonData.hints.length) { tg.showAlert('Подсказки закончились!'); return; }
+            document.getElementById('hint-text').textContent = lessonData.hints[hintIndex];
+            document.getElementById('hint-box').classList.add('show'); hintIndex++;
+            tg.HapticFeedback.impactOccurred('light');
+        }
+
+        function clearCode() {
+            editor.setValue(lessonData.starterCode || ''); hintIndex = 0;
+            document.getElementById('hint-box').classList.remove('show');
+            const output = document.getElementById('output');
+            output.style.display = 'none'; output.className = 'output-content'; output.textContent = '';
+            outputVisible = false; document.getElementById('output-toggle').textContent = '▼';
+            tg.HapticFeedback.impactOccurred('medium');
+        }
+
+        function toggleOutput() {
+            const output = document.getElementById('output');
+            const toggle = document.getElementById('output-toggle');
+            outputVisible = !outputVisible; output.style.display = outputVisible ? 'block' : 'none';
+            toggle.textContent = outputVisible ? '▲' : '▼';
+        }
+
+        window.addEventListener('beforeunload', () => {
+            tg.sendData(JSON.stringify({ action: 'lesson_complete', lessonIndex: lessonData.index, code: editor.getValue() }));
+        });
+
+        initPyodide();
+    </script>
+</body>
+</html>
