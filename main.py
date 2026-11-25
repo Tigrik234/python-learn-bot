@@ -167,11 +167,11 @@ async def cb_terminal(callback: types.CallbackQuery):
     }
     import json
     import base64
-    import time
+
     encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode()).decode()
 
-    # Создаём Mini App URL с cache-busting
-    app_url = f"https://tigrik234.github.io/python-learn-bot/?v={int(time.time())}&data={encoded}"
+    # Используем URL-фрагмент (#) — он НЕ отправляется на сервер, значит не кэшируется GitHub Pages
+    app_url = f"https://tigrik234.github.io/python-learn-bot/#data={encoded}"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],

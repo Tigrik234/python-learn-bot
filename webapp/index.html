@@ -180,17 +180,19 @@
         let pyodide = null;
         let lessonData = {};
 
-        // Загружаем данные урока из URL-параметра
+        // Загружаем данные урока из URL-фрагмента (#data=...)
+        // Фрагмент НЕ отправляется на сервер → не кэшируется GitHub Pages
         function loadLessonFromURL() {
             try {
-                const params = new URLSearchParams(window.location.search);
-                const data = params.get('data');
-                if (data) {
-                    lessonData = JSON.parse(atob(decodeURIComponent(data)));
+                // Сначала пробуем hash (основной путь)
+                const hash = window.location.hash.substring(1); // убираем '#'
+                if (hash.startsWith('data=')) {
+                    const encoded = hash.substring(5);
+                    lessonData = JSON.parse(atob(decodeURIComponent(encoded)));
                     return true;
                 }
             } catch (e) {
-                console.error('Failed to parse URL data:', e);
+                console.error('Failed to parse URL hash:', e);
             }
             // Fallback на localStorage
             lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
