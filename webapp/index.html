@@ -178,7 +178,25 @@
         tg.setBackgroundColor('#1e1e1e');
 
         let pyodide = null;
-        let lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
+        let lessonData = {};
+
+        // Загружаем данные урока из URL-параметра
+        function loadLessonFromURL() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const data = params.get('data');
+                if (data) {
+                    lessonData = JSON.parse(atob(decodeURIComponent(data)));
+                    return true;
+                }
+            } catch (e) {
+                console.error('Failed to parse URL data:', e);
+            }
+            // Fallback на localStorage
+            lessonData = JSON.parse(localStorage.getItem('lessonData') || '{}');
+            return Object.keys(lessonData).length > 0;
+        }
+
         let hintIndex = 0;
         let editor;
         let outputVisible = false;
@@ -190,6 +208,7 @@
                 document.getElementById('progress').style.width = '100%';
                 setTimeout(() => {
                     document.getElementById('loading').style.display = 'none';
+                    loadLessonFromURL();
                     init();
                 }, 500);
             } catch (e) {
