@@ -66,9 +66,10 @@
 
         function loadLessonFromURL() {
             try {
-                const hash = window.location.hash.substring(1);
-                if (hash.startsWith('data=')) {
-                    lessonData = JSON.parse(atob(decodeURIComponent(hash.substring(5))));
+                const params = new URLSearchParams(window.location.search);
+                const encoded = params.get('data');
+                if (encoded) {
+                    lessonData = JSON.parse(atob(decodeURIComponent(encoded)));
                     return true;
                 }
             } catch (e) { console.error('Parse error:', e); }
