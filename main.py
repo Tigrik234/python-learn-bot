@@ -32,7 +32,9 @@ USER_STATE = {}
 
 
 def get_menu_kb(user):
+    lesson_idx = max(0, min(user.get("lesson_index", 0), len(LESSONS) - 1))
     kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="▶️ Продолжить обучение", callback_data=f"lesson_{lesson_idx}")],
         [InlineKeyboardButton(text="📚 Уроки", callback_data="lessons")],
         [InlineKeyboardButton(text="🏆 Рейтинг", callback_data="leaderboard")],
         [InlineKeyboardButton(text="📊 Статистика", callback_data="stats")],
@@ -52,17 +54,19 @@ async def cmd_start(message: Message):
 
     level = user.get("level", 1)
     xp = user.get("xp", 0)
-    lesson_idx = user.get("lesson_index", 0)
-    lesson_title = LESSONS[lesson_idx]["title"] if lesson_idx < len(LESSONS) else "Все пройдены!"
+    completed = min(max(user.get("lesson_index", 0), 0), len(LESSONS))
+    lesson_title = LESSONS[completed]["title"] if completed < len(LESSONS) else "Все пройдены!"
+    first_name = html.escape(message.from_user.first_name or "ученик")
 
     welcome = (
         f"🐍 <b>Python Learn Bot</b>\n\n"
-        f"Привет, {message.from_user.first_name}!\n\n"
-        f"Изучай Python с нуля через теорию и практику.\n\n"
+        f"Привет, {first_name}!\n\n"
+        f"Изучай Python по 200 практическим урокам — от первых команд до асинхронности и архитектуры.\n\n"
         f"📊 <b>Твой прогресс:</b>\n"
         f"⭐ Уровень: {level}\n"
         f"✨ XP: {xp}\n"
-        f"📖 Урок: {lesson_title}\n"
+        f"📖 Пройдено: {completed}/{len(LESSONS)}\n"
+        f"➡️ Следующий урок: {lesson_title}\n"
     )
 
     try:
@@ -71,29 +75,43 @@ async def cmd_start(message: Message):
         pass
 
 
+def build_lessons_page(page, user):
+    page_count = (len(LESSONS) + 9) // 10
+    page = max(0, min(page, page_count - 1))
+    completed = min(max(user.get("lesson_index", 0), 0), len(LESSONS))
+    start = page * 10
+    page_lessons = LESSONS[start:start + 10]
+    lines = [
+        f"<b>📚 Уроки — страница {page + 1}/{page_count}</b>",
+        f"Прогресс: {completed}/{len(LESSONS)} уроков пройдено",
+        "",
+    ]
+    rows = []
+    for lesson in page_lessons:
+        index = lesson["index"]
+        marker = "✅" if index < completed else "▶️" if index == completed else "▫️"
+        lines.append(f"{marker} {index + 1}. {html.escape(lesson['title'])}")
+        rows.append([InlineKeyboardButton(
+            text=f"{marker} {index + 1}. {lesson['title'][:45]}",
+            callback_data=f"lesson_{index}",
+        )])
+
+    navigation = []
+    if page > 0:
+        navigation.append(InlineKeyboardButton(text="⬅️ Предыдущие", callback_data=f"list_page_{page - 1}"))
+    navigation.append(InlineKeyboardButton(text=f"{page + 1}/{page_count}", callback_data="lessons"))
+    if page + 1 < page_count:
+        navigation.append(InlineKeyboardButton(text="Следующие ➡️", callback_data=f"list_page_{page + 1}"))
+    rows.append(navigation)
+    rows.append([InlineKeyboardButton(text="🏠 Меню", callback_data="back")])
+    return "\n".join(lines), InlineKeyboardMarkup(inline_keyboard=rows)
+
+
 @dp.message(Command("lessons"))
 async def cmd_lessons(message: Message):
-    user = get_user(message.from_user.id)
-    if user is None:
-        user = get_or_create_user(message.from_user.id)
-
-    lesson_idx = user.get("lesson_index", 0)
-    text = "<b>📚 Уроки</b>\n\n"
-
-    for i, lesson in enumerate(LESSONS):
-        status = "✅" if i < lesson_idx else "🔒" if i == lesson_idx else "⬜"
-        if i == lesson_idx:
-            status = "▶️"
-        text += f"{status} {lesson['index'] + 1}. {lesson['title']}\n"
-
-    text += "\nНажми на урок чтобы начать!"
-
-    kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=f"📖 {l['title']}", callback_data=f"lesson_{l['index']}")]
-        for l in LESSONS
-    ])
-
-    await message.answer(text, reply_markup=kb, parse_mode="HTML")
+    user = get_user(message.from_user.id) or get_or_create_user(message.from_user.id)
+    text, keyboard = build_lessons_page(0, user)
+    await message.answer(text, reply_markup=keyboard, parse_mode="HTML")
 
 
 @dp.callback_query(lambda c: c.data.startswith("lesson_"))
@@ -125,30 +143,13 @@ async def cb_lesson(callback: types.CallbackQuery):
     await callback.answer()
 
 
-@dp.callback_query(lambda c: c.data == "lessons")
+@dp.callback_query(lambda c: c.data == "lessons" or c.data.startswith("list_page_"))
 async def cb_lessons(callback: types.CallbackQuery):
     try:
-        user = get_user(callback.from_user.id)
-        if user is None:
-            user = get_or_create_user(callback.from_user.id)
-
-        lesson_idx = user.get("lesson_index", 0)
-        text = "<b>📚 Уроки</b>\n\n"
-
-        for i, lesson in enumerate(LESSONS):
-            status = "✅" if i < lesson_idx else "🔒" if i == lesson_idx else "⬜"
-            if i == lesson_idx:
-                status = "▶️"
-            text += f"{status} {lesson['index'] + 1}. {lesson['title']}\n"
-
-        text += "\nНажми на урок чтобы начать!"
-
-        kb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text=f"📖 {l['title']}", callback_data=f"lesson_{l['index']}")]
-            for l in LESSONS
-        ])
-
-        await callback.message.answer(text, reply_markup=kb, parse_mode="HTML")
+        user = get_user(callback.from_user.id) or get_or_create_user(callback.from_user.id)
+        page = int(callback.data.rsplit("_", 1)[1]) if callback.data.startswith("list_page_") else 0
+        text, keyboard = build_lessons_page(page, user)
+        await callback.message.answer(text, reply_markup=keyboard, parse_mode="HTML")
     except Exception as e:
         await callback.message.answer(f"Ошибка: {e}")
     await callback.answer()
@@ -160,7 +161,7 @@ async def cb_terminal(callback: types.CallbackQuery):
     lesson = LESSONS[lesson_idx]
 
     # Передаем только номер урока. Самые данные загружаются из lessons.json.
-    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?lesson={lesson_idx}&v=364ba42"
+    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?lesson={lesson_idx}&v=200-lessons-20261126"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],
@@ -419,17 +420,27 @@ async def cb_stats(callback: types.CallbackQuery):
         if user is None:
             user = get_or_create_user(callback.from_user.id)
 
+        completed = min(max(user.get("lesson_index", 0), 0), len(LESSONS))
+        percentage = int(completed * 100 / len(LESSONS))
+        xp = user.get("xp", 0)
+        next_lesson = LESSONS[completed]["title"] if completed < len(LESSONS) else "Все уроки пройдены!"
+        started = str(user.get("created_at") or "unknown")[:10]
         text = (
             f"<b>📊 Твоя статистика</b>\n\n"
             f"⭐ Уровень: {user.get('level', 1)}\n"
-            f"✨ XP: {user.get('xp', 0)}\n"
+            f"✨ XP: {xp} (до следующего уровня: {100 - xp % 100})\n"
             f"🔥 Серия: {user.get('streak', 0)}\n"
             f"🏆 Лучшая серия: {user.get('best_streak', 0)}\n"
-            f"📖 Урок: {user.get('lesson_index', 0) + 1}/{len(LESSONS)}\n"
-            f"📅 Начал: {user.get('created_at', 'unknown')[:10]}"
+            f"📖 Уроки: {completed}/{len(LESSONS)} ({percentage}%)\n"
+            f"➡️ Следующий: {next_lesson}\n"
+            f"📅 Начал: {started}"
         )
 
         kb = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(
+                text="▶️ Продолжить",
+                callback_data=f"lesson_{min(completed, len(LESSONS) - 1)}",
+            )],
             [InlineKeyboardButton(text="⬅️ Назад", callback_data="back")],
         ])
 
@@ -446,27 +457,6 @@ async def cb_back(callback: types.CallbackQuery):
     except Exception:
         pass
     await callback.answer()
-
-
-@dp.message(Command("next"))
-async def cmd_next(message: Message):
-    user = get_user(message.from_user.id)
-    if user is None:
-        user = get_or_create_user(message.from_user.id)
-
-    lesson_idx = user.get("lesson_index", 0)
-    if lesson_idx >= len(LESSONS):
-        await message.answer("Все уроки пройдены!")
-        return
-
-    lesson = LESSONS[lesson_idx]
-    await message.answer(
-        f"Урок {lesson_idx + 1}: {lesson['title']}\n\n{lesson['theory']}\n\nНажми 💻 Терминал чтобы начать практику.",
-        reply_markup=InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="💻 Терминал", callback_data=f"terminal_{lesson_idx}")],
-        ]),
-        parse_mode="HTML",
-    )
 
 
 def _check_dangerous(code: str) -> Optional[str]:

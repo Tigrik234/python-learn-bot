@@ -2,11 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Python IDE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#10141d">
+    <title>Python Lab — интерактивный урок</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
@@ -14,370 +12,368 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            color-scheme: dark;
+            --page: #10141d;
+            --panel: #171d29;
+            --panel-raised: #1d2533;
+            --line: #2a3445;
+            --muted: #9aa8bd;
+            --text: #edf3fc;
+            --accent: #6ee7c2;
+            --blue: #91b9ff;
+            --danger: #ff8f9c;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        * { box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1e1e1e;
-            color: #d4d4d4;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: radial-gradient(ellipse at 15% 0%, #1a2a3a 0, var(--page) 42rem);
+            color: var(--text);
+            font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
         }
-        .header {
-            background: #2d2d2d;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #3c3c3c;
+        button { font: inherit; }
+        .app { width: min(1050px, 100%); margin: 0 auto; padding: 18px 20px calc(22px + var(--safe-bottom)); }
+        .topbar, .lesson-nav, .section-heading, .actions, .output-heading {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
         }
-        .header h1 { font-size: 16px; color: #4ec9b0; }
-        .lesson-info {
-            background: #252526;
-            padding: 10px 15px;
-            border-bottom: 1px solid #3c3c3c;
+        .topbar { margin-bottom: 16px; }
+        .brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 750; letter-spacing: .01em; }
+        .brand-mark {
+            display: grid; width: 36px; height: 36px; place-items: center; border-radius: 12px;
+            color: #0c1719; background: linear-gradient(135deg, #8ff2d2, #78b9ff); font-size: 20px;
         }
-        .lesson-info h2 { font-size: 14px; color: #ce9178; margin-bottom: 5px; }
-        .lesson-info p { font-size: 12px; color: #9cdcfe; }
-        .editor-container { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .CodeMirror { flex: 1; height: auto !important; font-size: 14px; font-family: 'Consolas', 'Courier New', monospace; }
-        .output-container {
-            background: #1a1a1a;
-            border-top: 2px solid #3c3c3c;
-            max-height: 35vh;
-            display: flex;
-            flex-direction: column;
+        .status { color: var(--muted); font-size: 12px; }
+        .card {
+            border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--panel) 95%, transparent);
+            box-shadow: 0 16px 40px #00000020;
         }
-        .output-header {
-            background: #2d2d2d;
-            padding: 8px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-        .output-header span { font-size: 13px; color: #cccccc; }
-        .output-content {
-            padding: 10px 15px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 13px;
-            color: #d4d4d4;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            flex: 1;
-        }
-        .output-content.success { color: #4ec9b0; }
-        .output-content.error { color: #f44747; }
-        .footer {
-            background: #2d2d2d;
-            padding: 10px 15px;
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #3c3c3c;
-        }
+        .lesson-card { padding: 20px; margin-bottom: 14px; }
+        .eyebrow { color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+        h1 { margin: 4px 0 5px; font-size: clamp(20px, 4vw, 27px); line-height: 1.2; }
+        .task { margin: 0; color: #bac6d8; }
+        .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; color: var(--muted); font-size: 12px; }
+        .progress-track { height: 7px; flex: 1; overflow: hidden; border-radius: 99px; background: #2b3544; }
+        .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #53d9b2, #8cc4ff); transition: width .25s ease; }
+        .workspace { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; align-items: start; }
+        .editor-card { overflow: hidden; }
+        .section-heading { min-height: 48px; padding: 0 15px; border-bottom: 1px solid var(--line); background: #ffffff04; }
+        .section-title { font-size: 13px; font-weight: 700; }
+        .file-pill { border: 1px solid var(--line); border-radius: 7px; padding: 2px 8px; color: var(--muted); font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; }
+        .editor-wrap { min-height: 300px; height: min(46vh, 500px); }
+        .CodeMirror { height: 100%; padding: 12px 0; background: #111722; color: #e6edf7; font: 14px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; }
+        .CodeMirror-gutters { border: 0; background: #111722; }
+        .CodeMirror-linenumber { color: #68778c; }
+        .actions { justify-content: flex-start; flex-wrap: wrap; padding: 13px 15px; border-top: 1px solid var(--line); }
         .btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            min-height: 39px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 10px;
+            background: var(--panel-raised); color: var(--text); font-weight: 650; cursor: pointer;
+            transition: transform .12s, border-color .12s, background .12s;
         }
-        .btn-run { background: #4ec9b0; color: #1e1e1e; }
-        .btn-run:active { background: #3da892; }
-        .btn-hint { background: #3c3c3c; color: #dcdcaa; }
-        .btn-hint:active { background: #505050; }
-        .btn-clear { background: #3c3c3c; color: #ce9178; }
-        .btn-clear:active { background: #505050; }
-        .hint-box {
-            background: #252526;
-            border: 1px solid #dcdcaa;
-            border-radius: 6px;
-            padding: 10px;
-            margin: 10px 15px;
-            display: none;
+        .btn:hover { border-color: #50627b; }
+        .btn:active { transform: translateY(1px); }
+        .btn:disabled { opacity: .55; cursor: wait; }
+        .btn-run { margin-left: auto; border-color: transparent; background: linear-gradient(110deg, #75e6c1, #80c4ff); color: #10202a; }
+        .btn-nav { min-width: 90px; }
+        .side { display: grid; gap: 14px; }
+        details.card { overflow: hidden; }
+        details summary { list-style: none; cursor: pointer; }
+        details summary::-webkit-details-marker { display: none; }
+        .details-summary { padding: 14px 15px; }
+        .details-body { padding: 0 15px 16px; color: #c4cfde; }
+        .details-body pre, .theory pre {
+            overflow: auto; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px;
+            background: #0f141d; color: #b6e4d7; white-space: pre-wrap; word-break: break-word;
         }
-        .hint-box.show { display: block; }
-        .hint-box h3 { font-size: 13px; color: #dcdcaa; margin-bottom: 5px; }
-        .hint-box p { font-size: 12px; color: #d4d4d4; }
-        .spinner {
-            display: inline-block;
-            width: 14px; height: 14px;
-            border: 2px solid #ffffff33;
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-            margin-right: 5px;
+        .theory { font-size: 13px; line-height: 1.65; }
+        .theory b { color: var(--text); }
+        .hints-card { padding-bottom: 13px; }
+        .hint-content { padding: 0 15px; color: #d7d2a3; min-height: 44px; }
+        .hint-actions { padding: 0 15px; }
+        .output-card { margin-top: 14px; overflow: hidden; }
+        .output-heading { min-height: 47px; padding: 0 15px; }
+        .output-state { color: var(--muted); font-size: 12px; }
+        .output {
+            min-height: 58px; max-height: 190px; overflow: auto; margin: 0; padding: 12px 15px;
+            border-top: 1px solid var(--line); color: #c7d2e2; white-space: pre-wrap; overflow-wrap: anywhere;
+            font: 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #loading {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: #1e1e1e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
+        .output.success { color: var(--accent); }
+        .output.error { color: var(--danger); }
+        .loading {
+            position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
+            padding: 24px; background: #0d1119f5; backdrop-filter: blur(12px);
         }
-        #loading h2 { color: #4ec9b0; margin-bottom: 20px; }
-        #loading p { color: #999; font-size: 14px; }
-        .progress-bar {
-            width: 200px; height: 4px; background: #333;
-            border-radius: 2px; margin-top: 15px; overflow: hidden;
+        .loading-card { width: min(360px, 100%); padding: 26px; text-align: center; }
+        .loading-icon { font-size: 34px; }
+        .loading-card h2 { margin: 8px 0; font-size: 19px; }
+        .loading-card p { color: var(--muted); font-size: 13px; }
+        .loading-track { height: 7px; margin-top: 17px; overflow: hidden; border-radius: 99px; background: #2b3544; }
+        .loading-fill { width: 4%; height: 100%; background: var(--accent); transition: width .3s ease; }
+        .error-card { color: var(--danger); }
+        @media (max-width: 760px) {
+            .app { padding: 12px 12px calc(15px + var(--safe-bottom)); }
+            .workspace { grid-template-columns: 1fr; }
+            .side { grid-template-columns: 1fr 1fr; }
+            .editor-wrap { height: 42vh; min-height: 240px; }
+            .lesson-card { padding: 16px; }
         }
-        .progress-fill {
-            height: 100%; background: #4ec9b0;
-            width: 0%; transition: width 0.3s;
+        @media (max-width: 480px) {
+            .side { grid-template-columns: 1fr; }
+            .actions { gap: 8px; }
+            .btn { padding: 8px 10px; font-size: 12px; }
+            .btn-run { flex: 1; }
+            .lesson-nav .btn { min-width: 0; }
         }
     </style>
 </head>
 <body>
-    <div id="loading">
-        <h2>🐍 Загрузка Python...</h2>
-        <p id="loading-text">Инициализация Pyodide</p>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress"></div>
+    <div class="loading" id="loading">
+        <div class="card loading-card">
+            <div class="loading-icon">🐍</div>
+            <h2>Подготавливаем Python Lab</h2>
+            <p id="loading-text">Загружаем урок и среду Python…</p>
+            <div class="loading-track"><div class="loading-fill" id="loading-progress"></div></div>
         </div>
     </div>
 
-    <div class="header">
-        <h1>🐍 Python IDE</h1>
-        <span id="lesson-title" style="font-size:12px;color:#9cdcfe;"></span>
-    </div>
-    <div class="lesson-info">
-        <h2 id="task-title">Задание</h2>
-        <p id="task-desc">Загрузка...</p>
-    </div>
-    <div class="hint-box" id="hint-box">
-        <h3>💡 Подсказка</h3>
-        <p id="hint-text"></p>
-    </div>
-    <div class="editor-container">
-        <textarea id="code-editor"></textarea>
-    </div>
-    <div class="output-container">
-        <div class="output-header" onclick="toggleOutput()">
-            <span>📤 Вывод</span>
-            <span id="output-toggle">▼</span>
+    <main class="app">
+        <header class="topbar">
+            <div class="brand"><span class="brand-mark">Py</span> Python Lab</div>
+            <span class="status" id="runtime-status">Подключаем интерпретатор</span>
+        </header>
+
+        <section class="card lesson-card">
+            <div class="eyebrow" id="module-label">Практический урок</div>
+            <h1 id="lesson-title">Загрузка урока…</h1>
+            <p class="task" id="lesson-task"></p>
+            <div class="progress-row">
+                <span id="progress-label">Урок 1 из 200</span>
+                <div class="progress-track"><div class="progress-fill" id="lesson-progress"></div></div>
+            </div>
+        </section>
+
+        <nav class="lesson-nav" aria-label="Навигация по урокам" style="margin-bottom:14px">
+            <button class="btn btn-nav" id="previous-button" type="button">← Назад</button>
+            <span class="status" id="navigation-label">Урок 1</span>
+            <button class="btn btn-nav" id="next-button" type="button">Далее →</button>
+        </nav>
+
+        <div class="workspace">
+            <section class="card editor-card">
+                <div class="section-heading">
+                    <span class="section-title">⌘ Редактор кода</span>
+                    <span class="file-pill">main.py</span>
+                </div>
+                <div class="editor-wrap"><textarea id="code-editor" aria-label="Редактор Python"></textarea></div>
+                <div class="actions">
+                    <button class="btn" id="clear-button" type="button">Очистить</button>
+                    <button class="btn btn-run" id="run-button" type="button">▶ Запустить код</button>
+                </div>
+            </section>
+
+            <aside class="side">
+                <details class="card" id="theory-details">
+                    <summary class="section-heading details-summary">
+                        <span class="section-title">📖 Теория и задание</span><span class="status">показать</span>
+                    </summary>
+                    <div class="details-body theory" id="theory-content"></div>
+                </details>
+                <section class="card hints-card">
+                    <div class="section-heading"><span class="section-title">💡 Подсказка</span><span class="status" id="hint-counter"></span></div>
+                    <div class="hint-content" id="hint-content">Нужна небольшая подсказка? Открой её, когда будешь готов.</div>
+                    <div class="hint-actions"><button class="btn" id="hint-button" type="button">Показать подсказку</button></div>
+                </section>
+            </aside>
         </div>
-        <div class="output-content" id="output" style="display:none;"></div>
-    </div>
-    <div class="footer">
-        <button class="btn btn-hint" onclick="showHint()">💡 Подсказка</button>
-        <button class="btn btn-clear" onclick="clearCode()">🗑 Очистить</button>
-        <button class="btn btn-run" onclick="runCode()" id="run-btn">▶ Запустить</button>
-    </div>
+
+        <section class="card output-card">
+            <div class="output-heading">
+                <span class="section-title">▸ Результат выполнения</span>
+                <span class="output-state" id="output-state">Готов к запуску</span>
+            </div>
+            <pre class="output" id="output">Здесь появится вывод программы.</pre>
+        </section>
+    </main>
 
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
-        tg.setHeaderColor('#1e1e1e');
-        tg.setBackgroundColor('#1e1e1e');
-
-        let pyodide = null;
-        let lessonData = {};
-
-        // Ноль сетевых запросов — данные урока только из URL query параметра
-        // Telegram передаёт ?data= но режет #hash
-        async function loadLessonFromURL() {
-            try {
-                const params = new URLSearchParams(window.location.search);
-                const encoded = params.get('data');
-                if (encoded) {
-                    const binary = atob(encoded);
-                    const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
-                    const jsonText = new TextDecoder('utf-8').decode(bytes);
-                    lessonData = JSON.parse(jsonText);
-                    return true;
-                }
-                const lessonIndex = Number(params.get('lesson'));
-                if (Number.isInteger(lessonIndex)) {
-                    const response = await fetch('lessons.json', { cache: 'no-store' });
-                    if (!response.ok) throw new Error('Не удалось загрузить уроки');
-                    const lessons = await response.json();
-                    if (!lessons[lessonIndex]) throw new Error('Урок не найден');
-                    lessonData = lessons[lessonIndex];
-                    return true;
-                }
-            } catch (e) {
-                console.error('Failed to parse URL params:', e);
-            }
-            return false;
+        const tg = window.Telegram && window.Telegram.WebApp;
+        if (tg) {
+            tg.ready();
+            tg.expand();
+            try { tg.setHeaderColor('#10141d'); tg.setBackgroundColor('#10141d'); } catch (_) {}
         }
 
-        let hintIndex = 0;
-        let editor;
-        let outputVisible = false;
+        const state = { lessons: [], lesson: null, index: 0, hintIndex: 0, pyodide: null, editor: null };
+        const byId = (id) => document.getElementById(id);
+        const showLoading = (message, percent) => {
+            byId('loading-text').textContent = message;
+            byId('loading-progress').style.width = `${percent}%`;
+        };
+        const normalized = (value) => String(value || '').replace(/\r\n/g, '\n').trim().split('\n').map(line => line.trim()).join('\n');
 
-        async function initPyodide() {
-            try {
-                pyodide = await loadPyodide();
-                document.getElementById('loading-text').textContent = 'Python готов!';
-                document.getElementById('progress').style.width = '100%';
-                setTimeout(async () => {
-                    document.getElementById('loading').style.display = 'none';
-                    if (!(await loadLessonFromURL()) || !lessonData.title) {
-                        document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#f44747;padding:20px;text-align:center;font-size:16px;"><h2>❌ Ошибка</h2><p>Не найдены данные урока. Закрой и открой IDE заново через кнопку "Терминал" в боте.</p></div>';
-                        return;
-                    }
-                    init();
-                }, 500);
-            } catch (e) {
-                document.getElementById('loading-text').textContent = 'Ошибка загрузки: ' + e.message;
-                document.getElementById('progress').style.width = '100%';
-                document.getElementById('progress').style.background = '#f44747';
-            }
+        async function loadLessons() {
+            const response = await fetch(`lessons.json?v=${encodeURIComponent(new URLSearchParams(location.search).get('v') || '200-lessons-20261126')}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Не удалось загрузить каталог уроков.');
+            const lessons = await response.json();
+            if (!Array.isArray(lessons) || lessons.length !== 200) throw new Error('Каталог уроков неполный или повреждён.');
+            return lessons;
         }
 
-        function init() {
-            document.getElementById('lesson-title').textContent = `Урок ${lessonData.index + 1}`;
-            document.getElementById('task-title').textContent = lessonData.title;
-            document.getElementById('task-desc').textContent = 'Ожидаемый вывод: ' + lessonData.expectedOutput;
-
-            editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-                mode: 'python',
-                theme: 'material-darker',
-                lineNumbers: true,
-                indentUnit: 4,
-                tabSize: 4,
-                indentWithTabs: true,
-                lineWrapping: true,
-                autofocus: true,
-            });
-
-            if (lessonData.starterCode) {
-                editor.setValue(lessonData.starterCode);
-            }
+        function updateAddress(index) {
+            const url = new URL(location.href);
+            url.searchParams.set('lesson', String(index));
+            if (!url.searchParams.has('v')) url.searchParams.set('v', '200-lessons-20261126');
+            history.replaceState({ lesson: index }, '', url);
         }
 
-        function normalize(text) {
-            return text.split('\n')
-                .map(l => l.trim())
-                .filter(l => l.length > 0)
-                .join('\n');
+        function renderLesson(index, updateUrl = true) {
+            state.index = Math.max(0, Math.min(index, state.lessons.length - 1));
+            state.lesson = state.lessons[state.index];
+            state.hintIndex = 0;
+            const lesson = state.lesson;
+            byId('module-label').textContent = `Python • урок ${lesson.index + 1}`;
+            byId('lesson-title').textContent = lesson.title;
+            byId('lesson-task').textContent = `Ожидаемый вывод: ${lesson.expectedOutput}`;
+            byId('progress-label').textContent = `Урок ${lesson.index + 1} из ${state.lessons.length}`;
+            byId('navigation-label').textContent = `${lesson.index + 1} / ${state.lessons.length}`;
+            byId('lesson-progress').style.width = `${((lesson.index + 1) / state.lessons.length) * 100}%`;
+            byId('previous-button').disabled = lesson.index === 0;
+            byId('next-button').disabled = lesson.index === state.lessons.length - 1;
+            byId('theory-content').innerHTML = lesson.theory || '<p>Теория для этого урока пока не добавлена.</p>';
+            byId('hint-content').textContent = 'Нужна небольшая подсказка? Открой её, когда будешь готов.';
+            byId('hint-counter').textContent = `${(lesson.hints || []).length} шт.`;
+            byId('output').textContent = 'Здесь появится вывод программы.';
+            byId('output').className = 'output';
+            byId('output-state').textContent = 'Готов к запуску';
+            if (state.editor) state.editor.setValue(lesson.starterCode || '');
+            if (updateUrl) updateAddress(lesson.index);
         }
 
-        function runCode() {
-            if (!pyodide) {
-                tg.showAlert('Python ещё загружается. Подождите...');
-                return;
-            }
+        function changeLesson(offset) {
+            const target = state.index + offset;
+            if (target < 0 || target >= state.lessons.length) return;
+            renderLesson(target);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            const btn = document.getElementById('run-btn');
-            btn.innerHTML = '<span class="spinner"></span> Запуск...';
-            btn.disabled = true;
-
-            const code = editor.getValue();
-            const output = document.getElementById('output');
-            output.className = 'output-content';
-            output.textContent = 'Выполнение...';
-            output.style.display = 'block';
-
-            // Перехватываем print() через stdout
-            pyodide.runPython(`
+        function capturePythonOutput(code) {
+            state.pyodide.globals.set('_lesson_user_code', code);
+            const runner = `
 import sys
 from io import StringIO
-sys._stdout = sys.stdout
-sys.stdout = StringIO()
-            `);
+_lesson_buffer = StringIO()
+_lesson_previous_stdout = sys.stdout
+sys.stdout = _lesson_buffer
+_lesson_error = ""
+try:
+    exec(compile(_lesson_user_code, "<lesson>", "exec"))
+except Exception as error:
+    _lesson_error = f"{type(error).__name__}: {error}"
+finally:
+    sys.stdout = _lesson_previous_stdout
+(_lesson_buffer.getvalue(), _lesson_error)
+`;
+            return state.pyodide.runPythonAsync(runner).then(result => {
+                const values = result.toJs();
+                result.destroy();
+                return { output: values[0], error: values[1] };
+            });
+        }
 
+        async function runCode() {
+            if (!state.pyodide || !state.editor) return;
+            const button = byId('run-button');
+            const output = byId('output');
+            button.disabled = true;
+            button.textContent = '⏳ Выполняется…';
+            byId('output-state').textContent = 'Запускаем Python';
+            output.className = 'output';
+            output.textContent = 'Выполнение кода в браузере…';
             try {
-                pyodide.runPython(code);
-                const captured = pyodide.runPython(`sys.stdout.getvalue()`);
-
-                // Восстанавливаем stdout
-                pyodide.runPython(`sys.stdout = sys._stdout`);
-
-                const actualOutput = normalize(captured || '');
-                const expectedOutput = normalize(lessonData.expectedOutput || '');
-
-                if (actualOutput === expectedOutput) {
-                    output.className = 'output-content success';
-                    output.textContent = '✅ Отлично! Код верный!\n\nВывод:\n' + (captured || '(пусто)');
-                    tg.HapticFeedback.notificationOccurred('success');
-
-                    // Отправляем данные боту о прохождении
+                const result = await capturePythonOutput(state.editor.getValue());
+                output.textContent = result.error
+                    ? `Ошибка Python:\n${result.error}\n\nВывод до ошибки:\n${result.output || '(пусто)'}`
+                    : result.output || '(программа завершилась без вывода)';
+                const passed = !result.error && normalized(result.output) === normalized(state.lesson.expectedOutput);
+                output.classList.add(passed ? 'success' : 'error');
+                byId('output-state').textContent = passed ? '✓ Задание выполнено' : 'Проверь код и попробуй ещё раз';
+                if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred(passed ? 'success' : 'error');
+                if (passed && tg && tg.sendData) {
                     tg.sendData(JSON.stringify({
                         action: 'lesson_complete',
-                        lessonIndex: lessonData.index,
-                        code: code,
+                        lessonIndex: state.lesson.index,
+                        code: state.editor.getValue()
                     }));
-                } else {
-                    output.className = 'output-content error';
-                    output.textContent = '❌ Неверно.\nОжидалось:\n' + lessonData.expectedOutput +
-                        '\n\nПолучено:\n' + (captured || '(пусто)');
-                    tg.HapticFeedback.notificationOccurred('error');
-
-                    // Автоочистка кода
-                    setTimeout(() => {
-                        editor.setValue(lessonData.starterCode || '');
-                        hintIndex = 0;
-                        document.getElementById('hint-box').classList.remove('show');
-                        tg.showAlert('Код очищен. Попробуй ещё раз!');
-                    }, 2000);
                 }
-            } catch (e) {
-                // Восстанавливаем stdout даже при ошибке
-                try {
-                    pyodide.runPython(`sys.stdout = sys._stdout`);
-                } catch (_) {}
-
-                output.className = 'output-content error';
-                output.textContent = '❌ Ошибка:\n' + e.message;
-                tg.HapticFeedback.notificationOccurred('error');
-
-                // Автоочистка при ошибке
-                setTimeout(() => {
-                    editor.setValue(lessonData.starterCode || '');
-                    hintIndex = 0;
-                    document.getElementById('hint-box').classList.remove('show');
-                    tg.showAlert('Ошибка в коде. Очищаю. Попробуй ещё раз!');
-                }, 2000);
+            } catch (error) {
+                output.className = 'output error';
+                output.textContent = `Не удалось выполнить код:\n${error.message}`;
+                byId('output-state').textContent = 'Ошибка выполнения';
+            } finally {
+                button.disabled = false;
+                button.textContent = '▶ Запустить код';
             }
-
-            btn.innerHTML = '▶ Запустить';
-            btn.disabled = false;
         }
 
         function showHint() {
-            if (!lessonData.hints || hintIndex >= lessonData.hints.length) {
-                tg.showAlert('Подсказки закончились!');
+            const hints = state.lesson && state.lesson.hints || [];
+            if (state.hintIndex >= hints.length) {
+                byId('hint-content').textContent = 'Подсказки закончились. Попробуй разобрать пример в теории.';
                 return;
             }
-            document.getElementById('hint-text').textContent = lessonData.hints[hintIndex];
-            document.getElementById('hint-box').classList.add('show');
-            hintIndex++;
-            tg.HapticFeedback.impactOccurred('light');
+            byId('hint-content').textContent = hints[state.hintIndex++];
+            byId('hint-counter').textContent = `${state.hintIndex} / ${hints.length}`;
+            if (tg && tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
         }
 
         function clearCode() {
-            editor.setValue(lessonData.starterCode || '');
-            hintIndex = 0;
-            document.getElementById('hint-box').classList.remove('show');
-            const output = document.getElementById('output');
-            output.style.display = 'none';
-            output.className = 'output-content';
-            output.textContent = '';
-            outputVisible = false;
-            document.getElementById('output-toggle').textContent = '▼';
-            tg.HapticFeedback.impactOccurred('medium');
+            if (!state.lesson || !state.editor) return;
+            state.editor.setValue('');
+            state.editor.focus();
+            byId('output').textContent = 'Код очищен. Напиши решение и запусти его.';
+            byId('output').className = 'output';
+            byId('output-state').textContent = 'Готов к запуску';
         }
 
-        function toggleOutput() {
-            const output = document.getElementById('output');
-            const toggle = document.getElementById('output-toggle');
-            outputVisible = !outputVisible;
-            output.style.display = outputVisible ? 'block' : 'none';
-            toggle.textContent = outputVisible ? '▲' : '▼';
+        async function boot() {
+            try {
+                showLoading('Загружаем каталог из lessons.json…', 12);
+                const lessonPromise = loadLessons();
+                showLoading('Подготавливаем среду Python в браузере…', 35);
+                const pythonPromise = loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/' });
+                [state.lessons, state.pyodide] = await Promise.all([lessonPromise, pythonPromise]);
+                showLoading('Создаём редактор и открываем урок…', 88);
+                state.editor = CodeMirror.fromTextArea(byId('code-editor'), {
+                    mode: 'python',
+                    theme: 'material-darker',
+                    lineNumbers: true,
+                    indentUnit: 4,
+                    tabSize: 4,
+                    indentWithTabs: false,
+                    lineWrapping: true,
+                    autofocus: false
+                });
+                const requested = Number(new URLSearchParams(location.search).get('lesson'));
+                const startIndex = Number.isInteger(requested) && requested >= 0 && requested < state.lessons.length ? requested : 0;
+                renderLesson(startIndex, false);
+                byId('runtime-status').textContent = 'Python готов • запуск в браузере';
+                showLoading('Всё готово — приятного обучения!', 100);
+                setTimeout(() => { byId('loading').hidden = true; }, 250);
+            } catch (error) {
+                byId('loading').innerHTML = `<div class="card loading-card error-card"><div class="loading-icon">⚠️</div><h2>Не удалось открыть урок</h2><p>${String(error.message).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}</p><p>Проверь подключение и открой Mini App ещё раз.</p></div>`;
+                byId('runtime-status').textContent = 'Среда Python недоступна';
+            }
         }
 
-        initPyodide();
+        byId('previous-button').addEventListener('click', () => changeLesson(-1));
+        byId('next-button').addEventListener('click', () => changeLesson(1));
+        byId('run-button').addEventListener('click', runCode);
+        byId('clear-button').addEventListener('click', clearCode);
+        byId('hint-button').addEventListener('click', showHint);
+        boot();
     </script>
 </body>
 </html>

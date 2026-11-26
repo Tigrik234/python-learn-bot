@@ -1,0 +1,2487 @@
+[
+  {
+    "index": 0,
+    "title": "Hello, Python",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Hello, Python</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> A program is a sequence of instructions; print displays a value.\n\n<b>Пример решения:</b>\n<pre>print('Привет, Python!')</pre>\n\n👇 <b>Практика:</b>\nPrint the greeting exactly as shown.\nПроверь, что программа выводит:\n<pre>Привет, Python!</pre>",
+    "expectedOutput": "Привет, Python!",
+    "starterCode": "# Практика: Print the greeting exactly as shown.\n",
+    "hints": [
+      "print('Привет, Python!')"
+    ]
+  },
+  {
+    "index": 1,
+    "title": "Variables and assignment",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Variables and assignment</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> Assignment binds a descriptive name to an object; the name can be used again later.\n\n<b>Пример решения:</b>\n<pre>language = 'Python'\nprint(language)</pre>\n\n👇 <b>Практика:</b>\nStore Python in language and print the value.\nПроверь, что программа выводит:\n<pre>Python</pre>",
+    "expectedOutput": "Python",
+    "starterCode": "language = 'Python'\n",
+    "hints": [
+      "language = 'Python'",
+      "print(language)"
+    ]
+  },
+  {
+    "index": 2,
+    "title": "Integers and arithmetic",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Integers and arithmetic</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> Integers support arithmetic operators; parentheses make the intended order explicit.\n\n<b>Пример решения:</b>\n<pre>answer = 7 * 8\nprint(answer)</pre>\n\n👇 <b>Практика:</b>\nCalculate and print seven times eight.\nПроверь, что программа выводит:\n<pre>56</pre>",
+    "expectedOutput": "56",
+    "starterCode": "answer = 7 * 8\n",
+    "hints": [
+      "answer = 7 * 8",
+      "print(answer)"
+    ]
+  },
+  {
+    "index": 3,
+    "title": "Floating-point numbers",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Floating-point numbers</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> Float values represent fractions approximately, so round when a fixed number of decimal places is needed.\n\n<b>Пример решения:</b>\n<pre>ratio = 1 / 3\nprint(f'{ratio:.2f}')</pre>\n\n👇 <b>Практика:</b>\nRound 1 divided by 3 to two decimal places.\nПроверь, что программа выводит:\n<pre>0.33</pre>",
+    "expectedOutput": "0.33",
+    "starterCode": "ratio = 1 / 3\n",
+    "hints": [
+      "ratio = 1 / 3",
+      "print(f'{ratio:.2f}')"
+    ]
+  },
+  {
+    "index": 4,
+    "title": "Strings and quoting",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Strings and quoting</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> Strings are immutable text values; single and double quotes both delimit them.\n\n<b>Пример решения:</b>\n<pre>word = 'Python'\nprint('Learn ' + word)</pre>\n\n👇 <b>Практика:</b>\nJoin two words with a space and print the result.\nПроверь, что программа выводит:\n<pre>Learn Python</pre>",
+    "expectedOutput": "Learn Python",
+    "starterCode": "word = 'Python'\n",
+    "hints": [
+      "word = 'Python'",
+      "print('Learn ' + word)"
+    ]
+  },
+  {
+    "index": 5,
+    "title": "f-strings",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>f-strings</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> An f-string evaluates expressions inside braces and is a readable way to format values.\n\n<b>Пример решения:</b>\n<pre>year = 2026\nprint(f'Welcome to {year}')</pre>\n\n👇 <b>Практика:</b>\nPut the value 2026 into the sentence.\nПроверь, что программа выводит:\n<pre>Welcome to 2026</pre>",
+    "expectedOutput": "Welcome to 2026",
+    "starterCode": "year = 2026\n",
+    "hints": [
+      "year = 2026",
+      "print(f'Welcome to {year}')"
+    ]
+  },
+  {
+    "index": 6,
+    "title": "Booleans",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>Booleans</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> True and False represent truth values and are the result of comparisons.\n\n<b>Пример решения:</b>\n<pre>print(10 > 3)</pre>\n\n👇 <b>Практика:</b>\nCheck whether 10 is greater than 3.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "# Практика: Check whether 10 is greater than 3.\n",
+    "hints": [
+      "print(10 > 3)"
+    ]
+  },
+  {
+    "index": 7,
+    "title": "None and absence",
+    "theory": "📚 <b>Модуль: Python foundations</b>\n\n<b>None and absence</b>\nNames, values, expressions and readable output are the building blocks of every Python program.\n\n<b>Ключевая идея.</b> None is the single value used to represent no result or an intentionally empty value.\n\n<b>Пример решения:</b>\n<pre>def find_item():\n    pass\nprint(find_item())</pre>\n\n👇 <b>Практика:</b>\nPrint the value returned by a function with no return statement.\nПроверь, что программа выводит:\n<pre>None</pre>",
+    "expectedOutput": "None",
+    "starterCode": "def find_item():\n    pass\n",
+    "hints": [
+      "def find_item():",
+      "    pass",
+      "print(find_item())"
+    ]
+  },
+  {
+    "index": 8,
+    "title": "Comparison operators",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>Comparison operators</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> Comparisons such as ==, !=, < and >= produce Boolean values.\n\n<b>Пример решения:</b>\n<pre>print(8 >= 8)</pre>\n\n👇 <b>Практика:</b>\nTest whether 8 is at least 8.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "# Практика: Test whether 8 is at least 8.\n",
+    "hints": [
+      "print(8 >= 8)"
+    ]
+  },
+  {
+    "index": 9,
+    "title": "if and else",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>if and else</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> An if statement runs an indented block when its condition is true, otherwise else runs.\n\n<b>Пример решения:</b>\n<pre>age = 17\nif age >= 18:\n    print('adult')\nelse:\n    print('child')</pre>\n\n👇 <b>Практика:</b>\nClassify 17 as adult (18+) or child.\nПроверь, что программа выводит:\n<pre>child</pre>",
+    "expectedOutput": "child",
+    "starterCode": "# Практика: Classify 17 as adult (18+) or child.\n",
+    "hints": [
+      "age = 17",
+      "if age >= 18:",
+      "    print('adult')",
+      "else:",
+      "    print('child')"
+    ]
+  },
+  {
+    "index": 10,
+    "title": "elif branches",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>elif branches</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> elif adds mutually exclusive cases and keeps multi-way decisions easy to scan.\n\n<b>Пример решения:</b>\n<pre>score = 82\nif score >= 90:\n    label = 'excellent'\nelif score >= 60:\n    label = 'pass'\nelse:\n    label = 'retry'\nprint(label)</pre>\n\n👇 <b>Практика:</b>\nConvert score 82 to the label pass.\nПроверь, что программа выводит:\n<pre>pass</pre>",
+    "expectedOutput": "pass",
+    "starterCode": "score = 82\nif score >= 90:\n    label = 'excellent'\nelif score >= 60:\n    label = 'pass'\nelse:\n    label = 'retry'\n",
+    "hints": [
+      "score = 82",
+      "if score >= 90:",
+      "    label = 'excellent'",
+      "elif score >= 60:",
+      "    label = 'pass'",
+      "else:",
+      "    label = 'retry'",
+      "print(label)"
+    ]
+  },
+  {
+    "index": 11,
+    "title": "Boolean logic",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>Boolean logic</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> and, or and not combine conditions; short-circuit evaluation can avoid unnecessary work.\n\n<b>Пример решения:</b>\n<pre>value = 7\nprint(1 <= value <= 10)</pre>\n\n👇 <b>Практика:</b>\nCheck that a value is inside the inclusive range 1 through 10.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "value = 7\n",
+    "hints": [
+      "value = 7",
+      "print(1 <= value <= 10)"
+    ]
+  },
+  {
+    "index": 12,
+    "title": "for and range",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>for and range</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> for visits each item in an iterable; range(stop) produces integers up to, but not including, stop.\n\n<b>Пример решения:</b>\n<pre>for number in range(1, 5):\n    print(number)</pre>\n\n👇 <b>Практика:</b>\nPrint each number from 1 through 4 on its own line.\nПроверь, что программа выводит:\n<pre>1\n2\n3\n4</pre>",
+    "expectedOutput": "1\n2\n3\n4",
+    "starterCode": "# Практика: Print each number from 1 through 4 on its own line.\n",
+    "hints": [
+      "for number in range(1, 5):",
+      "    print(number)"
+    ]
+  },
+  {
+    "index": 13,
+    "title": "Looping over text",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>Looping over text</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> Strings are iterable, so a for loop can process each character in order.\n\n<b>Пример решения:</b>\n<pre>for letter in 'cat':\n    print(letter)</pre>\n\n👇 <b>Практика:</b>\nPrint the letters of cat on separate lines.\nПроверь, что программа выводит:\n<pre>c\na\nt</pre>",
+    "expectedOutput": "c\na\nt",
+    "starterCode": "# Практика: Print the letters of cat on separate lines.\n",
+    "hints": [
+      "for letter in 'cat':",
+      "    print(letter)"
+    ]
+  },
+  {
+    "index": 14,
+    "title": "while loops",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>while loops</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> while repeats as long as a condition remains true; update loop state to guarantee progress.\n\n<b>Пример решения:</b>\n<pre>count = 3\nwhile count:\n    print(count)\n    count -= 1</pre>\n\n👇 <b>Практика:</b>\nCount down from 3 to 1.\nПроверь, что программа выводит:\n<pre>3\n2\n1</pre>",
+    "expectedOutput": "3\n2\n1",
+    "starterCode": "# Практика: Count down from 3 to 1.\n",
+    "hints": [
+      "count = 3",
+      "while count:",
+      "    print(count)",
+      "    count -= 1"
+    ]
+  },
+  {
+    "index": 15,
+    "title": "break and continue",
+    "theory": "📚 <b>Модуль: Conditions and loops</b>\n\n<b>break and continue</b>\nControl flow chooses which statements run and repeats work without copying the same code.\n\n<b>Ключевая идея.</b> break exits the nearest loop; continue skips the rest of the current iteration.\n\n<b>Пример решения:</b>\n<pre>for number in range(1, 5):\n    if number == 3:\n        continue\n    print(number)</pre>\n\n👇 <b>Практика:</b>\nPrint 1, 2 and 4, skipping 3.\nПроверь, что программа выводит:\n<pre>1\n2\n4</pre>",
+    "expectedOutput": "1\n2\n4",
+    "starterCode": "# Практика: Print 1, 2 and 4, skipping 3.\n",
+    "hints": [
+      "for number in range(1, 5):",
+      "    if number == 3:",
+      "        continue",
+      "    print(number)"
+    ]
+  },
+  {
+    "index": 16,
+    "title": "Creating lists",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Creating lists</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> Lists hold ordered, mutable values and use square brackets.\n\n<b>Пример решения:</b>\n<pre>colors = ['red', 'green', 'blue']\nprint(len(colors))</pre>\n\n👇 <b>Практика:</b>\nCreate a list of three colors and print its length.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "colors = ['red', 'green', 'blue']\n",
+    "hints": [
+      "colors = ['red', 'green', 'blue']",
+      "print(len(colors))"
+    ]
+  },
+  {
+    "index": 17,
+    "title": "Indexing and slicing",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Indexing and slicing</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> Indexes start at zero; slices select a half-open range and do not include the stop index.\n\n<b>Пример решения:</b>\n<pre>values = [10, 20, 30, 40, 50]\nprint(values[1:4])</pre>\n\n👇 <b>Практика:</b>\nPrint the middle three items.\nПроверь, что программа выводит:\n<pre>[20, 30, 40]</pre>",
+    "expectedOutput": "[20, 30, 40]",
+    "starterCode": "values = [10, 20, 30, 40, 50]\n",
+    "hints": [
+      "values = [10, 20, 30, 40, 50]",
+      "print(values[1:4])"
+    ]
+  },
+  {
+    "index": 18,
+    "title": "Appending and extending",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Appending and extending</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> append adds one object, while extend adds each item from another iterable.\n\n<b>Пример решения:</b>\n<pre>values = [1, 2]\nvalues.append(3)\nvalues.extend([4])\nprint(values)</pre>\n\n👇 <b>Практика:</b>\nAppend 3 and then 4 to the list.\nПроверь, что программа выводит:\n<pre>[1, 2, 3, 4]</pre>",
+    "expectedOutput": "[1, 2, 3, 4]",
+    "starterCode": "values = [1, 2]\nvalues.append(3)\nvalues.extend([4])\n",
+    "hints": [
+      "values = [1, 2]",
+      "values.append(3)",
+      "values.extend([4])",
+      "print(values)"
+    ]
+  },
+  {
+    "index": 19,
+    "title": "Removing list values",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Removing list values</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> remove deletes the first matching value; pop removes and returns an item by index.\n\n<b>Пример решения:</b>\n<pre>items = ['a', 'b', 'c']\nitems.pop()\nprint(items)</pre>\n\n👇 <b>Практика:</b>\nRemove the final item and print what remains.\nПроверь, что программа выводит:\n<pre>['a', 'b']</pre>",
+    "expectedOutput": "['a', 'b']",
+    "starterCode": "items = ['a', 'b', 'c']\nitems.pop()\n",
+    "hints": [
+      "items = ['a', 'b', 'c']",
+      "items.pop()",
+      "print(items)"
+    ]
+  },
+  {
+    "index": 20,
+    "title": "List membership",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>List membership</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> The in operator checks whether a value occurs in a collection.\n\n<b>Пример решения:</b>\n<pre>languages = ['Ruby', 'Python', 'Go']\nprint('Python' in languages)</pre>\n\n👇 <b>Практика:</b>\nCheck whether the list contains Python.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "languages = ['Ruby', 'Python', 'Go']\n",
+    "hints": [
+      "languages = ['Ruby', 'Python', 'Go']",
+      "print('Python' in languages)"
+    ]
+  },
+  {
+    "index": 21,
+    "title": "List comprehensions",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>List comprehensions</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> A comprehension builds a new list from an iterable with an optional filter.\n\n<b>Пример решения:</b>\n<pre>squares = [n * n for n in range(1, 4)]\nprint(squares)</pre>\n\n👇 <b>Практика:</b>\nCreate squares for 1, 2 and 3.\nПроверь, что программа выводит:\n<pre>[1, 4, 9]</pre>",
+    "expectedOutput": "[1, 4, 9]",
+    "starterCode": "squares = [n * n for n in range(1, 4)]\n",
+    "hints": [
+      "squares = [n * n for n in range(1, 4)]",
+      "print(squares)"
+    ]
+  },
+  {
+    "index": 22,
+    "title": "Sorting and key functions",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Sorting and key functions</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> sorted returns a new sorted list; key can extract the value used for comparison.\n\n<b>Пример решения:</b>\n<pre>words = ['pear', 'fig', 'banana']\nprint(sorted(words, key=len))</pre>\n\n👇 <b>Практика:</b>\nSort words by their length.\nПроверь, что программа выводит:\n<pre>['fig', 'pear', 'banana']</pre>",
+    "expectedOutput": "['fig', 'pear', 'banana']",
+    "starterCode": "words = ['pear', 'fig', 'banana']\n",
+    "hints": [
+      "words = ['pear', 'fig', 'banana']",
+      "print(sorted(words, key=len))"
+    ]
+  },
+  {
+    "index": 23,
+    "title": "Tuples and unpacking",
+    "theory": "📚 <b>Модуль: Collections: lists and tuples</b>\n\n<b>Tuples and unpacking</b>\nSequence collections preserve order; choose a mutable list or an immutable tuple to match the job.\n\n<b>Ключевая идея.</b> Tuples are immutable sequences; unpacking assigns their elements to names in one operation.\n\n<b>Пример решения:</b>\n<pre>point = (4, 9)\nx, y = point\nprint(x, y)</pre>\n\n👇 <b>Практика:</b>\nUnpack and print the coordinates.\nПроверь, что программа выводит:\n<pre>4 9</pre>",
+    "expectedOutput": "4 9",
+    "starterCode": "point = (4, 9)\nx, y = point\n",
+    "hints": [
+      "point = (4, 9)",
+      "x, y = point",
+      "print(x, y)"
+    ]
+  },
+  {
+    "index": 24,
+    "title": "Dictionary creation",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Dictionary creation</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> A dict stores key-value pairs and retrieves values by key rather than position.\n\n<b>Пример решения:</b>\n<pre>person = {'name': 'Ada', 'age': 36}\nprint(person['name'])</pre>\n\n👇 <b>Практика:</b>\nCreate and print a person's name.\nПроверь, что программа выводит:\n<pre>Ada</pre>",
+    "expectedOutput": "Ada",
+    "starterCode": "person = {'name': 'Ada', 'age': 36}\n",
+    "hints": [
+      "person = {'name': 'Ada', 'age': 36}",
+      "print(person['name'])"
+    ]
+  },
+  {
+    "index": 25,
+    "title": "Safe dictionary lookup",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Safe dictionary lookup</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> get returns a default when a key is absent instead of raising KeyError.\n\n<b>Пример решения:</b>\n<pre>profile = {'name': 'Sam'}\nprint(profile.get('city', 'unknown'))</pre>\n\n👇 <b>Практика:</b>\nLook up a missing city with the default unknown.\nПроверь, что программа выводит:\n<pre>unknown</pre>",
+    "expectedOutput": "unknown",
+    "starterCode": "profile = {'name': 'Sam'}\n",
+    "hints": [
+      "profile = {'name': 'Sam'}",
+      "print(profile.get('city', 'unknown'))"
+    ]
+  },
+  {
+    "index": 26,
+    "title": "Updating dictionaries",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Updating dictionaries</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> Assignment inserts or replaces a key; update applies several key-value pairs at once.\n\n<b>Пример решения:</b>\n<pre>profile = {'name': 'Sam'}\nprofile.update({'language': 'Python'})\nprint(profile)</pre>\n\n👇 <b>Практика:</b>\nAdd a language field and print the mapping.\nПроверь, что программа выводит:\n<pre>{'name': 'Sam', 'language': 'Python'}</pre>",
+    "expectedOutput": "{'name': 'Sam', 'language': 'Python'}",
+    "starterCode": "profile = {'name': 'Sam'}\nprofile.update({'language': 'Python'})\n",
+    "hints": [
+      "profile = {'name': 'Sam'}",
+      "profile.update({'language': 'Python'})",
+      "print(profile)"
+    ]
+  },
+  {
+    "index": 27,
+    "title": "Dictionary iteration",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Dictionary iteration</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> items provides key-value pairs for readable dictionary iteration.\n\n<b>Пример решения:</b>\n<pre>for key, value in {'x': 2, 'y': 5}.items():\n    print(key, value)</pre>\n\n👇 <b>Практика:</b>\nPrint each key and value.\nПроверь, что программа выводит:\n<pre>x 2\ny 5</pre>",
+    "expectedOutput": "x 2\ny 5",
+    "starterCode": "# Практика: Print each key and value.\n",
+    "hints": [
+      "for key, value in {'x': 2, 'y': 5}.items():",
+      "    print(key, value)"
+    ]
+  },
+  {
+    "index": 28,
+    "title": "Dictionary comprehensions",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Dictionary comprehensions</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> A dictionary comprehension builds mappings from an iterable expression.\n\n<b>Пример решения:</b>\n<pre>squares = {n: n * n for n in range(1, 4)}\nprint(squares)</pre>\n\n👇 <b>Практика:</b>\nMap each number from 1 to 3 to its square.\nПроверь, что программа выводит:\n<pre>{1: 1, 2: 4, 3: 9}</pre>",
+    "expectedOutput": "{1: 1, 2: 4, 3: 9}",
+    "starterCode": "squares = {n: n * n for n in range(1, 4)}\n",
+    "hints": [
+      "squares = {n: n * n for n in range(1, 4)}",
+      "print(squares)"
+    ]
+  },
+  {
+    "index": 29,
+    "title": "Creating sets",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Creating sets</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> A set stores unique hashable values and does not promise positional order.\n\n<b>Пример решения:</b>\n<pre>unique = set([2, 2, 3, 3, 3])\nprint(len(unique))</pre>\n\n👇 <b>Практика:</b>\nRemove duplicates from the given values and count them.\nПроверь, что программа выводит:\n<pre>2</pre>",
+    "expectedOutput": "2",
+    "starterCode": "unique = set([2, 2, 3, 3, 3])\n",
+    "hints": [
+      "unique = set([2, 2, 3, 3, 3])",
+      "print(len(unique))"
+    ]
+  },
+  {
+    "index": 30,
+    "title": "Set operations",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Set operations</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> Union, intersection and difference express relationships between groups.\n\n<b>Пример решения:</b>\n<pre>first = {'python', 'web'}\nsecond = {'web', 'data'}\nprint(first & second)</pre>\n\n👇 <b>Практика:</b>\nFind the shared tags.\nПроверь, что программа выводит:\n<pre>{'web'}</pre>",
+    "expectedOutput": "{'web'}",
+    "starterCode": "first = {'python', 'web'}\nsecond = {'web', 'data'}\n",
+    "hints": [
+      "first = {'python', 'web'}",
+      "second = {'web', 'data'}",
+      "print(first & second)"
+    ]
+  },
+  {
+    "index": 31,
+    "title": "Membership and fast lookup",
+    "theory": "📚 <b>Модуль: Dictionaries and sets</b>\n\n<b>Membership and fast lookup</b>\nMappings look up values by key; sets represent unique elements and support mathematical set operations.\n\n<b>Ключевая идея.</b> Set membership is usually constant-time on average and is useful for repeated lookups.\n\n<b>Пример решения:</b>\n<pre>allowed = {7, 42, 99}\nprint(42 in allowed)</pre>\n\n👇 <b>Практика:</b>\nCheck whether the set includes 42.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "allowed = {7, 42, 99}\n",
+    "hints": [
+      "allowed = {7, 42, 99}",
+      "print(42 in allowed)"
+    ]
+  },
+  {
+    "index": 32,
+    "title": "Defining a function",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Defining a function</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> def creates a function; its indented body runs when the function is called.\n\n<b>Пример решения:</b>\n<pre>def greet(name):\n    return f'Hello, {name}!'\nprint(greet('Ada'))</pre>\n\n👇 <b>Практика:</b>\nDefine greet and print its greeting for Ada.\nПроверь, что программа выводит:\n<pre>Hello, Ada!</pre>",
+    "expectedOutput": "Hello, Ada!",
+    "starterCode": "def greet(name):\n    return f'Hello, {name}!'\n",
+    "hints": [
+      "def greet(name):",
+      "    return f'Hello, {name}!'",
+      "print(greet('Ada'))"
+    ]
+  },
+  {
+    "index": 33,
+    "title": "Return values",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Return values</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> return sends a value back to the caller and immediately exits the function.\n\n<b>Пример решения:</b>\n<pre>def square(number):\n    return number ** 2\nprint(square(7))</pre>\n\n👇 <b>Практика:</b>\nReturn the square of 7.\nПроверь, что программа выводит:\n<pre>49</pre>",
+    "expectedOutput": "49",
+    "starterCode": "def square(number):\n    return number ** 2\n",
+    "hints": [
+      "def square(number):",
+      "    return number ** 2",
+      "print(square(7))"
+    ]
+  },
+  {
+    "index": 34,
+    "title": "Default parameters",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Default parameters</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> A default parameter is used when the caller omits that argument.\n\n<b>Пример решения:</b>\n<pre>def greet(name, prefix='Hi'):\n    return f'{prefix}, {name}'\nprint(greet('Lin'))</pre>\n\n👇 <b>Практика:</b>\nUse the default greeting for Lin.\nПроверь, что программа выводит:\n<pre>Hi, Lin</pre>",
+    "expectedOutput": "Hi, Lin",
+    "starterCode": "def greet(name, prefix='Hi'):\n    return f'{prefix}, {name}'\n",
+    "hints": [
+      "def greet(name, prefix='Hi'):",
+      "    return f'{prefix}, {name}'",
+      "print(greet('Lin'))"
+    ]
+  },
+  {
+    "index": 35,
+    "title": "Keyword arguments",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Keyword arguments</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> Keyword arguments make calls explicit and allow parameters to be supplied by name.\n\n<b>Пример решения:</b>\n<pre>def join_words(left, right, separator=' '):\n    return left + separator + right\nprint(join_words('a', 'b', separator='-'))</pre>\n\n👇 <b>Практика:</b>\nCall the formatter with a custom separator.\nПроверь, что программа выводит:\n<pre>a-b</pre>",
+    "expectedOutput": "a-b",
+    "starterCode": "def join_words(left, right, separator=' '):\n    return left + separator + right\n",
+    "hints": [
+      "def join_words(left, right, separator=' '):",
+      "    return left + separator + right",
+      "print(join_words('a', 'b', separator='-'))"
+    ]
+  },
+  {
+    "index": 36,
+    "title": "Positional-only and keyword-only",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Positional-only and keyword-only</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> The / and * markers can constrain how callers provide arguments.\n\n<b>Пример решения:</b>\n<pre>def multiply(value, *, scale=2):\n    return value * scale\nprint(multiply(5, scale=3))</pre>\n\n👇 <b>Практика:</b>\nCall a function using its keyword-only scale.\nПроверь, что программа выводит:\n<pre>15</pre>",
+    "expectedOutput": "15",
+    "starterCode": "def multiply(value, *, scale=2):\n    return value * scale\n",
+    "hints": [
+      "def multiply(value, *, scale=2):",
+      "    return value * scale",
+      "print(multiply(5, scale=3))"
+    ]
+  },
+  {
+    "index": 37,
+    "title": "Variable positional arguments",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Variable positional arguments</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> *args collects extra positional arguments into a tuple.\n\n<b>Пример решения:</b>\n<pre>def total(*values):\n    return sum(values)\nprint(total(2, 3, 5))</pre>\n\n👇 <b>Практика:</b>\nSum any supplied values.\nПроверь, что программа выводит:\n<pre>10</pre>",
+    "expectedOutput": "10",
+    "starterCode": "def total(*values):\n    return sum(values)\n",
+    "hints": [
+      "def total(*values):",
+      "    return sum(values)",
+      "print(total(2, 3, 5))"
+    ]
+  },
+  {
+    "index": 38,
+    "title": "Variable keyword arguments",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Variable keyword arguments</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> **kwargs collects extra named arguments into a dictionary.\n\n<b>Пример решения:</b>\n<pre>def describe(**options):\n    return options['theme']\nprint(describe(theme='dark'))</pre>\n\n👇 <b>Практика:</b>\nRead the theme passed as a keyword.\nПроверь, что программа выводит:\n<pre>dark</pre>",
+    "expectedOutput": "dark",
+    "starterCode": "def describe(**options):\n    return options['theme']\n",
+    "hints": [
+      "def describe(**options):",
+      "    return options['theme']",
+      "print(describe(theme='dark'))"
+    ]
+  },
+  {
+    "index": 39,
+    "title": "Local and global scope",
+    "theory": "📚 <b>Модуль: Functions and scope</b>\n\n<b>Local and global scope</b>\nFunctions name reusable behavior; parameters, return values and scope make that behavior composable.\n\n<b>Ключевая идея.</b> A function's local names are separate from names in the surrounding module scope.\n\n<b>Пример решения:</b>\n<pre>message = 'outer'\ndef get_message():\n    message = 'local'\n    return message\nprint(get_message(), message)</pre>\n\n👇 <b>Практика:</b>\nReturn the local message without changing the outer variable.\nПроверь, что программа выводит:\n<pre>local outer</pre>",
+    "expectedOutput": "local outer",
+    "starterCode": "message = 'outer'\ndef get_message():\n    message = 'local'\n    return message\n",
+    "hints": [
+      "message = 'outer'",
+      "def get_message():",
+      "    message = 'local'",
+      "    return message",
+      "print(get_message(), message)"
+    ]
+  },
+  {
+    "index": 40,
+    "title": "String immutability",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>String immutability</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> String methods return new strings because strings themselves cannot be changed in place.\n\n<b>Пример решения:</b>\n<pre>word = 'python'\nupper = word.upper()\nprint(word, upper)</pre>\n\n👇 <b>Практика:</b>\nUppercase the word and print both values.\nПроверь, что программа выводит:\n<pre>python PYTHON</pre>",
+    "expectedOutput": "python PYTHON",
+    "starterCode": "word = 'python'\nupper = word.upper()\n",
+    "hints": [
+      "word = 'python'",
+      "upper = word.upper()",
+      "print(word, upper)"
+    ]
+  },
+  {
+    "index": 41,
+    "title": "Whitespace and trimming",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Whitespace and trimming</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> strip removes surrounding whitespace; lstrip and rstrip handle one side.\n\n<b>Пример решения:</b>\n<pre>label = '  ready  '\nprint(label.strip())</pre>\n\n👇 <b>Практика:</b>\nTrim the padded label.\nПроверь, что программа выводит:\n<pre>ready</pre>",
+    "expectedOutput": "ready",
+    "starterCode": "label = '  ready  '\n",
+    "hints": [
+      "label = '  ready  '",
+      "print(label.strip())"
+    ]
+  },
+  {
+    "index": 42,
+    "title": "Splitting and joining",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Splitting and joining</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> split turns text into pieces; join combines strings with a chosen separator.\n\n<b>Пример решения:</b>\n<pre>parts = 'red,green,blue'.split(',')\nprint(' | '.join(parts))</pre>\n\n👇 <b>Практика:</b>\nTurn a comma-separated line into a spaced list.\nПроверь, что программа выводит:\n<pre>red | green | blue</pre>",
+    "expectedOutput": "red | green | blue",
+    "starterCode": "parts = 'red,green,blue'.split(',')\n",
+    "hints": [
+      "parts = 'red,green,blue'.split(',')",
+      "print(' | '.join(parts))"
+    ]
+  },
+  {
+    "index": 43,
+    "title": "Search and replace",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Search and replace</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> find returns a position or -1; replace returns text with matching pieces substituted.\n\n<b>Пример решения:</b>\n<pre>text = 'learn-python'\nprint(text.replace('-', ' '))</pre>\n\n👇 <b>Практика:</b>\nReplace the dash with a space.\nПроверь, что программа выводит:\n<pre>learn python</pre>",
+    "expectedOutput": "learn python",
+    "starterCode": "text = 'learn-python'\n",
+    "hints": [
+      "text = 'learn-python'",
+      "print(text.replace('-', ' '))"
+    ]
+  },
+  {
+    "index": 44,
+    "title": "Prefix and suffix checks",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Prefix and suffix checks</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> startswith and endswith test boundaries without creating slices.\n\n<b>Пример решения:</b>\n<pre>filename = 'lesson.py'\nprint(filename.endswith('.py'))</pre>\n\n👇 <b>Практика:</b>\nCheck whether the filename is a Python source file.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "filename = 'lesson.py'\n",
+    "hints": [
+      "filename = 'lesson.py'",
+      "print(filename.endswith('.py'))"
+    ]
+  },
+  {
+    "index": 45,
+    "title": "Character classification",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Character classification</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> Methods such as isdigit and isalpha classify a string's characters.\n\n<b>Пример решения:</b>\n<pre>print('2048'.isdigit())</pre>\n\n👇 <b>Практика:</b>\nCheck whether 2048 contains only digits.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "# Практика: Check whether 2048 contains only digits.\n",
+    "hints": [
+      "print('2048'.isdigit())"
+    ]
+  },
+  {
+    "index": 46,
+    "title": "String formatting",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>String formatting</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> format specifications control alignment, width, precision and numeric representation.\n\n<b>Пример решения:</b>\n<pre>value = 3.14159\nprint(f'{value:.3f}')</pre>\n\n👇 <b>Практика:</b>\nShow 3.14159 with three decimal places.\nПроверь, что программа выводит:\n<pre>3.142</pre>",
+    "expectedOutput": "3.142",
+    "starterCode": "value = 3.14159\n",
+    "hints": [
+      "value = 3.14159",
+      "print(f'{value:.3f}')"
+    ]
+  },
+  {
+    "index": 47,
+    "title": "Unicode text",
+    "theory": "📚 <b>Модуль: String processing</b>\n\n<b>Unicode text</b>\nString methods, formatting and parsing make text transformations explicit and predictable.\n\n<b>Ключевая идея.</b> Python strings are Unicode sequences; len counts code points, not encoded bytes.\n\n<b>Пример решения:</b>\n<pre>word = 'café'\nprint(len(word))</pre>\n\n👇 <b>Практика:</b>\nPrint the number of characters in the word café.\nПроверь, что программа выводит:\n<pre>4</pre>",
+    "expectedOutput": "4",
+    "starterCode": "word = 'café'\n",
+    "hints": [
+      "word = 'café'",
+      "print(len(word))"
+    ]
+  },
+  {
+    "index": 48,
+    "title": "Filtering with a comprehension",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>Filtering with a comprehension</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> An if clause in a comprehension keeps only values that satisfy a predicate.\n\n<b>Пример решения:</b>\n<pre>evens = [n for n in range(1, 9) if n % 2 == 0]\nprint(evens)</pre>\n\n👇 <b>Практика:</b>\nSelect even numbers from 1 through 8.\nПроверь, что программа выводит:\n<pre>[2, 4, 6, 8]</pre>",
+    "expectedOutput": "[2, 4, 6, 8]",
+    "starterCode": "evens = [n for n in range(1, 9) if n % 2 == 0]\n",
+    "hints": [
+      "evens = [n for n in range(1, 9) if n % 2 == 0]",
+      "print(evens)"
+    ]
+  },
+  {
+    "index": 49,
+    "title": "Nested comprehensions",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>Nested comprehensions</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> Nested clauses express a small Cartesian product; use ordinary loops when nesting hurts clarity.\n\n<b>Пример решения:</b>\n<pre>pairs = [(x, y) for x in range(2) for y in range(2)]\nprint(pairs)</pre>\n\n👇 <b>Практика:</b>\nCreate coordinate pairs for a 2-by-2 grid.\nПроверь, что программа выводит:\n<pre>[(0, 0), (0, 1), (1, 0), (1, 1)]</pre>",
+    "expectedOutput": "[(0, 0), (0, 1), (1, 0), (1, 1)]",
+    "starterCode": "pairs = [(x, y) for x in range(2) for y in range(2)]\n",
+    "hints": [
+      "pairs = [(x, y) for x in range(2) for y in range(2)]",
+      "print(pairs)"
+    ]
+  },
+  {
+    "index": 50,
+    "title": "Generator expressions",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>Generator expressions</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> A generator expression yields values lazily instead of building the entire result list.\n\n<b>Пример решения:</b>\n<pre>total = sum(n * n for n in range(1, 5))\nprint(total)</pre>\n\n👇 <b>Практика:</b>\nSum the squares of the first four integers.\nПроверь, что программа выводит:\n<pre>30</pre>",
+    "expectedOutput": "30",
+    "starterCode": "total = sum(n * n for n in range(1, 5))\n",
+    "hints": [
+      "total = sum(n * n for n in range(1, 5))",
+      "print(total)"
+    ]
+  },
+  {
+    "index": 51,
+    "title": "map",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>map</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> map applies a function to each item and returns a lazy iterator.\n\n<b>Пример решения:</b>\n<pre>values = list(map(int, ['2', '4', '6']))\nprint(values)</pre>\n\n👇 <b>Практика:</b>\nConvert three numeric strings to integers.\nПроверь, что программа выводит:\n<pre>[2, 4, 6]</pre>",
+    "expectedOutput": "[2, 4, 6]",
+    "starterCode": "values = list(map(int, ['2', '4', '6']))\n",
+    "hints": [
+      "values = list(map(int, ['2', '4', '6']))",
+      "print(values)"
+    ]
+  },
+  {
+    "index": 52,
+    "title": "filter",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>filter</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> filter retains items for which a predicate returns true.\n\n<b>Пример решения:</b>\n<pre>words = list(filter(lambda word: len(word) > 3, ['sun', 'moon', 'sky']))\nprint(words)</pre>\n\n👇 <b>Практика:</b>\nKeep words longer than three characters.\nПроверь, что программа выводит:\n<pre>['moon']</pre>",
+    "expectedOutput": "['moon']",
+    "starterCode": "words = list(filter(lambda word: len(word) > 3, ['sun', 'moon', 'sky']))\n",
+    "hints": [
+      "words = list(filter(lambda word: len(word) > 3, ['sun', 'moon', 'sky']))",
+      "print(words)"
+    ]
+  },
+  {
+    "index": 53,
+    "title": "any and all",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>any and all</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> any checks whether at least one item is truthy; all checks whether every item is truthy.\n\n<b>Пример решения:</b>\n<pre>print(all(value > 0 for value in [2, 4, 1]))</pre>\n\n👇 <b>Практика:</b>\nCheck whether every value is positive.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "# Практика: Check whether every value is positive.\n",
+    "hints": [
+      "print(all(value > 0 for value in [2, 4, 1]))"
+    ]
+  },
+  {
+    "index": 54,
+    "title": "sum, min and max",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>sum, min and max</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> Built-in reductions summarize an iterable without writing an accumulator loop.\n\n<b>Пример решения:</b>\n<pre>values = [8, 3, 11, 5]\nprint(min(values), max(values))</pre>\n\n👇 <b>Практика:</b>\nPrint the minimum and maximum values.\nПроверь, что программа выводит:\n<pre>3 11</pre>",
+    "expectedOutput": "3 11",
+    "starterCode": "values = [8, 3, 11, 5]\n",
+    "hints": [
+      "values = [8, 3, 11, 5]",
+      "print(min(values), max(values))"
+    ]
+  },
+  {
+    "index": 55,
+    "title": "Reversed and sorted",
+    "theory": "📚 <b>Модуль: Comprehensions and functional tools</b>\n\n<b>Reversed and sorted</b>\nCompact iteration tools can express transformations, filters and reductions without obscuring intent.\n\n<b>Ключевая идея.</b> reversed iterates backwards without mutating; sorted creates a sorted list.\n\n<b>Пример решения:</b>\n<pre>scores = [70, 95, 80]\nprint(sorted(scores, reverse=True))</pre>\n\n👇 <b>Практика:</b>\nSort scores from highest to lowest.\nПроверь, что программа выводит:\n<pre>[95, 80, 70]</pre>",
+    "expectedOutput": "[95, 80, 70]",
+    "starterCode": "scores = [70, 95, 80]\n",
+    "hints": [
+      "scores = [70, 95, 80]",
+      "print(sorted(scores, reverse=True))"
+    ]
+  },
+  {
+    "index": 56,
+    "title": "Defining a class",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Defining a class</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> A class is a blueprint; __init__ initializes each newly constructed instance.\n\n<b>Пример решения:</b>\n<pre>class Cat:\n    def __init__(self, name):\n        self.name = name\ncat = Cat('Luna')\nprint(cat.name)</pre>\n\n👇 <b>Практика:</b>\nCreate a Cat whose name is Luna and print it.\nПроверь, что программа выводит:\n<pre>Luna</pre>",
+    "expectedOutput": "Luna",
+    "starterCode": "class Cat:\n    def __init__(self, name):\n        self.name = name\ncat = Cat('Luna')\n",
+    "hints": [
+      "class Cat:",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "cat = Cat('Luna')",
+      "print(cat.name)"
+    ]
+  },
+  {
+    "index": 57,
+    "title": "Instance methods",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Instance methods</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> Instance methods receive self and can read or update instance attributes.\n\n<b>Пример решения:</b>\n<pre>class Dog:\n    def bark(self):\n        return 'woof'\nprint(Dog().bark())</pre>\n\n👇 <b>Практика:</b>\nMake a dog return its bark.\nПроверь, что программа выводит:\n<pre>woof</pre>",
+    "expectedOutput": "woof",
+    "starterCode": "class Dog:\n    def bark(self):\n        return 'woof'\n",
+    "hints": [
+      "class Dog:",
+      "    def bark(self):",
+      "        return 'woof'",
+      "print(Dog().bark())"
+    ]
+  },
+  {
+    "index": 58,
+    "title": "Encapsulation",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Encapsulation</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> Encapsulation keeps state changes behind methods that maintain an object's invariants.\n\n<b>Пример решения:</b>\n<pre>class Account:\n    def __init__(self):\n        self.balance = 0\n    def deposit(self, amount):\n        self.balance += amount\naccount = Account()\naccount.deposit(25)\nprint(account.balance)</pre>\n\n👇 <b>Практика:</b>\nDeposit 25 into a small account.\nПроверь, что программа выводит:\n<pre>25</pre>",
+    "expectedOutput": "25",
+    "starterCode": "class Account:\n    def __init__(self):\n        self.balance = 0\n    def deposit(self, amount):\n        self.balance += amount\naccount = Account()\naccount.deposit(25)\n",
+    "hints": [
+      "class Account:",
+      "    def __init__(self):",
+      "        self.balance = 0",
+      "    def deposit(self, amount):",
+      "        self.balance += amount",
+      "account = Account()",
+      "account.deposit(25)",
+      "print(account.balance)"
+    ]
+  },
+  {
+    "index": 59,
+    "title": "Class and instance attributes",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Class and instance attributes</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> Class attributes are shared defaults; instance attributes belong to a particular object.\n\n<b>Пример решения:</b>\n<pre>class Bird:\n    species = 'bird'\n    def __init__(self, name):\n        self.name = name\nbird = Bird('Pip')\nprint(bird.species, bird.name)</pre>\n\n👇 <b>Практика:</b>\nShow the shared species and one instance name.\nПроверь, что программа выводит:\n<pre>bird Pip</pre>",
+    "expectedOutput": "bird Pip",
+    "starterCode": "class Bird:\n    species = 'bird'\n    def __init__(self, name):\n        self.name = name\nbird = Bird('Pip')\n",
+    "hints": [
+      "class Bird:",
+      "    species = 'bird'",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "bird = Bird('Pip')",
+      "print(bird.species, bird.name)"
+    ]
+  },
+  {
+    "index": 60,
+    "title": "Inheritance",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Inheritance</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> Inheritance lets a specialized class reuse and extend a base class.\n\n<b>Пример решения:</b>\n<pre>class Animal:\n    def speak(self):\n        return '...'\nclass Fox(Animal):\n    def speak(self):\n        return 'ring-ding'\nprint(Fox().speak())</pre>\n\n👇 <b>Практика:</b>\nOverride speak in a child class.\nПроверь, что программа выводит:\n<pre>ring-ding</pre>",
+    "expectedOutput": "ring-ding",
+    "starterCode": "class Animal:\n    def speak(self):\n        return '...'\nclass Fox(Animal):\n    def speak(self):\n        return 'ring-ding'\n",
+    "hints": [
+      "class Animal:",
+      "    def speak(self):",
+      "        return '...'",
+      "class Fox(Animal):",
+      "    def speak(self):",
+      "        return 'ring-ding'",
+      "print(Fox().speak())"
+    ]
+  },
+  {
+    "index": 61,
+    "title": "super and initialization",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>super and initialization</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> super delegates behavior to the next class in the method resolution order.\n\n<b>Пример решения:</b>\n<pre>class Person:\n    def __init__(self, name):\n        self.name = name\nclass Student(Person):\n    def __init__(self, name, course):\n        super().__init__(name)\n        self.course = course\nprint(Student('Ari', 'Python').name)</pre>\n\n👇 <b>Практика:</b>\nInitialize a named child through its parent.\nПроверь, что программа выводит:\n<pre>Ari</pre>",
+    "expectedOutput": "Ari",
+    "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\nclass Student(Person):\n    def __init__(self, name, course):\n        super().__init__(name)\n        self.course = course\n",
+    "hints": [
+      "class Person:",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "class Student(Person):",
+      "    def __init__(self, name, course):",
+      "        super().__init__(name)",
+      "        self.course = course",
+      "print(Student('Ari', 'Python').name)"
+    ]
+  },
+  {
+    "index": 62,
+    "title": "Properties",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Properties</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> A property exposes a method-backed attribute interface while validating assignments.\n\n<b>Пример решения:</b>\n<pre>class Rectangle:\n    def __init__(self, width, height):\n        self.width, self.height = width, height\n    @property\n    def area(self):\n        return self.width * self.height\nprint(Rectangle(3, 4).area)</pre>\n\n👇 <b>Практика:</b>\nUse a property to calculate a rectangle's area.\nПроверь, что программа выводит:\n<pre>12</pre>",
+    "expectedOutput": "12",
+    "starterCode": "class Rectangle:\n    def __init__(self, width, height):\n        self.width, self.height = width, height\n    @property\n    def area(self):\n        return self.width * self.height\n",
+    "hints": [
+      "class Rectangle:",
+      "    def __init__(self, width, height):",
+      "        self.width, self.height = width, height",
+      "    @property",
+      "    def area(self):",
+      "        return self.width * self.height",
+      "print(Rectangle(3, 4).area)"
+    ]
+  },
+  {
+    "index": 63,
+    "title": "Dunder methods",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Dunder methods</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> Special methods let user-defined objects participate in built-in operations such as str and len.\n\n<b>Пример решения:</b>\n<pre>class Label:\n    def __str__(self):\n        return 'Python learner'\nprint(str(Label()))</pre>\n\n👇 <b>Практика:</b>\nMake an object print as a friendly label.\nПроверь, что программа выводит:\n<pre>Python learner</pre>",
+    "expectedOutput": "Python learner",
+    "starterCode": "class Label:\n    def __str__(self):\n        return 'Python learner'\n",
+    "hints": [
+      "class Label:",
+      "    def __str__(self):",
+      "        return 'Python learner'",
+      "print(str(Label()))"
+    ]
+  },
+  {
+    "index": 64,
+    "title": "Dataclasses",
+    "theory": "📚 <b>Модуль: Object-oriented Python</b>\n\n<b>Dataclasses</b>\nClasses combine data and behavior; instances carry their own state while methods describe operations.\n\n<b>Ключевая идея.</b> dataclass generates common methods such as __init__ and __repr__ for data-focused classes.\n\n<b>Пример решения:</b>\n<pre>from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\npoint = Point(2, 5)\nprint(point.x, point.y)</pre>\n\n👇 <b>Практика:</b>\nCreate a point and print its coordinates.\nПроверь, что программа выводит:\n<pre>2 5</pre>",
+    "expectedOutput": "2 5",
+    "starterCode": "from dataclasses import dataclass\n@dataclass\nclass Point:\n    x: int\n    y: int\npoint = Point(2, 5)\n",
+    "hints": [
+      "from dataclasses import dataclass",
+      "@dataclass",
+      "class Point:",
+      "    x: int",
+      "    y: int",
+      "point = Point(2, 5)",
+      "print(point.x, point.y)"
+    ]
+  },
+  {
+    "index": 65,
+    "title": "Abstract base classes",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Abstract base classes</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> An abstract base class documents a required interface and prevents incomplete direct instances.\n\n<b>Пример решения:</b>\n<pre>from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    def area(self):\n        return self.side ** 2\nprint(Square(4).area())</pre>\n\n👇 <b>Практика:</b>\nImplement the required area method in a concrete shape.\nПроверь, что программа выводит:\n<pre>16</pre>",
+    "expectedOutput": "16",
+    "starterCode": "from abc import ABC, abstractmethod\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    def area(self):\n        return self.side ** 2\n",
+    "hints": [
+      "from abc import ABC, abstractmethod",
+      "class Shape(ABC):",
+      "    @abstractmethod",
+      "    def area(self):",
+      "        pass",
+      "class Square(Shape):",
+      "    def __init__(self, side):",
+      "        self.side = side",
+      "    def area(self):",
+      "        return self.side ** 2",
+      "print(Square(4).area())"
+    ]
+  },
+  {
+    "index": 66,
+    "title": "Protocols by behavior",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Protocols by behavior</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> Duck typing and Protocol-style design depend on supported operations rather than a concrete parent class.\n\n<b>Пример решения:</b>\n<pre>class Source:\n    def read(self):\n        return 'data'\ndef load(source):\n    return source.read()\nprint(load(Source()))</pre>\n\n👇 <b>Практика:</b>\nUse any object with a read method.\nПроверь, что программа выводит:\n<pre>data</pre>",
+    "expectedOutput": "data",
+    "starterCode": "class Source:\n    def read(self):\n        return 'data'\ndef load(source):\n    return source.read()\n",
+    "hints": [
+      "class Source:",
+      "    def read(self):",
+      "        return 'data'",
+      "def load(source):",
+      "    return source.read()",
+      "print(load(Source()))"
+    ]
+  },
+  {
+    "index": 67,
+    "title": "Static methods",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Static methods</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> A static method belongs in a class namespace when it is related to the type but needs no instance state.\n\n<b>Пример решения:</b>\n<pre>class Temperature:\n    @staticmethod\n    def celsius_to_fahrenheit(value):\n        return value * 9 / 5 + 32\nprint(Temperature.celsius_to_fahrenheit(0))</pre>\n\n👇 <b>Практика:</b>\nCall a unit conversion helper from the class.\nПроверь, что программа выводит:\n<pre>32.0</pre>",
+    "expectedOutput": "32.0",
+    "starterCode": "class Temperature:\n    @staticmethod\n    def celsius_to_fahrenheit(value):\n        return value * 9 / 5 + 32\n",
+    "hints": [
+      "class Temperature:",
+      "    @staticmethod",
+      "    def celsius_to_fahrenheit(value):",
+      "        return value * 9 / 5 + 32",
+      "print(Temperature.celsius_to_fahrenheit(0))"
+    ]
+  },
+  {
+    "index": 68,
+    "title": "Class methods",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Class methods</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> A class method receives the class and is useful for alternative constructors.\n\n<b>Пример решения:</b>\n<pre>class User:\n    def __init__(self, name):\n        self.name = name\n    @classmethod\n    def from_label(cls, label):\n        return cls(label.strip().title())\nprint(User.from_label('  ADA ').name)</pre>\n\n👇 <b>Практика:</b>\nConstruct a user from a display label.\nПроверь, что программа выводит:\n<pre>Ada</pre>",
+    "expectedOutput": "Ada",
+    "starterCode": "class User:\n    def __init__(self, name):\n        self.name = name\n    @classmethod\n    def from_label(cls, label):\n        return cls(label.strip().title())\n",
+    "hints": [
+      "class User:",
+      "    def __init__(self, name):",
+      "        self.name = name",
+      "    @classmethod",
+      "    def from_label(cls, label):",
+      "        return cls(label.strip().title())",
+      "print(User.from_label('  ADA ').name)"
+    ]
+  },
+  {
+    "index": 69,
+    "title": "Slots",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Slots</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> Slots restrict which per-instance attributes are stored and can reduce memory for many small objects.\n\n<b>Пример решения:</b>\n<pre>class Coordinate:\n    __slots__ = ('x', 'y')\n    def __init__(self, x, y):\n        self.x, self.y = x, y\nprint(Coordinate(3, 4).x)</pre>\n\n👇 <b>Практика:</b>\nCreate a slotted coordinate with x equal to 3.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "class Coordinate:\n    __slots__ = ('x', 'y')\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n",
+    "hints": [
+      "class Coordinate:",
+      "    __slots__ = ('x', 'y')",
+      "    def __init__(self, x, y):",
+      "        self.x, self.y = x, y",
+      "print(Coordinate(3, 4).x)"
+    ]
+  },
+  {
+    "index": 70,
+    "title": "Custom iteration",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Custom iteration</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> An iterator implements __iter__ and __next__; StopIteration signals exhaustion.\n\n<b>Пример решения:</b>\n<pre>class Pair:\n    def __init__(self):\n        self.values = iter([4, 5])\n    def __iter__(self):\n        return self\n    def __next__(self):\n        return next(self.values)\nprint(list(Pair()))</pre>\n\n👇 <b>Практика:</b>\nIterate over a simple two-value sequence.\nПроверь, что программа выводит:\n<pre>[4, 5]</pre>",
+    "expectedOutput": "[4, 5]",
+    "starterCode": "class Pair:\n    def __init__(self):\n        self.values = iter([4, 5])\n    def __iter__(self):\n        return self\n    def __next__(self):\n        return next(self.values)\n",
+    "hints": [
+      "class Pair:",
+      "    def __init__(self):",
+      "        self.values = iter([4, 5])",
+      "    def __iter__(self):",
+      "        return self",
+      "    def __next__(self):",
+      "        return next(self.values)",
+      "print(list(Pair()))"
+    ]
+  },
+  {
+    "index": 71,
+    "title": "Descriptors",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Descriptors</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> Descriptors customize attribute access with __get__, __set__ or __delete__ methods.\n\n<b>Пример решения:</b>\n<pre>class Constant:\n    def __get__(self, instance, owner):\n        return 'ready'\nclass Job:\n    state = Constant()\nprint(Job().state)</pre>\n\n👇 <b>Практика:</b>\nUse a descriptor that returns a fixed label.\nПроверь, что программа выводит:\n<pre>ready</pre>",
+    "expectedOutput": "ready",
+    "starterCode": "class Constant:\n    def __get__(self, instance, owner):\n        return 'ready'\nclass Job:\n    state = Constant()\n",
+    "hints": [
+      "class Constant:",
+      "    def __get__(self, instance, owner):",
+      "        return 'ready'",
+      "class Job:",
+      "    state = Constant()",
+      "print(Job().state)"
+    ]
+  },
+  {
+    "index": 72,
+    "title": "Metaclasses: inspect classes",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>Metaclasses: inspect classes</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> A class is itself an object; type can inspect its name and bases without custom metaclasses.\n\n<b>Пример решения:</b>\n<pre>class TaggedList(list):\n    pass\nprint(type(TaggedList()).__name__)</pre>\n\n👇 <b>Практика:</b>\nPrint the class name of a list subclass.\nПроверь, что программа выводит:\n<pre>TaggedList</pre>",
+    "expectedOutput": "TaggedList",
+    "starterCode": "class TaggedList(list):\n    pass\n",
+    "hints": [
+      "class TaggedList(list):",
+      "    pass",
+      "print(type(TaggedList()).__name__)"
+    ]
+  },
+  {
+    "index": 73,
+    "title": "MRO and cooperative methods",
+    "theory": "📚 <b>Модуль: Advanced object model</b>\n\n<b>MRO and cooperative methods</b>\nPython's object model supports protocols, controlled attributes, descriptors and deliberate interface design.\n\n<b>Ключевая идея.</b> The method resolution order determines where Python looks for an inherited method.\n\n<b>Пример решения:</b>\n<pre>class Base:\n    pass\nclass Child(Base):\n    pass\nprint([cls.__name__ for cls in Child.__mro__[:2]])</pre>\n\n👇 <b>Практика:</b>\nInspect the first two names in a class hierarchy.\nПроверь, что программа выводит:\n<pre>['Child', 'Base']</pre>",
+    "expectedOutput": "['Child', 'Base']",
+    "starterCode": "class Base:\n    pass\nclass Child(Base):\n    pass\n",
+    "hints": [
+      "class Base:",
+      "    pass",
+      "class Child(Base):",
+      "    pass",
+      "print([cls.__name__ for cls in Child.__mro__[:2]])"
+    ]
+  },
+  {
+    "index": 74,
+    "title": "Catching a specific exception",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Catching a specific exception</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> A try block covers risky work; except names the expected failure precisely.\n\n<b>Пример решения:</b>\n<pre>try:\n    int('nope')\nexcept ValueError:\n    print('invalid number')</pre>\n\n👇 <b>Практика:</b>\nHandle converting invalid text to an integer.\nПроверь, что программа выводит:\n<pre>invalid number</pre>",
+    "expectedOutput": "invalid number",
+    "starterCode": "# Практика: Handle converting invalid text to an integer.\n",
+    "hints": [
+      "try:",
+      "    int('nope')",
+      "except ValueError:",
+      "    print('invalid number')"
+    ]
+  },
+  {
+    "index": 75,
+    "title": "else and finally",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>else and finally</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> else runs when try succeeds, while finally runs regardless and is suited to cleanup.\n\n<b>Пример решения:</b>\n<pre>try:\n    value = int('12')\nexcept ValueError:\n    print('bad')\nelse:\n    print(value)\nfinally:\n    print('done')</pre>\n\n👇 <b>Практика:</b>\nShow success and guaranteed cleanup.\nПроверь, что программа выводит:\n<pre>12\ndone</pre>",
+    "expectedOutput": "12\ndone",
+    "starterCode": "# Практика: Show success and guaranteed cleanup.\n",
+    "hints": [
+      "try:",
+      "    value = int('12')",
+      "except ValueError:",
+      "    print('bad')",
+      "else:",
+      "    print(value)",
+      "finally:",
+      "    print('done')"
+    ]
+  },
+  {
+    "index": 76,
+    "title": "Raising exceptions",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Raising exceptions</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> raise signals an invalid operation; use a clear exception type and message.\n\n<b>Пример решения:</b>\n<pre>def validate_age(age):\n    if age < 0:\n        raise ValueError('age must be non-negative')\ntry:\n    validate_age(-1)\nexcept ValueError as error:\n    print(error)</pre>\n\n👇 <b>Практика:</b>\nReject a negative age with a clear message.\nПроверь, что программа выводит:\n<pre>age must be non-negative</pre>",
+    "expectedOutput": "age must be non-negative",
+    "starterCode": "# Практика: Reject a negative age with a clear message.\n",
+    "hints": [
+      "def validate_age(age):",
+      "    if age < 0:",
+      "        raise ValueError('age must be non-negative')",
+      "try:",
+      "    validate_age(-1)",
+      "except ValueError as error:",
+      "    print(error)"
+    ]
+  },
+  {
+    "index": 77,
+    "title": "Custom exception types",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Custom exception types</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> A custom exception gives callers a meaningful way to distinguish a domain failure.\n\n<b>Пример решения:</b>\n<pre>class OutOfStockError(Exception):\n    pass\ntry:\n    raise OutOfStockError('empty')\nexcept OutOfStockError as error:\n    print(error)</pre>\n\n👇 <b>Практика:</b>\nRaise and catch an empty-inventory error.\nПроверь, что программа выводит:\n<pre>empty</pre>",
+    "expectedOutput": "empty",
+    "starterCode": "# Практика: Raise and catch an empty-inventory error.\n",
+    "hints": [
+      "class OutOfStockError(Exception):",
+      "    pass",
+      "try:",
+      "    raise OutOfStockError('empty')",
+      "except OutOfStockError as error:",
+      "    print(error)"
+    ]
+  },
+  {
+    "index": 78,
+    "title": "Exception chaining",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Exception chaining</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> raise ... from ... preserves the original cause while presenting a higher-level error.\n\n<b>Пример решения:</b>\n<pre>try:\n    try:\n        int('x')\n    except ValueError as cause:\n        raise RuntimeError('invalid identifier') from cause\nexcept RuntimeError as error:\n    print(type(error.__cause__).__name__)</pre>\n\n👇 <b>Практика:</b>\nTranslate a parsing problem into a domain message.\nПроверь, что программа выводит:\n<pre>ValueError</pre>",
+    "expectedOutput": "ValueError",
+    "starterCode": "# Практика: Translate a parsing problem into a domain message.\n",
+    "hints": [
+      "try:",
+      "    try:",
+      "        int('x')",
+      "    except ValueError as cause:",
+      "        raise RuntimeError('invalid identifier') from cause",
+      "except RuntimeError as error:",
+      "    print(type(error.__cause__).__name__)"
+    ]
+  },
+  {
+    "index": 79,
+    "title": "Assertions and invariants",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Assertions and invariants</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> Assertions document assumptions during development and are not a substitute for input validation.\n\n<b>Пример решения:</b>\n<pre>result = 3 * 4\nassert result > 0\nprint(result)</pre>\n\n👇 <b>Практика:</b>\nAssert that the normalized result is positive.\nПроверь, что программа выводит:\n<pre>12</pre>",
+    "expectedOutput": "12",
+    "starterCode": "result = 3 * 4\nassert result > 0\n",
+    "hints": [
+      "result = 3 * 4",
+      "assert result > 0",
+      "print(result)"
+    ]
+  },
+  {
+    "index": 80,
+    "title": "EAFP and LBYL",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>EAFP and LBYL</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> EAFP attempts an operation and handles its exception; LBYL checks first, but can introduce races.\n\n<b>Пример решения:</b>\n<pre>settings = {'theme': 'dark'}\nprint(settings.get('language', 'en'))</pre>\n\n👇 <b>Практика:</b>\nUse dict.get to handle an optional key safely.\nПроверь, что программа выводит:\n<pre>en</pre>",
+    "expectedOutput": "en",
+    "starterCode": "settings = {'theme': 'dark'}\n",
+    "hints": [
+      "settings = {'theme': 'dark'}",
+      "print(settings.get('language', 'en'))"
+    ]
+  },
+  {
+    "index": 81,
+    "title": "Exception groups of work",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Exception groups of work</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> Keep try blocks narrow so the handler does not accidentally hide unrelated programming errors.\n\n<b>Пример решения:</b>\n<pre>data = {}\ntry:\n    value = data['id']\nexcept KeyError:\n    value = 'unknown'\nprint(value)</pre>\n\n👇 <b>Практика:</b>\nCatch a missing dictionary key only around the lookup.\nПроверь, что программа выводит:\n<pre>unknown</pre>",
+    "expectedOutput": "unknown",
+    "starterCode": "data = {}\ntry:\n    value = data['id']\nexcept KeyError:\n    value = 'unknown'\n",
+    "hints": [
+      "data = {}",
+      "try:",
+      "    value = data['id']",
+      "except KeyError:",
+      "    value = 'unknown'",
+      "print(value)"
+    ]
+  },
+  {
+    "index": 82,
+    "title": "Logging errors",
+    "theory": "📚 <b>Модуль: Errors and defensive programming</b>\n\n<b>Logging errors</b>\nExceptions communicate failure; catch only errors you can handle and keep cleanup predictable.\n\n<b>Ключевая идея.</b> The logging module records events with levels and context instead of relying on scattered print calls.\n\n<b>Пример решения:</b>\n<pre>import logging\nrecord = logging.LogRecord('app', logging.WARNING, '', 0, 'retry %s', (2,), None)\nprint(record.getMessage())</pre>\n\n👇 <b>Практика:</b>\nFormat a warning message without configuring external logging.\nПроверь, что программа выводит:\n<pre>retry 2</pre>",
+    "expectedOutput": "retry 2",
+    "starterCode": "import logging\nrecord = logging.LogRecord('app', logging.WARNING, '', 0, 'retry %s', (2,), None)\n",
+    "hints": [
+      "import logging",
+      "record = logging.LogRecord('app', logging.WARNING, '', 0, 'retry %s', (2,), None)",
+      "print(record.getMessage())"
+    ]
+  },
+  {
+    "index": 83,
+    "title": "Path objects",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>Path objects</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> pathlib.Path represents filesystem paths with portable methods and readable operators.\n\n<b>Пример решения:</b>\n<pre>from pathlib import PurePosixPath\npath = PurePosixPath('data') / 'notes.txt'\nprint(path.name)</pre>\n\n👇 <b>Практика:</b>\nBuild a child path and print its filename.\nПроверь, что программа выводит:\n<pre>notes.txt</pre>",
+    "expectedOutput": "notes.txt",
+    "starterCode": "from pathlib import PurePosixPath\npath = PurePosixPath('data') / 'notes.txt'\n",
+    "hints": [
+      "from pathlib import PurePosixPath",
+      "path = PurePosixPath('data') / 'notes.txt'",
+      "print(path.name)"
+    ]
+  },
+  {
+    "index": 84,
+    "title": "Reading text in memory",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>Reading text in memory</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> Text streams expose read and write operations; explicit encoding prevents platform-default surprises.\n\n<b>Пример решения:</b>\n<pre>from io import StringIO\nwith StringIO('hello\\nworld') as stream:\n    print(stream.readline().strip())</pre>\n\n👇 <b>Практика:</b>\nRead a line from an in-memory text stream.\nПроверь, что программа выводит:\n<pre>hello</pre>",
+    "expectedOutput": "hello",
+    "starterCode": "# Практика: Read a line from an in-memory text stream.\n",
+    "hints": [
+      "from io import StringIO",
+      "with StringIO('hello\\nworld') as stream:",
+      "    print(stream.readline().strip())"
+    ]
+  },
+  {
+    "index": 85,
+    "title": "Writing text in memory",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>Writing text in memory</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> A text stream accumulates characters; real file writes should use a with block.\n\n<b>Пример решения:</b>\n<pre>from io import StringIO\nstream = StringIO()\nstream.write('study')\nprint(stream.getvalue())</pre>\n\n👇 <b>Практика:</b>\nWrite and then read back a short note.\nПроверь, что программа выводит:\n<pre>study</pre>",
+    "expectedOutput": "study",
+    "starterCode": "from io import StringIO\nstream = StringIO()\nstream.write('study')\n",
+    "hints": [
+      "from io import StringIO",
+      "stream = StringIO()",
+      "stream.write('study')",
+      "print(stream.getvalue())"
+    ]
+  },
+  {
+    "index": 86,
+    "title": "CSV reading",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>CSV reading</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> csv.reader handles quoting and delimiters more safely than splitting rows by commas.\n\n<b>Пример решения:</b>\n<pre>import csv\nfrom io import StringIO\nrows = csv.reader(StringIO('name,score\\nAda,10'))\nnext(rows)\nprint(next(rows)[1])</pre>\n\n👇 <b>Практика:</b>\nRead the second column from a CSV row.\nПроверь, что программа выводит:\n<pre>10</pre>",
+    "expectedOutput": "10",
+    "starterCode": "import csv\nfrom io import StringIO\nrows = csv.reader(StringIO('name,score\\nAda,10'))\nnext(rows)\n",
+    "hints": [
+      "import csv",
+      "from io import StringIO",
+      "rows = csv.reader(StringIO('name,score\\nAda,10'))",
+      "next(rows)",
+      "print(next(rows)[1])"
+    ]
+  },
+  {
+    "index": 87,
+    "title": "CSV dictionaries",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>CSV dictionaries</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> DictReader maps each CSV row to field names, making columns self-documenting.\n\n<b>Пример решения:</b>\n<pre>import csv\nfrom io import StringIO\nreader = csv.DictReader(StringIO('name,city\\nMira,Oslo\\n'))\nprint(next(reader)['city'])</pre>\n\n👇 <b>Практика:</b>\nRead the name from a CSV record.\nПроверь, что программа выводит:\n<pre>Oslo</pre>",
+    "expectedOutput": "Oslo",
+    "starterCode": "import csv\nfrom io import StringIO\nreader = csv.DictReader(StringIO('name,city\\nMira,Oslo\\n'))\n",
+    "hints": [
+      "import csv",
+      "from io import StringIO",
+      "reader = csv.DictReader(StringIO('name,city\\nMira,Oslo\\n'))",
+      "print(next(reader)['city'])"
+    ]
+  },
+  {
+    "index": 88,
+    "title": "JSON encoding",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>JSON encoding</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> JSON converts basic Python data structures to a portable text representation.\n\n<b>Пример решения:</b>\n<pre>import json\nprint(json.dumps({'ok': True, 'count': 2}, sort_keys=True))</pre>\n\n👇 <b>Практика:</b>\nEncode a small object as compact JSON.\nПроверь, что программа выводит:\n<pre>{\"count\": 2, \"ok\": true}</pre>",
+    "expectedOutput": "{\"count\": 2, \"ok\": true}",
+    "starterCode": "import json\n",
+    "hints": [
+      "import json",
+      "print(json.dumps({'ok': True, 'count': 2}, sort_keys=True))"
+    ]
+  },
+  {
+    "index": 89,
+    "title": "JSON decoding",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>JSON decoding</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> json.loads parses JSON text into Python dictionaries, lists and scalar values.\n\n<b>Пример решения:</b>\n<pre>import json\npayload = json.loads('{\"count\": 7}')\nprint(payload['count'])</pre>\n\n👇 <b>Практика:</b>\nRead the count field from JSON.\nПроверь, что программа выводит:\n<pre>7</pre>",
+    "expectedOutput": "7",
+    "starterCode": "import json\npayload = json.loads('{\"count\": 7}')\n",
+    "hints": [
+      "import json",
+      "payload = json.loads('{\"count\": 7}')",
+      "print(payload['count'])"
+    ]
+  },
+  {
+    "index": 90,
+    "title": "Binary data",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>Binary data</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> Binary streams handle bytes rather than decoded text; bytes literals use the b prefix.\n\n<b>Пример решения:</b>\n<pre>data = b'ABC'\nprint(len(data))</pre>\n\n👇 <b>Практика:</b>\nPrint the length of a three-byte value.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "data = b'ABC'\n",
+    "hints": [
+      "data = b'ABC'",
+      "print(len(data))"
+    ]
+  },
+  {
+    "index": 91,
+    "title": "Temporary in-memory files",
+    "theory": "📚 <b>Модуль: Files and serialization</b>\n\n<b>Temporary in-memory files</b>\nFiles and serialized formats let programs persist information; choose an encoding and close resources reliably.\n\n<b>Ключевая идея.</b> In-memory streams are useful in tests and examples that should not touch the user's filesystem.\n\n<b>Пример решения:</b>\n<pre>from io import BytesIO\nstream = BytesIO()\nstream.write(b'OK')\nprint(stream.getvalue().decode())</pre>\n\n👇 <b>Практика:</b>\nCopy a value through BytesIO.\nПроверь, что программа выводит:\n<pre>OK</pre>",
+    "expectedOutput": "OK",
+    "starterCode": "from io import BytesIO\nstream = BytesIO()\nstream.write(b'OK')\n",
+    "hints": [
+      "from io import BytesIO",
+      "stream = BytesIO()",
+      "stream.write(b'OK')",
+      "print(stream.getvalue().decode())"
+    ]
+  },
+  {
+    "index": 92,
+    "title": "math functions",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>math functions</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> math provides precise named operations such as sqrt, ceil, floor and factorial.\n\n<b>Пример решения:</b>\n<pre>import math\nprint(math.sqrt(81))</pre>\n\n👇 <b>Практика:</b>\nCalculate the square root of 81.\nПроверь, что программа выводит:\n<pre>9.0</pre>",
+    "expectedOutput": "9.0",
+    "starterCode": "import math\n",
+    "hints": [
+      "import math",
+      "print(math.sqrt(81))"
+    ]
+  },
+  {
+    "index": 93,
+    "title": "Decimal arithmetic",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Decimal arithmetic</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> Decimal represents decimal fractions exactly when initialized from strings, useful for financial calculations.\n\n<b>Пример решения:</b>\n<pre>from decimal import Decimal\nprint(Decimal('0.10') + Decimal('0.20'))</pre>\n\n👇 <b>Практика:</b>\nAdd two decimal prices exactly.\nПроверь, что программа выводит:\n<pre>0.30</pre>",
+    "expectedOutput": "0.30",
+    "starterCode": "from decimal import Decimal\n",
+    "hints": [
+      "from decimal import Decimal",
+      "print(Decimal('0.10') + Decimal('0.20'))"
+    ]
+  },
+  {
+    "index": 94,
+    "title": "Fractions",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Fractions</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> fractions.Fraction stores rational values in reduced form.\n\n<b>Пример решения:</b>\n<pre>from fractions import Fraction\nprint(Fraction(1, 3) + Fraction(1, 6))</pre>\n\n👇 <b>Практика:</b>\nAdd one third and one sixth.\nПроверь, что программа выводит:\n<pre>1/2</pre>",
+    "expectedOutput": "1/2",
+    "starterCode": "from fractions import Fraction\n",
+    "hints": [
+      "from fractions import Fraction",
+      "print(Fraction(1, 3) + Fraction(1, 6))"
+    ]
+  },
+  {
+    "index": 95,
+    "title": "Random choices",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Random choices</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> random provides pseudorandom choices; use secrets instead for security-sensitive tokens.\n\n<b>Пример решения:</b>\n<pre>import random\nrandom.seed(4)\nprint(random.choice(['red', 'blue', 'green']))</pre>\n\n👇 <b>Практика:</b>\nChoose deterministically after setting a seed.\nПроверь, что программа выводит:\n<pre>red</pre>",
+    "expectedOutput": "red",
+    "starterCode": "import random\nrandom.seed(4)\n",
+    "hints": [
+      "import random",
+      "random.seed(4)",
+      "print(random.choice(['red', 'blue', 'green']))"
+    ]
+  },
+  {
+    "index": 96,
+    "title": "Statistics",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Statistics</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> statistics offers common descriptive summaries for numeric samples.\n\n<b>Пример решения:</b>\n<pre>import statistics\nprint(statistics.median([1, 9, 3]))</pre>\n\n👇 <b>Практика:</b>\nCalculate the median of an odd-sized sample.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "import statistics\n",
+    "hints": [
+      "import statistics",
+      "print(statistics.median([1, 9, 3]))"
+    ]
+  },
+  {
+    "index": 97,
+    "title": "Dates",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Dates</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> date represents a calendar day; isoformat gives a stable, readable representation.\n\n<b>Пример решения:</b>\n<pre>from datetime import date\nprint(date(2024, 2, 29).isoformat())</pre>\n\n👇 <b>Практика:</b>\nFormat a known date as ISO text.\nПроверь, что программа выводит:\n<pre>2024-02-29</pre>",
+    "expectedOutput": "2024-02-29",
+    "starterCode": "from datetime import date\n",
+    "hints": [
+      "from datetime import date",
+      "print(date(2024, 2, 29).isoformat())"
+    ]
+  },
+  {
+    "index": 98,
+    "title": "Timedeltas",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Timedeltas</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> timedelta represents a duration and can be added to or subtracted from a date.\n\n<b>Пример решения:</b>\n<pre>from datetime import date, timedelta\nprint((date(2024, 1, 1) + timedelta(days=7)).isoformat())</pre>\n\n👇 <b>Практика:</b>\nFind the date seven days after January 1.\nПроверь, что программа выводит:\n<pre>2024-01-08</pre>",
+    "expectedOutput": "2024-01-08",
+    "starterCode": "from datetime import date, timedelta\n",
+    "hints": [
+      "from datetime import date, timedelta",
+      "print((date(2024, 1, 1) + timedelta(days=7)).isoformat())"
+    ]
+  },
+  {
+    "index": 99,
+    "title": "Enum values",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Enum values</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> Enum gives a fixed set of named values and makes state choices clearer than magic strings.\n\n<b>Пример решения:</b>\n<pre>from enum import Enum\nclass Status(Enum):\n    READY = 'ready'\nprint(Status.READY.value)</pre>\n\n👇 <b>Практика:</b>\nPrint the value of a named status.\nПроверь, что программа выводит:\n<pre>ready</pre>",
+    "expectedOutput": "ready",
+    "starterCode": "from enum import Enum\nclass Status(Enum):\n    READY = 'ready'\n",
+    "hints": [
+      "from enum import Enum",
+      "class Status(Enum):",
+      "    READY = 'ready'",
+      "print(Status.READY.value)"
+    ]
+  },
+  {
+    "index": 100,
+    "title": "Deque",
+    "theory": "📚 <b>Модуль: Useful standard library</b>\n\n<b>Deque</b>\nThe standard library supplies dependable tools for dates, mathematics, randomness, statistics and structured data.\n\n<b>Ключевая идея.</b> collections.deque supports efficient appends and pops at either end.\n\n<b>Пример решения:</b>\n<pre>from collections import deque\nqueue = deque([1, 2, 3])\nprint(queue.popleft())</pre>\n\n👇 <b>Практика:</b>\nRemove the oldest value from a queue.\nПроверь, что программа выводит:\n<pre>1</pre>",
+    "expectedOutput": "1",
+    "starterCode": "from collections import deque\nqueue = deque([1, 2, 3])\n",
+    "hints": [
+      "from collections import deque",
+      "queue = deque([1, 2, 3])",
+      "print(queue.popleft())"
+    ]
+  },
+  {
+    "index": 101,
+    "title": "Iterable versus iterator",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Iterable versus iterator</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> An iterable can create an iterator; next advances an iterator one item at a time.\n\n<b>Пример решения:</b>\n<pre>iterator = iter(['first', 'second'])\nprint(next(iterator), next(iterator))</pre>\n\n👇 <b>Практика:</b>\nRead two values from an iterator.\nПроверь, что программа выводит:\n<pre>first second</pre>",
+    "expectedOutput": "first second",
+    "starterCode": "iterator = iter(['first', 'second'])\n",
+    "hints": [
+      "iterator = iter(['first', 'second'])",
+      "print(next(iterator), next(iterator))"
+    ]
+  },
+  {
+    "index": 102,
+    "title": "Writing a generator",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Writing a generator</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> yield produces one value and suspends the function until the next request.\n\n<b>Пример решения:</b>\n<pre>def numbers():\n    yield 1\n    yield 2\n    yield 3\nprint(list(numbers()))</pre>\n\n👇 <b>Практика:</b>\nYield the first three positive integers.\nПроверь, что программа выводит:\n<pre>[1, 2, 3]</pre>",
+    "expectedOutput": "[1, 2, 3]",
+    "starterCode": "def numbers():\n    yield 1\n    yield 2\n    yield 3\n",
+    "hints": [
+      "def numbers():",
+      "    yield 1",
+      "    yield 2",
+      "    yield 3",
+      "print(list(numbers()))"
+    ]
+  },
+  {
+    "index": 103,
+    "title": "Generator expressions",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Generator expressions</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> A generator expression avoids allocating an intermediate list for one-pass work.\n\n<b>Пример решения:</b>\n<pre>total = sum(n for n in range(5))\nprint(total)</pre>\n\n👇 <b>Практика:</b>\nCompute the sum lazily.\nПроверь, что программа выводит:\n<pre>10</pre>",
+    "expectedOutput": "10",
+    "starterCode": "total = sum(n for n in range(5))\n",
+    "hints": [
+      "total = sum(n for n in range(5))",
+      "print(total)"
+    ]
+  },
+  {
+    "index": 104,
+    "title": "yield from",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>yield from</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> yield from delegates iteration to another iterable or generator.\n\n<b>Пример решения:</b>\n<pre>def values():\n    yield from [4, 5]\nprint(list(values()))</pre>\n\n👇 <b>Практика:</b>\nDelegate the two-item sequence.\nПроверь, что программа выводит:\n<pre>[4, 5]</pre>",
+    "expectedOutput": "[4, 5]",
+    "starterCode": "def values():\n    yield from [4, 5]\n",
+    "hints": [
+      "def values():",
+      "    yield from [4, 5]",
+      "print(list(values()))"
+    ]
+  },
+  {
+    "index": 105,
+    "title": "Generator state",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Generator state</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> A generator remembers local variables between yields, which makes incremental algorithms natural.\n\n<b>Пример решения:</b>\n<pre>def running():\n    total = 0\n    for value in [2, 3, 4]:\n        total += value\n        yield total\nprint(list(running()))</pre>\n\n👇 <b>Практика:</b>\nYield running totals.\nПроверь, что программа выводит:\n<pre>[2, 5, 9]</pre>",
+    "expectedOutput": "[2, 5, 9]",
+    "starterCode": "def running():\n    total = 0\n    for value in [2, 3, 4]:\n        total += value\n        yield total\n",
+    "hints": [
+      "def running():",
+      "    total = 0",
+      "    for value in [2, 3, 4]:",
+      "        total += value",
+      "        yield total",
+      "print(list(running()))"
+    ]
+  },
+  {
+    "index": 106,
+    "title": "Lazy pipelines",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Lazy pipelines</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> Chaining generators avoids eagerly materializing every intermediate collection.\n\n<b>Пример решения:</b>\n<pre>values = (n * n for n in range(1, 7) if n % 2 == 0)\nprint(list(values))</pre>\n\n👇 <b>Практика:</b>\nSquare only the even numbers.\nПроверь, что программа выводит:\n<pre>[4, 16, 36]</pre>",
+    "expectedOutput": "[4, 16, 36]",
+    "starterCode": "values = (n * n for n in range(1, 7) if n % 2 == 0)\n",
+    "hints": [
+      "values = (n * n for n in range(1, 7) if n % 2 == 0)",
+      "print(list(values))"
+    ]
+  },
+  {
+    "index": 107,
+    "title": "itertools chain",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>itertools chain</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> chain presents several iterables as one continuous stream.\n\n<b>Пример решения:</b>\n<pre>from itertools import chain\nprint(list(chain([1, 2], [3])))</pre>\n\n👇 <b>Практика:</b>\nJoin two short sequences.\nПроверь, что программа выводит:\n<pre>[1, 2, 3]</pre>",
+    "expectedOutput": "[1, 2, 3]",
+    "starterCode": "from itertools import chain\n",
+    "hints": [
+      "from itertools import chain",
+      "print(list(chain([1, 2], [3])))"
+    ]
+  },
+  {
+    "index": 108,
+    "title": "itertools islice",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>itertools islice</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> islice selects a bounded window from an iterator without consuming the whole stream.\n\n<b>Пример решения:</b>\n<pre>from itertools import islice\nprint(list(islice(range(10), 2, 5)))</pre>\n\n👇 <b>Практика:</b>\nTake three values starting at index two.\nПроверь, что программа выводит:\n<pre>[2, 3, 4]</pre>",
+    "expectedOutput": "[2, 3, 4]",
+    "starterCode": "from itertools import islice\n",
+    "hints": [
+      "from itertools import islice",
+      "print(list(islice(range(10), 2, 5)))"
+    ]
+  },
+  {
+    "index": 109,
+    "title": "Generator cleanup",
+    "theory": "📚 <b>Модуль: Iterators and generators</b>\n\n<b>Generator cleanup</b>\nIterators produce values on demand; generators make lazy pipelines and resource-friendly processing easier.\n\n<b>Ключевая идея.</b> A generator can use try/finally to release resources when iteration completes or closes.\n\n<b>Пример решения:</b>\n<pre>def values():\n    try:\n        yield 'item'\n    finally:\n        print('closed')\nprint(list(values()))</pre>\n\n👇 <b>Практика:</b>\nObserve a finalizer after exhausting the generator.\nПроверь, что программа выводит:\n<pre>closed\n['item']</pre>",
+    "expectedOutput": "closed\n['item']",
+    "starterCode": "def values():\n    try:\n        yield 'item'\n    finally:\n        print('closed')\n",
+    "hints": [
+      "def values():",
+      "    try:",
+      "        yield 'item'",
+      "    finally:",
+      "        print('closed')",
+      "print(list(values()))"
+    ]
+  },
+  {
+    "index": 110,
+    "title": "A first decorator",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>A first decorator</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> A decorator receives a function and returns a replacement callable.\n\n<b>Пример решения:</b>\n<pre>def announce(function):\n    def wrapped():\n        return '-> ' + function()\n    return wrapped\n@announce\ndef message():\n    return 'hello'\nprint(message())</pre>\n\n👇 <b>Практика:</b>\nWrap a function and preserve its return value.\nПроверь, что программа выводит:\n<pre>-> hello</pre>",
+    "expectedOutput": "-> hello",
+    "starterCode": "def announce(function):\n    def wrapped():\n        return '-> ' + function()\n    return wrapped\n@announce\ndef message():\n    return 'hello'\n",
+    "hints": [
+      "def announce(function):",
+      "    def wrapped():",
+      "        return '-> ' + function()",
+      "    return wrapped",
+      "@announce",
+      "def message():",
+      "    return 'hello'",
+      "print(message())"
+    ]
+  },
+  {
+    "index": 111,
+    "title": "functools.wraps",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>functools.wraps</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> wraps copies useful metadata from the wrapped function to the wrapper.\n\n<b>Пример решения:</b>\n<pre>from functools import wraps\ndef decorate(function):\n    @wraps(function)\n    def wrapper(*args, **kwargs):\n        return function(*args, **kwargs)\n    return wrapper\n@decorate\ndef compute():\n    return 1\nprint(compute.__name__)</pre>\n\n👇 <b>Практика:</b>\nPreserve the original function name.\nПроверь, что программа выводит:\n<pre>compute</pre>",
+    "expectedOutput": "compute",
+    "starterCode": "from functools import wraps\ndef decorate(function):\n    @wraps(function)\n    def wrapper(*args, **kwargs):\n        return function(*args, **kwargs)\n    return wrapper\n@decorate\ndef compute():\n    return 1\n",
+    "hints": [
+      "from functools import wraps",
+      "def decorate(function):",
+      "    @wraps(function)",
+      "    def wrapper(*args, **kwargs):",
+      "        return function(*args, **kwargs)",
+      "    return wrapper",
+      "@decorate",
+      "def compute():",
+      "    return 1",
+      "print(compute.__name__)"
+    ]
+  },
+  {
+    "index": 112,
+    "title": "Parameterized decorators",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>Parameterized decorators</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> A decorator factory accepts configuration and returns the actual decorator.\n\n<b>Пример решения:</b>\n<pre>def prefix(label):\n    def decorate(function):\n        def wrapper():\n            return label + function()\n        return wrapper\n    return decorate\n@prefix('OK: ')\ndef result():\n    return 'done'\nprint(result())</pre>\n\n👇 <b>Практика:</b>\nPrefix a result with a selected label.\nПроверь, что программа выводит:\n<pre>OK: done</pre>",
+    "expectedOutput": "OK: done",
+    "starterCode": "def prefix(label):\n    def decorate(function):\n        def wrapper():\n            return label + function()\n        return wrapper\n    return decorate\n@prefix('OK: ')\ndef result():\n    return 'done'\n",
+    "hints": [
+      "def prefix(label):",
+      "    def decorate(function):",
+      "        def wrapper():",
+      "            return label + function()",
+      "        return wrapper",
+      "    return decorate",
+      "@prefix('OK: ')",
+      "def result():",
+      "    return 'done'",
+      "print(result())"
+    ]
+  },
+  {
+    "index": 113,
+    "title": "Memoization",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>Memoization</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> lru_cache stores previous results for hashable arguments when repeated computation is safe.\n\n<b>Пример решения:</b>\n<pre>from functools import lru_cache\n@lru_cache(maxsize=None)\ndef cube(n):\n    return n ** 3\nprint(cube(3), cube.cache_info().hits)</pre>\n\n👇 <b>Практика:</b>\nCache and call a small pure function.\nПроверь, что программа выводит:\n<pre>27 0</pre>",
+    "expectedOutput": "27 0",
+    "starterCode": "from functools import lru_cache\n@lru_cache(maxsize=None)\ndef cube(n):\n    return n ** 3\n",
+    "hints": [
+      "from functools import lru_cache",
+      "@lru_cache(maxsize=None)",
+      "def cube(n):",
+      "    return n ** 3",
+      "print(cube(3), cube.cache_info().hits)"
+    ]
+  },
+  {
+    "index": 114,
+    "title": "Context manager protocol",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>Context manager protocol</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> A context manager's enter and exit methods define the with-statement lifecycle.\n\n<b>Пример решения:</b>\n<pre>class LabelContext:\n    def __enter__(self):\n        return 'inside'\n    def __exit__(self, kind, value, traceback):\n        return False\nwith LabelContext() as label:\n    print(label)</pre>\n\n👇 <b>Практика:</b>\nUse a simple context manager to return a label.\nПроверь, что программа выводит:\n<pre>inside</pre>",
+    "expectedOutput": "inside",
+    "starterCode": "# Практика: Use a simple context manager to return a label.\n",
+    "hints": [
+      "class LabelContext:",
+      "    def __enter__(self):",
+      "        return 'inside'",
+      "    def __exit__(self, kind, value, traceback):",
+      "        return False",
+      "with LabelContext() as label:",
+      "    print(label)"
+    ]
+  },
+  {
+    "index": 115,
+    "title": "contextlib.contextmanager",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>contextlib.contextmanager</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> contextmanager turns a generator with one yield into a lightweight context manager.\n\n<b>Пример решения:</b>\n<pre>from contextlib import contextmanager\n@contextmanager\ndef resource():\n    yield 'open'\nwith resource() as value:\n    print(value)</pre>\n\n👇 <b>Практика:</b>\nYield a resource label inside a with statement.\nПроверь, что программа выводит:\n<pre>open</pre>",
+    "expectedOutput": "open",
+    "starterCode": "# Практика: Yield a resource label inside a with statement.\n",
+    "hints": [
+      "from contextlib import contextmanager",
+      "@contextmanager",
+      "def resource():",
+      "    yield 'open'",
+      "with resource() as value:",
+      "    print(value)"
+    ]
+  },
+  {
+    "index": 116,
+    "title": "Suppressing expected errors",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>Suppressing expected errors</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> contextlib.suppress is concise for a known, intentionally ignored exception.\n\n<b>Пример решения:</b>\n<pre>from contextlib import suppress\nwith suppress(KeyError):\n    {}['missing']\nprint('continued')</pre>\n\n👇 <b>Практика:</b>\nSuppress a missing-key lookup and continue.\nПроверь, что программа выводит:\n<pre>continued</pre>",
+    "expectedOutput": "continued",
+    "starterCode": "from contextlib import suppress\nwith suppress(KeyError):\n    {}['missing']\n",
+    "hints": [
+      "from contextlib import suppress",
+      "with suppress(KeyError):",
+      "    {}['missing']",
+      "print('continued')"
+    ]
+  },
+  {
+    "index": 117,
+    "title": "ExitStack",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>ExitStack</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> ExitStack manages a dynamic number of context managers with one lexical scope.\n\n<b>Пример решения:</b>\n<pre>from contextlib import ExitStack\nwith ExitStack() as stack:\n    stack.callback(print, 'released')\n    print('working')</pre>\n\n👇 <b>Практика:</b>\nRegister a callback that runs when the stack closes.\nПроверь, что программа выводит:\n<pre>working\nreleased</pre>",
+    "expectedOutput": "working\nreleased",
+    "starterCode": "# Практика: Register a callback that runs when the stack closes.\n",
+    "hints": [
+      "from contextlib import ExitStack",
+      "with ExitStack() as stack:",
+      "    stack.callback(print, 'released')",
+      "    print('working')"
+    ]
+  },
+  {
+    "index": 118,
+    "title": "Timing a callable",
+    "theory": "📚 <b>Модуль: Decorators and context managers</b>\n\n<b>Timing a callable</b>\nDecorators wrap callables to add reusable behavior; context managers pair setup with guaranteed cleanup.\n\n<b>Ключевая идея.</b> A decorator can measure elapsed time, but timing should not change the wrapped function's behavior.\n\n<b>Пример решения:</b>\n<pre>from time import perf_counter\nstart = perf_counter()\nvalue = sum(range(10))\nelapsed = perf_counter() - start\nprint(value, elapsed >= 0)</pre>\n\n👇 <b>Практика:</b>\nUse perf_counter to measure a tiny deterministic operation.\nПроверь, что программа выводит:\n<pre>45 True</pre>",
+    "expectedOutput": "45 True",
+    "starterCode": "from time import perf_counter\nstart = perf_counter()\nvalue = sum(range(10))\nelapsed = perf_counter() - start\n",
+    "hints": [
+      "from time import perf_counter",
+      "start = perf_counter()",
+      "value = sum(range(10))",
+      "elapsed = perf_counter() - start",
+      "print(value, elapsed >= 0)"
+    ]
+  },
+  {
+    "index": 119,
+    "title": "Importing standard modules",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Importing standard modules</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> import binds a module namespace; explicit qualified names make dependencies visible.\n\n<b>Пример решения:</b>\n<pre>import math\nprint(math.tau)</pre>\n\n👇 <b>Практика:</b>\nUse the math module to calculate a circle's diameter.\nПроверь, что программа выводит:\n<pre>6.283185307179586</pre>",
+    "expectedOutput": "6.283185307179586",
+    "starterCode": "import math\n",
+    "hints": [
+      "import math",
+      "print(math.tau)"
+    ]
+  },
+  {
+    "index": 120,
+    "title": "from imports and aliases",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>from imports and aliases</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> A from import binds a selected name; aliases can make long module names convenient.\n\n<b>Пример решения:</b>\n<pre>from math import sqrt as root\nprint(root(144))</pre>\n\n👇 <b>Практика:</b>\nImport sqrt directly and calculate 144's root.\nПроверь, что программа выводит:\n<pre>12.0</pre>",
+    "expectedOutput": "12.0",
+    "starterCode": "from math import sqrt as root\n",
+    "hints": [
+      "from math import sqrt as root",
+      "print(root(144))"
+    ]
+  },
+  {
+    "index": 121,
+    "title": "Module metadata",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Module metadata</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> __name__ identifies a module; an imported module is not named __main__.\n\n<b>Пример решения:</b>\n<pre>print(bool(__name__))</pre>\n\n👇 <b>Практика:</b>\nShow that the current interactive module has a name.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "# Практика: Show that the current interactive module has a name.\n",
+    "hints": [
+      "print(bool(__name__))"
+    ]
+  },
+  {
+    "index": 122,
+    "title": "Import cache",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Import cache</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> Python caches imported modules in sys.modules to avoid loading the same module repeatedly.\n\n<b>Пример решения:</b>\n<pre>import math, sys\nprint('math' in sys.modules)</pre>\n\n👇 <b>Практика:</b>\nCheck that math is registered after import.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import math, sys\n",
+    "hints": [
+      "import math, sys",
+      "print('math' in sys.modules)"
+    ]
+  },
+  {
+    "index": 123,
+    "title": "Environment variables",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Environment variables</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> Environment variables configure a process without hardcoding machine-specific values.\n\n<b>Пример решения:</b>\n<pre>import os\nprint(os.getenv('PYTHON_LESSON_MODE', 'practice'))</pre>\n\n👇 <b>Практика:</b>\nRead a value with a safe default.\nПроверь, что программа выводит:\n<pre>practice</pre>",
+    "expectedOutput": "practice",
+    "starterCode": "import os\n",
+    "hints": [
+      "import os",
+      "print(os.getenv('PYTHON_LESSON_MODE', 'practice'))"
+    ]
+  },
+  {
+    "index": 124,
+    "title": "Command-line arguments",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Command-line arguments</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> sys.argv carries command-line arguments; libraries should expose functions rather than parse arguments on import.\n\n<b>Пример решения:</b>\n<pre>import sys\nprint(len(sys.argv) >= 1)</pre>\n\n👇 <b>Практика:</b>\nRead the current script argument list length.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import sys\n",
+    "hints": [
+      "import sys",
+      "print(len(sys.argv) >= 1)"
+    ]
+  },
+  {
+    "index": 125,
+    "title": "Path composition",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Path composition</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> pathlib composes paths using operators and exposes names and suffixes portably.\n\n<b>Пример решения:</b>\n<pre>from pathlib import PurePath\nprint(PurePath('src/app.py').suffix)</pre>\n\n👇 <b>Практика:</b>\nInspect the suffix of a Python filename.\nПроверь, что программа выводит:\n<pre>.py</pre>",
+    "expectedOutput": ".py",
+    "starterCode": "from pathlib import PurePath\n",
+    "hints": [
+      "from pathlib import PurePath",
+      "print(PurePath('src/app.py').suffix)"
+    ]
+  },
+  {
+    "index": 126,
+    "title": "Virtual environment concepts",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Virtual environment concepts</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> Virtual environments isolate a project's installed packages from other Python projects.\n\n<b>Пример решения:</b>\n<pre>import sys\nprint(sys.version_info.major)</pre>\n\n👇 <b>Практика:</b>\nDisplay the active interpreter's major version.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "import sys\n",
+    "hints": [
+      "import sys",
+      "print(sys.version_info.major)"
+    ]
+  },
+  {
+    "index": 127,
+    "title": "Package versions",
+    "theory": "📚 <b>Модуль: Modules and environments</b>\n\n<b>Package versions</b>\nModules organize reusable code and dependencies; imports, entry points and environments keep projects maintainable.\n\n<b>Ключевая идея.</b> Package metadata can be queried through importlib.metadata when a distribution is installed.\n\n<b>Пример решения:</b>\n<pre>import platform\nprint(platform.python_version().split('.')[0])</pre>\n\n👇 <b>Практика:</b>\nRead a known standard-library distribution-independent Python version.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "import platform\n",
+    "hints": [
+      "import platform",
+      "print(platform.python_version().split('.')[0])"
+    ]
+  },
+  {
+    "index": 128,
+    "title": "Assertions in tests",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Assertions in tests</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> An assertion compares actual behavior with an expected value and fails loudly on a mismatch.\n\n<b>Пример решения:</b>\n<pre>assert 2 + 2 == 4\nprint('test passed')</pre>\n\n👇 <b>Практика:</b>\nAssert the result and print a success label.\nПроверь, что программа выводит:\n<pre>test passed</pre>",
+    "expectedOutput": "test passed",
+    "starterCode": "assert 2 + 2 == 4\n",
+    "hints": [
+      "assert 2 + 2 == 4",
+      "print('test passed')"
+    ]
+  },
+  {
+    "index": 129,
+    "title": "unittest test cases",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>unittest test cases</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> unittest groups checks into TestCase methods and provides expressive assertion helpers.\n\n<b>Пример решения:</b>\n<pre>import unittest\nclass MathTests(unittest.TestCase):\n    def test_double(self):\n        self.assertEqual(4 * 2, 8)\nsuite = unittest.TestLoader().loadTestsFromTestCase(MathTests)\nresult = unittest.TextTestRunner(stream=__import__('io').StringIO()).run(suite)\nprint(result.wasSuccessful())</pre>\n\n👇 <b>Практика:</b>\nRun one small unittest case.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import unittest\nclass MathTests(unittest.TestCase):\n    def test_double(self):\n        self.assertEqual(4 * 2, 8)\nsuite = unittest.TestLoader().loadTestsFromTestCase(MathTests)\nresult = unittest.TextTestRunner(stream=__import__('io').StringIO()).run(suite)\n",
+    "hints": [
+      "import unittest",
+      "class MathTests(unittest.TestCase):",
+      "    def test_double(self):",
+      "        self.assertEqual(4 * 2, 8)",
+      "suite = unittest.TestLoader().loadTestsFromTestCase(MathTests)",
+      "result = unittest.TextTestRunner(stream=__import__('io').StringIO()).run(suite)",
+      "print(result.wasSuccessful())"
+    ]
+  },
+  {
+    "index": 130,
+    "title": "Testing edge cases",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Testing edge cases</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> Boundary and empty-input tests often reveal bugs that ordinary examples miss.\n\n<b>Пример решения:</b>\n<pre>values = []\nprint('empty' if not values else max(values))</pre>\n\n👇 <b>Практика:</b>\nCheck that an empty list has no maximum only after a guard.\nПроверь, что программа выводит:\n<pre>empty</pre>",
+    "expectedOutput": "empty",
+    "starterCode": "values = []\n",
+    "hints": [
+      "values = []",
+      "print('empty' if not values else max(values))"
+    ]
+  },
+  {
+    "index": 131,
+    "title": "Testing exceptions",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Testing exceptions</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> Tests should verify both that an error occurs and that the failure communicates the contract.\n\n<b>Пример решения:</b>\n<pre>try:\n    int('bad')\nexcept ValueError:\n    print('expected error')</pre>\n\n👇 <b>Практика:</b>\nVerify a conversion raises ValueError.\nПроверь, что программа выводит:\n<pre>expected error</pre>",
+    "expectedOutput": "expected error",
+    "starterCode": "# Практика: Verify a conversion raises ValueError.\n",
+    "hints": [
+      "try:",
+      "    int('bad')",
+      "except ValueError:",
+      "    print('expected error')"
+    ]
+  },
+  {
+    "index": 132,
+    "title": "Test fixtures",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Test fixtures</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> Fixtures create repeatable input state and keep each test focused on its behavior.\n\n<b>Пример решения:</b>\n<pre>def make_user():\n    return {'id': 7, 'active': True}\nassert make_user()['id'] == 7\nprint('fixture ok')</pre>\n\n👇 <b>Практика:</b>\nBuild a reusable sample dictionary and assert its id.\nПроверь, что программа выводит:\n<pre>fixture ok</pre>",
+    "expectedOutput": "fixture ok",
+    "starterCode": "def make_user():\n    return {'id': 7, 'active': True}\nassert make_user()['id'] == 7\n",
+    "hints": [
+      "def make_user():",
+      "    return {'id': 7, 'active': True}",
+      "assert make_user()['id'] == 7",
+      "print('fixture ok')"
+    ]
+  },
+  {
+    "index": 133,
+    "title": "Test doubles",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Test doubles</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> A stub or fake supplies a controlled dependency so a test does not rely on external services.\n\n<b>Пример решения:</b>\n<pre>class FakeClock:\n    def now(self):\n        return '2026-01-01'\ndef label(clock):\n    return clock.now()\nprint(label(FakeClock()))</pre>\n\n👇 <b>Практика:</b>\nUse a fake clock value in a function.\nПроверь, что программа выводит:\n<pre>2026-01-01</pre>",
+    "expectedOutput": "2026-01-01",
+    "starterCode": "class FakeClock:\n    def now(self):\n        return '2026-01-01'\ndef label(clock):\n    return clock.now()\n",
+    "hints": [
+      "class FakeClock:",
+      "    def now(self):",
+      "        return '2026-01-01'",
+      "def label(clock):",
+      "    return clock.now()",
+      "print(label(FakeClock()))"
+    ]
+  },
+  {
+    "index": 134,
+    "title": "unittest.mock",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>unittest.mock</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> Mock objects record calls and provide controlled return values for isolated unit tests.\n\n<b>Пример решения:</b>\n<pre>from unittest.mock import Mock\nsend = Mock(return_value='queued')\nprint(send('message'), send.call_count)</pre>\n\n👇 <b>Практика:</b>\nSet a return value and call a mock.\nПроверь, что программа выводит:\n<pre>queued 1</pre>",
+    "expectedOutput": "queued 1",
+    "starterCode": "from unittest.mock import Mock\nsend = Mock(return_value='queued')\n",
+    "hints": [
+      "from unittest.mock import Mock",
+      "send = Mock(return_value='queued')",
+      "print(send('message'), send.call_count)"
+    ]
+  },
+  {
+    "index": 135,
+    "title": "Parameterized checks",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Parameterized checks</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> A table-driven test applies the same invariant to several representative inputs.\n\n<b>Пример решения:</b>\n<pre>def square(n):\n    return n * n\ncases = [(2, 4), (3, 9), (0, 0)]\nprint(all(square(n) == expected for n, expected in cases))</pre>\n\n👇 <b>Практика:</b>\nCheck a square function over several examples.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "def square(n):\n    return n * n\ncases = [(2, 4), (3, 9), (0, 0)]\n",
+    "hints": [
+      "def square(n):",
+      "    return n * n",
+      "cases = [(2, 4), (3, 9), (0, 0)]",
+      "print(all(square(n) == expected for n, expected in cases))"
+    ]
+  },
+  {
+    "index": 136,
+    "title": "Test discovery naming",
+    "theory": "📚 <b>Модуль: Testing and quality</b>\n\n<b>Test discovery naming</b>\nTests make expected behavior executable; small deterministic tests catch regressions and support safe refactoring.\n\n<b>Ключевая идея.</b> Conventional test file and method names help test runners discover checks automatically.\n\n<b>Пример решения:</b>\n<pre>name = 'test_round_trip'\nprint(name.startswith('test_'))</pre>\n\n👇 <b>Практика:</b>\nCheck the conventional test method prefix.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "name = 'test_round_trip'\n",
+    "hints": [
+      "name = 'test_round_trip'",
+      "print(name.startswith('test_'))"
+    ]
+  },
+  {
+    "index": 137,
+    "title": "Coroutine functions",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Coroutine functions</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> async def defines a coroutine function; calling it creates a coroutine that must be awaited.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nasync def fetch_label():\n    return 'ready'\nprint(asyncio.iscoroutinefunction(fetch_label))</pre>\n\n👇 <b>Практика:</b>\nCheck that a function is recognized as asynchronous.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nasync def fetch_label():\n    return 'ready'\n",
+    "hints": [
+      "import asyncio",
+      "async def fetch_label():",
+      "    return 'ready'",
+      "print(asyncio.iscoroutinefunction(fetch_label))"
+    ]
+  },
+  {
+    "index": 138,
+    "title": "Await expressions",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Await expressions</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> await suspends the current coroutine until the awaited operation produces a result.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nasync def pause():\n    await asyncio.sleep(0)\n    return 'resumed'\nprint(asyncio.iscoroutinefunction(pause))</pre>\n\n👇 <b>Практика:</b>\nDefine a coroutine with an awaitable sleep and inspect its type.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nasync def pause():\n    await asyncio.sleep(0)\n    return 'resumed'\n",
+    "hints": [
+      "import asyncio",
+      "async def pause():",
+      "    await asyncio.sleep(0)",
+      "    return 'resumed'",
+      "print(asyncio.iscoroutinefunction(pause))"
+    ]
+  },
+  {
+    "index": 139,
+    "title": "Creating tasks",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Creating tasks</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> create_task schedules a coroutine to run concurrently on the active event loop.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nasync def work():\n    return 5\nprint(asyncio.iscoroutinefunction(work))</pre>\n\n👇 <b>Практика:</b>\nDefine a task-producing coroutine without blocking the lesson runner.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nasync def work():\n    return 5\n",
+    "hints": [
+      "import asyncio",
+      "async def work():",
+      "    return 5",
+      "print(asyncio.iscoroutinefunction(work))"
+    ]
+  },
+  {
+    "index": 140,
+    "title": "Gathering results",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Gathering results</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> gather waits for multiple awaitables and returns results in their input order.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nasync def first():\n    return 1\nasync def second():\n    return 2\nprint(all(map(asyncio.iscoroutinefunction, [first, second])))</pre>\n\n👇 <b>Практика:</b>\nPrepare two coroutines and confirm both are coroutine functions.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nasync def first():\n    return 1\nasync def second():\n    return 2\n",
+    "hints": [
+      "import asyncio",
+      "async def first():",
+      "    return 1",
+      "async def second():",
+      "    return 2",
+      "print(all(map(asyncio.iscoroutinefunction, [first, second])))"
+    ]
+  },
+  {
+    "index": 141,
+    "title": "Async delays",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Async delays</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> asyncio.sleep is a non-blocking delay that gives other scheduled tasks time to run.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nasync def tick():\n    await asyncio.sleep(0)\n    return 'tick'\nprint(asyncio.iscoroutinefunction(tick))</pre>\n\n👇 <b>Практика:</b>\nCreate a coroutine that uses a zero-length cooperative delay.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nasync def tick():\n    await asyncio.sleep(0)\n    return 'tick'\n",
+    "hints": [
+      "import asyncio",
+      "async def tick():",
+      "    await asyncio.sleep(0)",
+      "    return 'tick'",
+      "print(asyncio.iscoroutinefunction(tick))"
+    ]
+  },
+  {
+    "index": 142,
+    "title": "Async iterators",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Async iterators</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> An async iterator implements __aiter__ and __anext__ and is consumed with async for.\n\n<b>Пример решения:</b>\n<pre>import inspect\nasync def values():\n    yield 1\nprint(inspect.isasyncgenfunction(values))</pre>\n\n👇 <b>Практика:</b>\nRecognize an async-generator function.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import inspect\nasync def values():\n    yield 1\n",
+    "hints": [
+      "import inspect",
+      "async def values():",
+      "    yield 1",
+      "print(inspect.isasyncgenfunction(values))"
+    ]
+  },
+  {
+    "index": 143,
+    "title": "Async context managers",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Async context managers</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> Async context managers provide __aenter__ and __aexit__ for asynchronous resource lifetimes.\n\n<b>Пример решения:</b>\n<pre>import inspect\nclass AsyncResource:\n    async def __aenter__(self):\n        return self\n    async def __aexit__(self, *exc):\n        return False\nprint(inspect.iscoroutinefunction(AsyncResource.__aenter__))</pre>\n\n👇 <b>Практика:</b>\nCheck that a class defines async entry and exit methods.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import inspect\nclass AsyncResource:\n    async def __aenter__(self):\n        return self\n    async def __aexit__(self, *exc):\n        return False\n",
+    "hints": [
+      "import inspect",
+      "class AsyncResource:",
+      "    async def __aenter__(self):",
+      "        return self",
+      "    async def __aexit__(self, *exc):",
+      "        return False",
+      "print(inspect.iscoroutinefunction(AsyncResource.__aenter__))"
+    ]
+  },
+  {
+    "index": 144,
+    "title": "Cancellation",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Cancellation</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> Task cancellation is cooperative and should be handled with cleanup in finally blocks.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nprint(asyncio.CancelledError.__name__)</pre>\n\n👇 <b>Практика:</b>\nDocument the cancellation exception type used by asyncio.\nПроверь, что программа выводит:\n<pre>CancelledError</pre>",
+    "expectedOutput": "CancelledError",
+    "starterCode": "import asyncio\n",
+    "hints": [
+      "import asyncio",
+      "print(asyncio.CancelledError.__name__)"
+    ]
+  },
+  {
+    "index": 145,
+    "title": "Timeouts",
+    "theory": "📚 <b>Модуль: Async Python fundamentals</b>\n\n<b>Timeouts</b>\nasyncio supports cooperative concurrency; coroutines yield control at await points and must be awaited.\n\n<b>Ключевая идея.</b> Timeouts bound waiting and should be chosen according to the operation's expected latency.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nprint(hasattr(asyncio, 'timeout') or hasattr(asyncio, 'wait_for'))</pre>\n\n👇 <b>Практика:</b>\nCheck that asyncio offers a timeout mechanism in this Python version.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\n",
+    "hints": [
+      "import asyncio",
+      "print(hasattr(asyncio, 'timeout') or hasattr(asyncio, 'wait_for'))"
+    ]
+  },
+  {
+    "index": 146,
+    "title": "Concurrent gather pattern",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Concurrent gather pattern</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> gather is appropriate when a group of independent coroutines can run together.\n\n<b>Пример решения:</b>\n<pre>results = [value * 2 for value in (1, 2, 3)]\nprint(results)</pre>\n\n👇 <b>Практика:</b>\nDescribe the expected gather return ordering with a small regular sequence.\nПроверь, что программа выводит:\n<pre>[2, 4, 6]</pre>",
+    "expectedOutput": "[2, 4, 6]",
+    "starterCode": "results = [value * 2 for value in (1, 2, 3)]\n",
+    "hints": [
+      "results = [value * 2 for value in (1, 2, 3)]",
+      "print(results)"
+    ]
+  },
+  {
+    "index": 147,
+    "title": "Semaphore limits",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Semaphore limits</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> A semaphore caps how many tasks can enter a critical region concurrently.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nlimit = asyncio.Semaphore(3)\nprint(limit._value)</pre>\n\n👇 <b>Практика:</b>\nCreate a semaphore with a maximum of three permits.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "import asyncio\nlimit = asyncio.Semaphore(3)\n",
+    "hints": [
+      "import asyncio",
+      "limit = asyncio.Semaphore(3)",
+      "print(limit._value)"
+    ]
+  },
+  {
+    "index": 148,
+    "title": "Queues and workers",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Queues and workers</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> asyncio.Queue safely hands work between asynchronous producers and consumers.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nqueue = asyncio.Queue()\nprint(queue.empty())</pre>\n\n👇 <b>Практика:</b>\nCreate a queue and check its initial state.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\nqueue = asyncio.Queue()\n",
+    "hints": [
+      "import asyncio",
+      "queue = asyncio.Queue()",
+      "print(queue.empty())"
+    ]
+  },
+  {
+    "index": 149,
+    "title": "Async locks",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Async locks</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> An asyncio.Lock coordinates coroutines that share mutable state across await points.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nlock = asyncio.Lock()\nprint(lock.locked())</pre>\n\n👇 <b>Практика:</b>\nCreate an unlocked asynchronous lock.\nПроверь, что программа выводит:\n<pre>False</pre>",
+    "expectedOutput": "False",
+    "starterCode": "import asyncio\nlock = asyncio.Lock()\n",
+    "hints": [
+      "import asyncio",
+      "lock = asyncio.Lock()",
+      "print(lock.locked())"
+    ]
+  },
+  {
+    "index": 150,
+    "title": "Task groups",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Task groups</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> TaskGroup scopes child task lifetimes so related work completes or fails as a unit.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nprint(hasattr(asyncio, 'TaskGroup') or hasattr(asyncio, 'gather'))</pre>\n\n👇 <b>Практика:</b>\nCheck for structured task groups or the portable gather primitive.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\n",
+    "hints": [
+      "import asyncio",
+      "print(hasattr(asyncio, 'TaskGroup') or hasattr(asyncio, 'gather'))"
+    ]
+  },
+  {
+    "index": 151,
+    "title": "Async generators",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Async generators</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> Async generators stream values incrementally and can be consumed with async for.\n\n<b>Пример решения:</b>\n<pre>import inspect\nasync def stream():\n    yield 'a'\n    yield 'b'\nprint(inspect.isasyncgenfunction(stream))</pre>\n\n👇 <b>Практика:</b>\nDeclare a two-value async generator and inspect it.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import inspect\nasync def stream():\n    yield 'a'\n    yield 'b'\n",
+    "hints": [
+      "import inspect",
+      "async def stream():",
+      "    yield 'a'",
+      "    yield 'b'",
+      "print(inspect.isasyncgenfunction(stream))"
+    ]
+  },
+  {
+    "index": 152,
+    "title": "Blocking work and threads",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Blocking work and threads</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> Blocking calls stall the event loop; asyncio.to_thread can move suitable blocking work off-loop.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nprint(hasattr(asyncio, 'to_thread') or hasattr(asyncio, 'run_coroutine_threadsafe'))</pre>\n\n👇 <b>Практика:</b>\nCheck that asyncio exposes a thread-related concurrency helper.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "import asyncio\n",
+    "hints": [
+      "import asyncio",
+      "print(hasattr(asyncio, 'to_thread') or hasattr(asyncio, 'run_coroutine_threadsafe'))"
+    ]
+  },
+  {
+    "index": 153,
+    "title": "Async exception handling",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Async exception handling</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> Exceptions raised by awaited work should be handled at a boundary where recovery is possible.\n\n<b>Пример решения:</b>\n<pre>async def operation():\n    try:\n        raise ValueError('offline')\n    except ValueError:\n        return 'retry later'\nprint('coroutine defined')</pre>\n\n👇 <b>Практика:</b>\nHandle a regular exception and preserve a stable result.\nПроверь, что программа выводит:\n<pre>coroutine defined</pre>",
+    "expectedOutput": "coroutine defined",
+    "starterCode": "async def operation():\n    try:\n        raise ValueError('offline')\n    except ValueError:\n        return 'retry later'\n",
+    "hints": [
+      "async def operation():",
+      "    try:",
+      "        raise ValueError('offline')",
+      "    except ValueError:",
+      "        return 'retry later'",
+      "print('coroutine defined')"
+    ]
+  },
+  {
+    "index": 154,
+    "title": "Backpressure",
+    "theory": "📚 <b>Модуль: Async patterns and concurrency</b>\n\n<b>Backpressure</b>\nAsync applications need bounded concurrency, cancellation-aware cleanup and careful separation of blocking work.\n\n<b>Ключевая идея.</b> Bounded queues apply backpressure so producers cannot create unlimited pending work.\n\n<b>Пример решения:</b>\n<pre>import asyncio\nqueue = asyncio.Queue(maxsize=2)\nprint(queue.maxsize)</pre>\n\n👇 <b>Практика:</b>\nCreate a queue with a capacity of two.\nПроверь, что программа выводит:\n<pre>2</pre>",
+    "expectedOutput": "2",
+    "starterCode": "import asyncio\nqueue = asyncio.Queue(maxsize=2)\n",
+    "hints": [
+      "import asyncio",
+      "queue = asyncio.Queue(maxsize=2)",
+      "print(queue.maxsize)"
+    ]
+  },
+  {
+    "index": 155,
+    "title": "Linear search",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Linear search</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> A linear scan checks items in order and takes time proportional to the input length.\n\n<b>Пример решения:</b>\n<pre>values = [3, 7, 9]\nprint(values.index(7))</pre>\n\n👇 <b>Практика:</b>\nFind the index of 7 in a short list.\nПроверь, что программа выводит:\n<pre>1</pre>",
+    "expectedOutput": "1",
+    "starterCode": "values = [3, 7, 9]\n",
+    "hints": [
+      "values = [3, 7, 9]",
+      "print(values.index(7))"
+    ]
+  },
+  {
+    "index": 156,
+    "title": "Binary search invariant",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Binary search invariant</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> Binary search repeatedly halves a sorted search interval, giving logarithmic comparisons.\n\n<b>Пример решения:</b>\n<pre>low, high = 0, 9\nprint((low + high) // 2)</pre>\n\n👇 <b>Практика:</b>\nCompute the midpoint of a search interval.\nПроверь, что программа выводит:\n<pre>4</pre>",
+    "expectedOutput": "4",
+    "starterCode": "low, high = 0, 9\n",
+    "hints": [
+      "low, high = 0, 9",
+      "print((low + high) // 2)"
+    ]
+  },
+  {
+    "index": 157,
+    "title": "Counting frequencies",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Counting frequencies</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> A frequency table counts occurrences in one pass and supports fast later lookups.\n\n<b>Пример решения:</b>\n<pre>from collections import Counter\nprint(Counter('mississippi')['s'])</pre>\n\n👇 <b>Практика:</b>\nCount repeated letters.\nПроверь, что программа выводит:\n<pre>4</pre>",
+    "expectedOutput": "4",
+    "starterCode": "from collections import Counter\n",
+    "hints": [
+      "from collections import Counter",
+      "print(Counter('mississippi')['s'])"
+    ]
+  },
+  {
+    "index": 158,
+    "title": "Two-pointer scan",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Two-pointer scan</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> Two pointers can scan inward from both ends and avoid repeatedly building slices.\n\n<b>Пример решения:</b>\n<pre>values = [1, 2, 1]\nprint(values == values[::-1])</pre>\n\n👇 <b>Практика:</b>\nCheck whether the short sequence is a palindrome.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "values = [1, 2, 1]\n",
+    "hints": [
+      "values = [1, 2, 1]",
+      "print(values == values[::-1])"
+    ]
+  },
+  {
+    "index": 159,
+    "title": "Stack behavior",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Stack behavior</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> A stack is last-in, first-out and can be implemented with list append and pop.\n\n<b>Пример решения:</b>\n<pre>stack = ['first', 'last']\nprint(stack.pop())</pre>\n\n👇 <b>Практика:</b>\nPop the most recently added item.\nПроверь, что программа выводит:\n<pre>last</pre>",
+    "expectedOutput": "last",
+    "starterCode": "stack = ['first', 'last']\n",
+    "hints": [
+      "stack = ['first', 'last']",
+      "print(stack.pop())"
+    ]
+  },
+  {
+    "index": 160,
+    "title": "Queue behavior",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Queue behavior</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> A queue is first-in, first-out; deque avoids the shifting cost of removing a list's first item.\n\n<b>Пример решения:</b>\n<pre>from collections import deque\nqueue = deque(['first', 'next'])\nprint(queue.popleft())</pre>\n\n👇 <b>Практика:</b>\nTake the earliest queued item.\nПроверь, что программа выводит:\n<pre>first</pre>",
+    "expectedOutput": "first",
+    "starterCode": "from collections import deque\nqueue = deque(['first', 'next'])\n",
+    "hints": [
+      "from collections import deque",
+      "queue = deque(['first', 'next'])",
+      "print(queue.popleft())"
+    ]
+  },
+  {
+    "index": 161,
+    "title": "Recursion and base cases",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Recursion and base cases</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> A recursive function needs a base case and a step that moves toward it.\n\n<b>Пример решения:</b>\n<pre>def factorial(n):\n    return 1 if n <= 1 else n * factorial(n - 1)\nprint(factorial(4))</pre>\n\n👇 <b>Практика:</b>\nCalculate 4! recursively.\nПроверь, что программа выводит:\n<pre>24</pre>",
+    "expectedOutput": "24",
+    "starterCode": "def factorial(n):\n    return 1 if n <= 1 else n * factorial(n - 1)\n",
+    "hints": [
+      "def factorial(n):",
+      "    return 1 if n <= 1 else n * factorial(n - 1)",
+      "print(factorial(4))"
+    ]
+  },
+  {
+    "index": 162,
+    "title": "Memoized recursion",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Memoized recursion</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> Memoization saves repeated subproblem results and can turn exponential recursion into a tractable algorithm.\n\n<b>Пример решения:</b>\n<pre>from functools import lru_cache\n@lru_cache(None)\ndef fib(n):\n    return n if n < 2 else fib(n - 1) + fib(n - 2)\nprint(fib(10))</pre>\n\n👇 <b>Практика:</b>\nCalculate a Fibonacci value with caching.\nПроверь, что программа выводит:\n<pre>55</pre>",
+    "expectedOutput": "55",
+    "starterCode": "from functools import lru_cache\n@lru_cache(None)\ndef fib(n):\n    return n if n < 2 else fib(n - 1) + fib(n - 2)\n",
+    "hints": [
+      "from functools import lru_cache",
+      "@lru_cache(None)",
+      "def fib(n):",
+      "    return n if n < 2 else fib(n - 1) + fib(n - 2)",
+      "print(fib(10))"
+    ]
+  },
+  {
+    "index": 163,
+    "title": "Stable sorting",
+    "theory": "📚 <b>Модуль: Algorithms and complexity</b>\n\n<b>Stable sorting</b>\nAlgorithmic thinking starts with correct invariants and considers how runtime and memory grow with input size.\n\n<b>Ключевая идея.</b> Python's sort is stable, so equal keys preserve their previous relative order.\n\n<b>Пример решения:</b>\n<pre>records = [('A', 2), ('B', 1), ('C', 2)]\nprint([name for name, score in sorted(records, key=lambda row: row[1])])</pre>\n\n👇 <b>Практика:</b>\nSort records by score and retain ties in input order.\nПроверь, что программа выводит:\n<pre>['B', 'A', 'C']</pre>",
+    "expectedOutput": "['B', 'A', 'C']",
+    "starterCode": "records = [('A', 2), ('B', 1), ('C', 2)]\n",
+    "hints": [
+      "records = [('A', 2), ('B', 1), ('C', 2)]",
+      "print([name for name, score in sorted(records, key=lambda row: row[1])])"
+    ]
+  },
+  {
+    "index": 164,
+    "title": "Single responsibility",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Single responsibility</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> A function with one clear responsibility is easier to name, test and change independently.\n\n<b>Пример решения:</b>\n<pre>def total(prices):\n    return sum(prices)\nprint(total([2, 3, 5]))</pre>\n\n👇 <b>Практика:</b>\nSeparate a pure total calculation from presentation.\nПроверь, что программа выводит:\n<pre>10</pre>",
+    "expectedOutput": "10",
+    "starterCode": "def total(prices):\n    return sum(prices)\n",
+    "hints": [
+      "def total(prices):",
+      "    return sum(prices)",
+      "print(total([2, 3, 5]))"
+    ]
+  },
+  {
+    "index": 165,
+    "title": "Pure functions",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Pure functions</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> A pure function depends only on its inputs and returns a value without hidden side effects.\n\n<b>Пример решения:</b>\n<pre>def to_celsius(fahrenheit):\n    return (fahrenheit - 32) * 5 / 9\nprint(to_celsius(32))</pre>\n\n👇 <b>Практика:</b>\nCall a deterministic conversion twice.\nПроверь, что программа выводит:\n<pre>0.0</pre>",
+    "expectedOutput": "0.0",
+    "starterCode": "def to_celsius(fahrenheit):\n    return (fahrenheit - 32) * 5 / 9\n",
+    "hints": [
+      "def to_celsius(fahrenheit):",
+      "    return (fahrenheit - 32) * 5 / 9",
+      "print(to_celsius(32))"
+    ]
+  },
+  {
+    "index": 166,
+    "title": "Dependency injection",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Dependency injection</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> Passing a dependency explicitly makes a component easier to reuse and test.\n\n<b>Пример решения:</b>\n<pre>def notify(sender, text):\n    return sender(text)\nprint(notify(lambda value: 'sent: ' + value, 'hello'))</pre>\n\n👇 <b>Практика:</b>\nInject a sender instead of constructing it inside the function.\nПроверь, что программа выводит:\n<pre>sent: hello</pre>",
+    "expectedOutput": "sent: hello",
+    "starterCode": "def notify(sender, text):\n    return sender(text)\n",
+    "hints": [
+      "def notify(sender, text):",
+      "    return sender(text)",
+      "print(notify(lambda value: 'sent: ' + value, 'hello'))"
+    ]
+  },
+  {
+    "index": 167,
+    "title": "Layered design",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Layered design</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> Separating input, domain logic and output prevents transport details from leaking into core rules.\n\n<b>Пример решения:</b>\n<pre>def discount(price, rate):\n    return price * (1 - rate)\nprint(discount(100, 0.1))</pre>\n\n👇 <b>Практика:</b>\nKeep the domain calculation independent of display formatting.\nПроверь, что программа выводит:\n<pre>90.0</pre>",
+    "expectedOutput": "90.0",
+    "starterCode": "def discount(price, rate):\n    return price * (1 - rate)\n",
+    "hints": [
+      "def discount(price, rate):",
+      "    return price * (1 - rate)",
+      "print(discount(100, 0.1))"
+    ]
+  },
+  {
+    "index": 168,
+    "title": "Repository pattern",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Repository pattern</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> A repository abstracts persistence behind a small interface so business logic can use a fake in tests.\n\n<b>Пример решения:</b>\n<pre>class Repository:\n    def get(self, key):\n        return {'id': key}\nprint(Repository().get(7)['id'])</pre>\n\n👇 <b>Практика:</b>\nUse an in-memory repository to retrieve a record.\nПроверь, что программа выводит:\n<pre>7</pre>",
+    "expectedOutput": "7",
+    "starterCode": "class Repository:\n    def get(self, key):\n        return {'id': key}\n",
+    "hints": [
+      "class Repository:",
+      "    def get(self, key):",
+      "        return {'id': key}",
+      "print(Repository().get(7)['id'])"
+    ]
+  },
+  {
+    "index": 169,
+    "title": "Configuration objects",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Configuration objects</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> A configuration object groups related settings and makes defaults visible at application boundaries.\n\n<b>Пример решения:</b>\n<pre>from dataclasses import dataclass\n@dataclass\nclass Config:\n    port: int = 8000\nprint(Config().port)</pre>\n\n👇 <b>Практика:</b>\nCreate a dataclass with a readable port default.\nПроверь, что программа выводит:\n<pre>8000</pre>",
+    "expectedOutput": "8000",
+    "starterCode": "from dataclasses import dataclass\n@dataclass\nclass Config:\n    port: int = 8000\n",
+    "hints": [
+      "from dataclasses import dataclass",
+      "@dataclass",
+      "class Config:",
+      "    port: int = 8000",
+      "print(Config().port)"
+    ]
+  },
+  {
+    "index": 170,
+    "title": "Domain validation",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Domain validation</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> Validate domain invariants at a clear boundary so invalid states do not spread through the application.\n\n<b>Пример решения:</b>\n<pre>def validate_username(name):\n    if not name.strip():\n        return 'required'\n    return 'ok'\nprint(validate_username('   '))</pre>\n\n👇 <b>Практика:</b>\nReject an empty username.\nПроверь, что программа выводит:\n<pre>required</pre>",
+    "expectedOutput": "required",
+    "starterCode": "def validate_username(name):\n    if not name.strip():\n        return 'required'\n    return 'ok'\n",
+    "hints": [
+      "def validate_username(name):",
+      "    if not name.strip():",
+      "        return 'required'",
+      "    return 'ok'",
+      "print(validate_username('   '))"
+    ]
+  },
+  {
+    "index": 171,
+    "title": "Event-driven design",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Event-driven design</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> Events describe facts that already happened and let independent handlers react without direct coupling.\n\n<b>Пример решения:</b>\n<pre>from dataclasses import dataclass\n@dataclass(frozen=True)\nclass LessonCompleted:\n    lesson_index: int\nprint(LessonCompleted(4).lesson_index)</pre>\n\n👇 <b>Практика:</b>\nRepresent a completed event with a small immutable record.\nПроверь, что программа выводит:\n<pre>4</pre>",
+    "expectedOutput": "4",
+    "starterCode": "from dataclasses import dataclass\n@dataclass(frozen=True)\nclass LessonCompleted:\n    lesson_index: int\n",
+    "hints": [
+      "from dataclasses import dataclass",
+      "@dataclass(frozen=True)",
+      "class LessonCompleted:",
+      "    lesson_index: int",
+      "print(LessonCompleted(4).lesson_index)"
+    ]
+  },
+  {
+    "index": 172,
+    "title": "Adapter pattern",
+    "theory": "📚 <b>Модуль: Architecture and design</b>\n\n<b>Adapter pattern</b>\nGood architecture separates responsibilities, limits coupling and makes behavior easy to test and evolve.\n\n<b>Ключевая идея.</b> An adapter translates one interface into another while leaving the underlying collaborator unchanged.\n\n<b>Пример решения:</b>\n<pre>class Legacy:\n    def deliver(self, text):\n        return 'delivered ' + text\nclass Sender:\n    def __init__(self, legacy):\n        self.legacy = legacy\n    def send(self, text):\n        return self.legacy.deliver(text)\nprint(Sender(Legacy()).send('note'))</pre>\n\n👇 <b>Практика:</b>\nAdapt a legacy method to a new send interface.\nПроверь, что программа выводит:\n<pre>delivered note</pre>",
+    "expectedOutput": "delivered note",
+    "starterCode": "class Legacy:\n    def deliver(self, text):\n        return 'delivered ' + text\nclass Sender:\n    def __init__(self, legacy):\n        self.legacy = legacy\n    def send(self, text):\n        return self.legacy.deliver(text)\n",
+    "hints": [
+      "class Legacy:",
+      "    def deliver(self, text):",
+      "        return 'delivered ' + text",
+      "class Sender:",
+      "    def __init__(self, legacy):",
+      "        self.legacy = legacy",
+      "    def send(self, text):",
+      "        return self.legacy.deliver(text)",
+      "print(Sender(Legacy()).send('note'))"
+    ]
+  },
+  {
+    "index": 173,
+    "title": "CLI greeting",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>CLI greeting</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> A small CLI starts with a function that accepts values rather than reading global state.\n\n<b>Пример решения:</b>\n<pre>def greet(name):\n    return f'Hello, {name}!'\nprint(greet('Python learner'))</pre>\n\n👇 <b>Практика:</b>\nBuild a greeting for the supplied name.\nПроверь, что программа выводит:\n<pre>Hello, Python learner!</pre>",
+    "expectedOutput": "Hello, Python learner!",
+    "starterCode": "def greet(name):\n    return f'Hello, {name}!'\n",
+    "hints": [
+      "def greet(name):",
+      "    return f'Hello, {name}!'",
+      "print(greet('Python learner'))"
+    ]
+  },
+  {
+    "index": 174,
+    "title": "CLI argument defaults",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>CLI argument defaults</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> Defaults make optional command-line inputs convenient while keeping behavior predictable.\n\n<b>Пример решения:</b>\n<pre>options = {'format': 'text'}\nprint(options.get('format', 'json'))</pre>\n\n👇 <b>Практика:</b>\nUse a default output format when no option is supplied.\nПроверь, что программа выводит:\n<pre>text</pre>",
+    "expectedOutput": "text",
+    "starterCode": "options = {'format': 'text'}\n",
+    "hints": [
+      "options = {'format': 'text'}",
+      "print(options.get('format', 'json'))"
+    ]
+  },
+  {
+    "index": 175,
+    "title": "Input validation",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Input validation</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> Validate and normalize user input before passing it into core logic.\n\n<b>Пример решения:</b>\n<pre>command = '  RUN  '.strip().lower()\nprint(command)</pre>\n\n👇 <b>Практика:</b>\nNormalize a padded command name.\nПроверь, что программа выводит:\n<pre>run</pre>",
+    "expectedOutput": "run",
+    "starterCode": "command = '  RUN  '.strip().lower()\n",
+    "hints": [
+      "command = '  RUN  '.strip().lower()",
+      "print(command)"
+    ]
+  },
+  {
+    "index": 176,
+    "title": "Exit codes",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Exit codes</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> A CLI uses zero for success and a nonzero status to signal failure to scripts.\n\n<b>Пример решения:</b>\n<pre>success = True\nstatus = 0 if success else 1\nprint(status)</pre>\n\n👇 <b>Практика:</b>\nChoose a success status for a completed action.\nПроверь, что программа выводит:\n<pre>0</pre>",
+    "expectedOutput": "0",
+    "starterCode": "success = True\nstatus = 0 if success else 1\n",
+    "hints": [
+      "success = True",
+      "status = 0 if success else 1",
+      "print(status)"
+    ]
+  },
+  {
+    "index": 177,
+    "title": "Help text",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Help text</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> A helpful command-line interface documents its purpose and available options.\n\n<b>Пример решения:</b>\n<pre>program = 'study'\nprint(f'Usage: {program} [--help]')</pre>\n\n👇 <b>Практика:</b>\nCreate a short usage line.\nПроверь, что программа выводит:\n<pre>Usage: study [--help]</pre>",
+    "expectedOutput": "Usage: study [--help]",
+    "starterCode": "program = 'study'\n",
+    "hints": [
+      "program = 'study'",
+      "print(f'Usage: {program} [--help]')"
+    ]
+  },
+  {
+    "index": 178,
+    "title": "Table output",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Table output</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> Column formatting makes command output easier to scan without changing the underlying values.\n\n<b>Пример решения:</b>\n<pre>print(f'{\"NAME\":<8} SCORE')\nprint(f'{\"Ada\":<8} 10')</pre>\n\n👇 <b>Практика:</b>\nAlign two labels in a simple report.\nПроверь, что программа выводит:\n<pre>NAME     SCORE\nAda      10</pre>",
+    "expectedOutput": "NAME     SCORE\nAda      10",
+    "starterCode": "print(f'{\"NAME\":<8} SCORE')\n",
+    "hints": [
+      "print(f'{\"NAME\":<8} SCORE')",
+      "print(f'{\"Ada\":<8} 10')"
+    ]
+  },
+  {
+    "index": 179,
+    "title": "Configuration precedence",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Configuration precedence</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> Explicit arguments commonly override environment configuration, which overrides defaults.\n\n<b>Пример решения:</b>\n<pre>default, env, argument = 'text', 'json', 'csv'\nprint(argument or env or default)</pre>\n\n👇 <b>Практика:</b>\nChoose the command-line value when both are available.\nПроверь, что программа выводит:\n<pre>csv</pre>",
+    "expectedOutput": "csv",
+    "starterCode": "default, env, argument = 'text', 'json', 'csv'\n",
+    "hints": [
+      "default, env, argument = 'text', 'json', 'csv'",
+      "print(argument or env or default)"
+    ]
+  },
+  {
+    "index": 180,
+    "title": "Retry policy",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Retry policy</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> Retries should be bounded and used only when repeating an operation is safe.\n\n<b>Пример решения:</b>\n<pre>retries = 2\nprint(retries + 1)</pre>\n\n👇 <b>Практика:</b>\nCalculate the total attempts from two retries.\nПроверь, что программа выводит:\n<pre>3</pre>",
+    "expectedOutput": "3",
+    "starterCode": "retries = 2\n",
+    "hints": [
+      "retries = 2",
+      "print(retries + 1)"
+    ]
+  },
+  {
+    "index": 181,
+    "title": "Command dispatch",
+    "theory": "📚 <b>Модуль: Project: CLI utilities</b>\n\n<b>Command dispatch</b>\nA command-line project benefits from clear input parsing, reusable functions, stable output and deliberate error handling.\n\n<b>Ключевая идея.</b> A dispatch table maps command names to handlers and avoids long nested conditionals.\n\n<b>Пример решения:</b>\n<pre>handlers = {'list': 'show_items', 'add': 'add_item'}\nprint(handlers['list'])</pre>\n\n👇 <b>Практика:</b>\nSelect the handler for the list command.\nПроверь, что программа выводит:\n<pre>show_items</pre>",
+    "expectedOutput": "show_items",
+    "starterCode": "handlers = {'list': 'show_items', 'add': 'add_item'}\n",
+    "hints": [
+      "handlers = {'list': 'show_items', 'add': 'add_item'}",
+      "print(handlers['list'])"
+    ]
+  },
+  {
+    "index": 182,
+    "title": "Parse a record",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Parse a record</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> Parsing turns an external representation into values that the application can validate.\n\n<b>Пример решения:</b>\n<pre>key, value = 'mode=study'.split('=', 1)\nprint(key, value)</pre>\n\n👇 <b>Практика:</b>\nParse a key-value line.\nПроверь, что программа выводит:\n<pre>mode study</pre>",
+    "expectedOutput": "mode study",
+    "starterCode": "key, value = 'mode=study'.split('=', 1)\n",
+    "hints": [
+      "key, value = 'mode=study'.split('=', 1)",
+      "print(key, value)"
+    ]
+  },
+  {
+    "index": 183,
+    "title": "Validate a payload",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Validate a payload</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> Schema checks confirm required fields and types before processing data.\n\n<b>Пример решения:</b>\n<pre>payload = {'id': 12}\nprint(isinstance(payload.get('id'), int))</pre>\n\n👇 <b>Практика:</b>\nCheck that a payload contains an integer id.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "payload = {'id': 12}\n",
+    "hints": [
+      "payload = {'id': 12}",
+      "print(isinstance(payload.get('id'), int))"
+    ]
+  },
+  {
+    "index": 184,
+    "title": "Transform records",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Transform records</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> A transformation should be a small deterministic function from one record shape to another.\n\n<b>Пример решения:</b>\n<pre>record = {'name': '  ADA  '}\nclean = {'name': record['name'].strip().title()}\nprint(clean)</pre>\n\n👇 <b>Практика:</b>\nNormalize names from an input record.\nПроверь, что программа выводит:\n<pre>{'name': 'Ada'}</pre>",
+    "expectedOutput": "{'name': 'Ada'}",
+    "starterCode": "record = {'name': '  ADA  '}\nclean = {'name': record['name'].strip().title()}\n",
+    "hints": [
+      "record = {'name': '  ADA  '}",
+      "clean = {'name': record['name'].strip().title()}",
+      "print(clean)"
+    ]
+  },
+  {
+    "index": 185,
+    "title": "Aggregate data",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Aggregate data</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> Aggregation combines many records into a useful summary.\n\n<b>Пример решения:</b>\n<pre>orders = [{'total': 5}, {'total': 8}]\nprint(sum(order['total'] for order in orders))</pre>\n\n👇 <b>Практика:</b>\nSum the totals from two records.\nПроверь, что программа выводит:\n<pre>13</pre>",
+    "expectedOutput": "13",
+    "starterCode": "orders = [{'total': 5}, {'total': 8}]\n",
+    "hints": [
+      "orders = [{'total': 5}, {'total': 8}]",
+      "print(sum(order['total'] for order in orders))"
+    ]
+  },
+  {
+    "index": 186,
+    "title": "Pagination math",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Pagination math</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> Offset pagination derives a start and end from a page number and page size.\n\n<b>Пример решения:</b>\n<pre>page, size = 2, 3\nstart = (page - 1) * size\nprint(start, start + size)</pre>\n\n👇 <b>Практика:</b>\nCompute the slice for page 2 with three items per page.\nПроверь, что программа выводит:\n<pre>3 6</pre>",
+    "expectedOutput": "3 6",
+    "starterCode": "page, size = 2, 3\nstart = (page - 1) * size\n",
+    "hints": [
+      "page, size = 2, 3",
+      "start = (page - 1) * size",
+      "print(start, start + size)"
+    ]
+  },
+  {
+    "index": 187,
+    "title": "Cache key design",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Cache key design</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> A cache key must include every input that can change the cached result.\n\n<b>Пример решения:</b>\n<pre>user_id, locale = 7, 'en'\nprint(f'user:{user_id}:{locale}')</pre>\n\n👇 <b>Практика:</b>\nBuild a stable key from user and locale.\nПроверь, что программа выводит:\n<pre>user:7:en</pre>",
+    "expectedOutput": "user:7:en",
+    "starterCode": "user_id, locale = 7, 'en'\n",
+    "hints": [
+      "user_id, locale = 7, 'en'",
+      "print(f'user:{user_id}:{locale}')"
+    ]
+  },
+  {
+    "index": 188,
+    "title": "Idempotent updates",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>Idempotent updates</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> An idempotent operation can be repeated without changing the final result after the first application.\n\n<b>Пример решения:</b>\n<pre>tags = set()\nfor _ in range(2):\n    tags.add('python')\nprint(len(tags))</pre>\n\n👇 <b>Практика:</b>\nApply a set-based tag update twice and inspect unique tags.\nПроверь, что программа выводит:\n<pre>1</pre>",
+    "expectedOutput": "1",
+    "starterCode": "tags = set()\nfor _ in range(2):\n    tags.add('python')\n",
+    "hints": [
+      "tags = set()",
+      "for _ in range(2):",
+      "    tags.add('python')",
+      "print(len(tags))"
+    ]
+  },
+  {
+    "index": 189,
+    "title": "HTTP status concepts",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>HTTP status concepts</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> Status codes communicate whether a request succeeded, failed validation or needs authentication.\n\n<b>Пример решения:</b>\n<pre>status = 200\nprint('success' if 200 <= status < 300 else 'error')</pre>\n\n👇 <b>Практика:</b>\nClassify a successful 200 response.\nПроверь, что программа выводит:\n<pre>success</pre>",
+    "expectedOutput": "success",
+    "starterCode": "status = 200\n",
+    "hints": [
+      "status = 200",
+      "print('success' if 200 <= status < 300 else 'error')"
+    ]
+  },
+  {
+    "index": 190,
+    "title": "JSON response shape",
+    "theory": "📚 <b>Модуль: Project: data and web concepts</b>\n\n<b>JSON response shape</b>\nData-oriented applications transform validated input into useful results and isolate transport concerns from domain logic.\n\n<b>Ключевая идея.</b> A stable response envelope makes clients less dependent on incidental internal details.\n\n<b>Пример решения:</b>\n<pre>response = {'ok': True, 'data': [1, 2]}\nprint(response['ok'], len(response['data']))</pre>\n\n👇 <b>Практика:</b>\nCreate a successful response envelope.\nПроверь, что программа выводит:\n<pre>True 2</pre>",
+    "expectedOutput": "True 2",
+    "starterCode": "response = {'ok': True, 'data': [1, 2]}\n",
+    "hints": [
+      "response = {'ok': True, 'data': [1, 2]}",
+      "print(response['ok'], len(response['data']))"
+    ]
+  },
+  {
+    "index": 191,
+    "title": "Define acceptance criteria",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Define acceptance criteria</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Acceptance criteria turn a vague request into observable behaviors that can be implemented and tested.\n\n<b>Пример решения:</b>\n<pre>score = 80\nprint(score >= 60)</pre>\n\n👇 <b>Практика:</b>\nExpress a passing score rule as a Boolean.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "score = 80\n",
+    "hints": [
+      "score = 80",
+      "print(score >= 60)"
+    ]
+  },
+  {
+    "index": 192,
+    "title": "Break work into functions",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Break work into functions</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Small functions create seams for independent tests and make a capstone easier to reason about.\n\n<b>Пример решения:</b>\n<pre>def add(a, b):\n    return a + b\ndef label(value):\n    return f'total={value}'\nprint(label(add(3, 4)))</pre>\n\n👇 <b>Практика:</b>\nCompose two small steps to format a result.\nПроверь, что программа выводит:\n<pre>total=7</pre>",
+    "expectedOutput": "total=7",
+    "starterCode": "def add(a, b):\n    return a + b\ndef label(value):\n    return f'total={value}'\n",
+    "hints": [
+      "def add(a, b):",
+      "    return a + b",
+      "def label(value):",
+      "    return f'total={value}'",
+      "print(label(add(3, 4)))"
+    ]
+  },
+  {
+    "index": 193,
+    "title": "Choose data structures",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Choose data structures</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Choosing a mapping for keyed lookup or a set for uniqueness clarifies intent and complexity.\n\n<b>Пример решения:</b>\n<pre>tags = ['python', 'async', 'python']\nprint(len(set(tags)))</pre>\n\n👇 <b>Практика:</b>\nCount distinct tags using a set.\nПроверь, что программа выводит:\n<pre>2</pre>",
+    "expectedOutput": "2",
+    "starterCode": "tags = ['python', 'async', 'python']\n",
+    "hints": [
+      "tags = ['python', 'async', 'python']",
+      "print(len(set(tags)))"
+    ]
+  },
+  {
+    "index": 194,
+    "title": "Document public behavior",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Document public behavior</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Documentation explains purpose, inputs and outputs so users can rely on a stable interface.\n\n<b>Пример решения:</b>\n<pre>def slugify(text):\n    '''Convert text to a simple lowercase slug.'''\n    return text.lower().replace(' ', '-')\nprint(slugify.__doc__)</pre>\n\n👇 <b>Практика:</b>\nReturn the docstring of a documented public helper.\nПроверь, что программа выводит:\n<pre>Convert text to a simple lowercase slug.</pre>",
+    "expectedOutput": "Convert text to a simple lowercase slug.",
+    "starterCode": "def slugify(text):\n    '''Convert text to a simple lowercase slug.'''\n    return text.lower().replace(' ', '-')\n",
+    "hints": [
+      "def slugify(text):",
+      "    '''Convert text to a simple lowercase slug.'''",
+      "    return text.lower().replace(' ', '-')",
+      "print(slugify.__doc__)"
+    ]
+  },
+  {
+    "index": 195,
+    "title": "Review code safely",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Review code safely</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Code review checks correctness, edge cases, readability and tests before implementation details are merged.\n\n<b>Пример решения:</b>\n<pre>def is_even(value):\n    return value % 2 == 0\nprint(is_even(14))</pre>\n\n👇 <b>Практика:</b>\nUse a focused predicate for a simple reviewable rule.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "def is_even(value):\n    return value % 2 == 0\n",
+    "hints": [
+      "def is_even(value):",
+      "    return value % 2 == 0",
+      "print(is_even(14))"
+    ]
+  },
+  {
+    "index": 196,
+    "title": "Versioned interfaces",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Versioned interfaces</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Versioning lets a project evolve public contracts without surprising existing clients.\n\n<b>Пример решения:</b>\n<pre>version = (1, 2, 0)\nprint('.'.join(map(str, version)))</pre>\n\n👇 <b>Практика:</b>\nRepresent a simple semantic version.\nПроверь, что программа выводит:\n<pre>1.2.0</pre>",
+    "expectedOutput": "1.2.0",
+    "starterCode": "version = (1, 2, 0)\n",
+    "hints": [
+      "version = (1, 2, 0)",
+      "print('.'.join(map(str, version)))"
+    ]
+  },
+  {
+    "index": 197,
+    "title": "Observability",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Observability</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Useful logs and metrics describe system behavior without exposing secrets or sensitive user data.\n\n<b>Пример решения:</b>\n<pre>event = {'action': 'lesson_complete', 'user_id': 7}\nprint(event['action'])</pre>\n\n👇 <b>Практика:</b>\nCreate a sanitized event label.\nПроверь, что программа выводит:\n<pre>lesson_complete</pre>",
+    "expectedOutput": "lesson_complete",
+    "starterCode": "event = {'action': 'lesson_complete', 'user_id': 7}\n",
+    "hints": [
+      "event = {'action': 'lesson_complete', 'user_id': 7}",
+      "print(event['action'])"
+    ]
+  },
+  {
+    "index": 198,
+    "title": "Security-minded configuration",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Security-minded configuration</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> Keep credentials outside source code and avoid logging or publishing secret configuration values.\n\n<b>Пример решения:</b>\n<pre>secret = ''\nprint(bool(secret))</pre>\n\n👇 <b>Практика:</b>\nCheck whether a secret is configured without printing it.\nПроверь, что программа выводит:\n<pre>False</pre>",
+    "expectedOutput": "False",
+    "starterCode": "secret = ''\n",
+    "hints": [
+      "secret = ''",
+      "print(bool(secret))"
+    ]
+  },
+  {
+    "index": 199,
+    "title": "Release checklist",
+    "theory": "📚 <b>Модуль: Project: capstone and professional practice</b>\n\n<b>Release checklist</b>\nA finished project combines clear requirements, modular implementation, tests, documentation and maintainable delivery.\n\n<b>Ключевая идея.</b> A release checklist verifies tests, documentation and artifact consistency before deployment.\n\n<b>Пример решения:</b>\n<pre>checks = {'tests': True, 'docs': True, 'data': True}\nprint(all(checks.values()))</pre>\n\n👇 <b>Практика:</b>\nCombine three release checks into one result.\nПроверь, что программа выводит:\n<pre>True</pre>",
+    "expectedOutput": "True",
+    "starterCode": "checks = {'tests': True, 'docs': True, 'data': True}\n",
+    "hints": [
+      "checks = {'tests': True, 'docs': True, 'data': True}",
+      "print(all(checks.values()))"
+    ]
+  }
+]
