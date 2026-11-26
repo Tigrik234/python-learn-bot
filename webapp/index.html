@@ -190,7 +190,10 @@
                 const params = new URLSearchParams(window.location.search);
                 const encoded = params.get('data');
                 if (encoded) {
-                    lessonData = JSON.parse(atob(decodeURIComponent(encoded)));
+                    const binary = atob(encoded);
+                    const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+                    const jsonText = new TextDecoder('utf-8').decode(bytes);
+                    lessonData = JSON.parse(jsonText);
                     return true;
                 }
             } catch (e) {
@@ -277,7 +280,7 @@ sys.stdout = StringIO()
 
             try {
                 pyodide.runPython(code);
-                captured = pyodide.runPython(`sys._stdout.getvalue()`);
+                const captured = pyodide.runPython(`sys.stdout.getvalue()`);
 
                 // Восстанавливаем stdout
                 pyodide.runPython(`sys.stdout = sys._stdout`);
@@ -364,14 +367,6 @@ sys.stdout = StringIO()
             output.style.display = outputVisible ? 'block' : 'none';
             toggle.textContent = outputVisible ? '▲' : '▼';
         }
-
-        window.addEventListener('beforeunload', () => {
-            tg.sendData(JSON.stringify({
-                action: 'lesson_complete',
-                lessonIndex: lessonData.index,
-                code: editor.getValue(),
-            }));
-        });
 
         initPyodide();
     </script>

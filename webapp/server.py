@@ -2,10 +2,11 @@ import json
 import subprocess
 import sys
 import asyncio
+import os
 from aiohttp import web
 from pathlib import Path
-
-LESSONS = json.loads(Path('lessons.json').read_text(encoding='utf-8'))
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from lessons import LESSONS
 
 
 async def handle_run(request):
@@ -14,7 +15,7 @@ async def handle_run(request):
     lesson_idx = data.get('lessonIndex', 0)
 
     lesson = LESSONS[lesson_idx]
-    expected = lesson['expectedOutput'].strip()
+    expected = lesson['expected_output'].strip()
 
     # Выполняем код в изолированной среде
     try:
@@ -42,8 +43,8 @@ def _exec_code(code):
     sys.stdout = captured
     try:
         exec(code, {'__builtins__': __builtins__})
-    except Exception:
-        pass
+    except Exception as exc:
+        print(type(exc).__name__ + ': ' + str(exc))
     finally:
         sys.stdout = old
     return captured.getvalue()

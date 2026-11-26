@@ -1,7 +1,9 @@
 import os
-import io
 import sys
 import asyncio
+import html
+import re
+from typing import Optional
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo, WebAppData
@@ -168,7 +170,9 @@ async def cb_terminal(callback: types.CallbackQuery):
     import json
     import base64
 
-    encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode()).decode()
+    encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode("utf-8")).decode("ascii")
+    from urllib.parse import quote
+    encoded = quote(encoded, safe="")
 
     # Telegram режет #hash, используем ?data=
     app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?data={encoded}"
@@ -201,9 +205,9 @@ async def cb_run_code(callback: types.CallbackQuery):
     lesson = LESSONS[lesson_idx]
 
     try:
-        result = run_user_code(user_code, lesson)
+        result = await run_user_code_async(user_code, lesson)
     except Exception as e:
-        await callback.answer(f"Ошибка: {str(e)}")
+        await callback.answer(f"Ошибка выполнения: {html.escape(str(e))}")
         return
 
     if result["success"]:
@@ -215,8 +219,7 @@ async def cb_run_code(callback: types.CallbackQuery):
         term_text = build_terminal_text(lesson, [])
         await update_terminal_with_keyboard(callback.from_user.id, term_text)
     else:
-        await callback.message.answer(f"❌ Неверно. Ожидалось: {lesson['expected_output']}")
-        # Автоматически очищаем код
+        await callback.message.answer(f"❌ Неверно. Ожидалось: {html.escape(lesson['expected_output'])}\n\nТвой вывод:\n```\n{html.escape(result['output'])}\n```")
         state["code_lines"] = []
 
         term_text = build_terminal_text(lesson, [])
@@ -481,30 +484,52 @@ async def cmd_next(message: Message):
     )
 
 
-def run_user_code(code: str, lesson: dict) -> dict:
-    """Выполняет код пользователя и проверяет вывод."""
-    captured_output = io.StringIO()
-    old_stdout = sys.stdout
-    sys.stdout = captured_output
+def _check_dangerous(code: str) -> Optional[str]:
+    """Проверяет код на опасные конструкции. Возвращает сообщение об ошибке или None."""
+    dangerous = [r'\bos\b', r'\bsys\b', r'\bsubprocess\b', r'\bopen\b', r'\beval\b', r'\bexec\b']
+    for pattern in dangerous:
+        if re.search(pattern, code):
+            return f"⛔ Использование '{re.search(pattern, code).group()}' запрещено."
+    return None
+
+
+async def run_user_code_async(code: str, lesson: dict) -> dict:
+    """Асинхронно выполняет код пользователя в subprocess с защитой и таймаутом."""
+    danger = _check_dangerous(code)
+    if danger:
+        return {"success": False, "output": danger}
 
     try:
-        exec(code, {"__builtins__": __builtins__})
-    except Exception as e:
-        sys.stdout = old_stdout
-        return {"success": False, "output": f"Ошибка: {str(e)}"}
-    finally:
-        sys.stdout = old_stdout
+        proc = await asyncio.create_subprocess_exec(
+            sys.executable,
+            "-c",
+            code,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=3.0)
+        output = stdout.decode("utf-8", errors="replace").strip()
+        error = stderr.decode("utf-8", errors="replace").strip()
+    except asyncio.TimeoutError:
+        try:
+            proc.kill()
+        except ProcessLookupError:
+            pass
+        return {"success": False, "output": "⏱ Превышен таймаут выполнения (3 сек)."}
+    except Exception as exc:
+        return {"success": False, "output": f"Ошибка запуска: {html.escape(str(exc))}"}
 
-    output = captured_output.getvalue().strip()
+    if proc.returncode != 0:
+        msg = error if error else f"Код ошибки {proc.returncode}"
+        return {"success": False, "output": msg}
+
     expected = lesson["expected_output"].strip()
-
     output_norm = "\n".join(line.strip() for line in output.split("\n") if line.strip())
     expected_norm = "\n".join(line.strip() for line in expected.split("\n") if line.strip())
 
     if output_norm == expected_norm:
         return {"success": True, "output": output}
-    else:
-        return {"success": False, "output": output}
+    return {"success": False, "output": output}
 
 
 async def main():
