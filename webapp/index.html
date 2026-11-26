@@ -185,7 +185,7 @@
 
         // Ноль сетевых запросов — данные урока только из URL query параметра
         // Telegram передаёт ?data= но режет #hash
-        function loadLessonFromURL() {
+        async function loadLessonFromURL() {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const encoded = params.get('data');
@@ -194,6 +194,15 @@
                     const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
                     const jsonText = new TextDecoder('utf-8').decode(bytes);
                     lessonData = JSON.parse(jsonText);
+                    return true;
+                }
+                const lessonIndex = Number(params.get('lesson'));
+                if (Number.isInteger(lessonIndex)) {
+                    const response = await fetch('lessons.json', { cache: 'no-store' });
+                    if (!response.ok) throw new Error('Не удалось загрузить уроки');
+                    const lessons = await response.json();
+                    if (!lessons[lessonIndex]) throw new Error('Урок не найден');
+                    lessonData = lessons[lessonIndex];
                     return true;
                 }
             } catch (e) {
@@ -211,9 +220,9 @@
                 pyodide = await loadPyodide();
                 document.getElementById('loading-text').textContent = 'Python готов!';
                 document.getElementById('progress').style.width = '100%';
-                setTimeout(() => {
+                setTimeout(async () => {
                     document.getElementById('loading').style.display = 'none';
-                    if (!loadLessonFromURL() || !lessonData.title) {
+                    if (!(await loadLessonFromURL()) || !lessonData.title) {
                         document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#f44747;padding:20px;text-align:center;font-size:16px;"><h2>❌ Ошибка</h2><p>Не найдены данные урока. Закрой и открой IDE заново через кнопку "Терминал" в боте.</p></div>';
                         return;
                     }

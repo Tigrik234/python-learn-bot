@@ -159,23 +159,8 @@ async def cb_terminal(callback: types.CallbackQuery):
     lesson_idx = int(callback.data.split("_")[1])
     lesson = LESSONS[lesson_idx]
 
-    # Сохраняем данные урока для Mini App
-    lesson_data = {
-        "index": lesson["index"],
-        "title": lesson["title"],
-        "expectedOutput": lesson["expected_output"],
-        "starterCode": lesson["starter_code"],
-        "hints": lesson["hints"],
-    }
-    import json
-    import base64
-
-    encoded = base64.b64encode(json.dumps(lesson_data, ensure_ascii=False).encode("utf-8")).decode("ascii")
-    from urllib.parse import quote
-    encoded = quote(encoded, safe="")
-
-    # Telegram режет #hash, используем ?data=
-    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?data={encoded}&v=40bcb3c"
+    # Передаем только номер урока. Самые данные загружаются из lessons.json.
+    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?lesson={lesson_idx}&v=364ba42"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],
