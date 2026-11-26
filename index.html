@@ -361,7 +361,7 @@ finally:
                 renderLesson(startIndex, false);
                 byId('runtime-status').textContent = 'Python готов • запуск в браузере';
                 showLoading('Всё готово — приятного обучения!', 100);
-                setTimeout(() => { byId('loading').hidden = true; }, 250);
+                setTimeout(() => { byId('loading').style.display = 'none'; }, 250);
             } catch (error) {
                 byId('loading').innerHTML = `<div class="card loading-card error-card"><div class="loading-icon">⚠️</div><h2>Не удалось открыть урок</h2><p>${String(error.message).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}</p><p>Проверь подключение и открой Mini App ещё раз.</p></div>`;
                 byId('runtime-status').textContent = 'Среда Python недоступна';
