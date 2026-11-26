@@ -175,7 +175,7 @@ async def cb_terminal(callback: types.CallbackQuery):
     encoded = quote(encoded, safe="")
 
     # Telegram режет #hash, используем ?data=
-    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?data={encoded}"
+    app_url = f"https://tigrik234.github.io/python-learn-bot/index.html?data={encoded}&v=40bcb3c"
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="💻 Открыть IDE", web_app=WebAppInfo(url=app_url))],
