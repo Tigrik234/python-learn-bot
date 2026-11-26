@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#10141d">
-    <title>Python Lab — интерактивный урок</title>
+    <meta name="theme-color" content="#f3f6fb">
+    <title>Школа Python — интерактивный урок</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
@@ -13,16 +13,16 @@
     <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
     <style>
         :root {
-            color-scheme: dark;
-            --page: #10141d;
-            --panel: #171d29;
-            --panel-raised: #1d2533;
-            --line: #2a3445;
-            --muted: #9aa8bd;
-            --text: #edf3fc;
-            --accent: #6ee7c2;
-            --blue: #91b9ff;
-            --danger: #ff8f9c;
+            color-scheme: light;
+            --page: #f3f6fb;
+            --panel: #ffffff;
+            --panel-raised: #f2f5fa;
+            --line: #dce4ee;
+            --muted: #68778c;
+            --text: #17243a;
+            --accent: #087f63;
+            --blue: #3267b0;
+            --danger: #be3548;
             --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
         * { box-sizing: border-box; }
@@ -30,7 +30,7 @@
             margin: 0;
             min-height: 100vh;
             min-height: 100dvh;
-            background: radial-gradient(ellipse at 15% 0%, #1a2a3a 0, var(--page) 42rem);
+            background: radial-gradient(ellipse at 15% 0%, #e5effb 0, var(--page) 42rem);
             color: var(--text);
             font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
         }
@@ -43,23 +43,23 @@
         .brand { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 750; letter-spacing: .01em; }
         .brand-mark {
             display: grid; width: 36px; height: 36px; place-items: center; border-radius: 12px;
-            color: #0c1719; background: linear-gradient(135deg, #8ff2d2, #78b9ff); font-size: 20px;
+            color: #ffffff; background: linear-gradient(135deg, #0d8c6b, #4c83c5); font-size: 18px;
         }
         .status { color: var(--muted); font-size: 12px; }
         .card {
-            border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--panel) 95%, transparent);
-            box-shadow: 0 16px 40px #00000020;
+            border: 1px solid var(--line); border-radius: 16px; background: var(--panel);
+            box-shadow: 0 10px 28px #20334b0c;
         }
         .lesson-card { padding: 20px; margin-bottom: 14px; }
         .eyebrow { color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
         h1 { margin: 4px 0 5px; font-size: clamp(20px, 4vw, 27px); line-height: 1.2; }
-        .task { margin: 0; color: #bac6d8; }
+        .task { margin: 0; color: #526178; white-space: pre-line; }
         .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; color: var(--muted); font-size: 12px; }
-        .progress-track { height: 7px; flex: 1; overflow: hidden; border-radius: 99px; background: #2b3544; }
-        .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #53d9b2, #8cc4ff); transition: width .25s ease; }
+        .progress-track { height: 7px; flex: 1; overflow: hidden; border-radius: 99px; background: #e3eaf3; }
+        .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #16866a, #5c91d2); transition: width .25s ease; }
         .workspace { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; align-items: start; }
         .editor-card { overflow: hidden; }
-        .section-heading { min-height: 48px; padding: 0 15px; border-bottom: 1px solid var(--line); background: #ffffff04; }
+        .section-heading { min-height: 48px; padding: 0 15px; border-bottom: 1px solid var(--line); background: #f8fafc; }
         .section-title { font-size: 13px; font-weight: 700; }
         .file-pill { border: 1px solid var(--line); border-radius: 7px; padding: 2px 8px; color: var(--muted); font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; }
         .editor-wrap { min-height: 300px; height: min(46vh, 500px); }
@@ -75,42 +75,61 @@
         .btn:hover { border-color: #50627b; }
         .btn:active { transform: translateY(1px); }
         .btn:disabled { opacity: .55; cursor: wait; }
-        .btn-run { margin-left: auto; border-color: transparent; background: linear-gradient(110deg, #75e6c1, #80c4ff); color: #10202a; }
+        .btn-run { margin-left: auto; border-color: transparent; background: linear-gradient(110deg, #16866a, #4c83c5); color: #ffffff; }
         .btn-nav { min-width: 90px; }
         .side { display: grid; gap: 14px; }
         details.card { overflow: hidden; }
         details summary { list-style: none; cursor: pointer; }
         details summary::-webkit-details-marker { display: none; }
         .details-summary { padding: 14px 15px; }
-        .details-body { padding: 0 15px 16px; color: #c4cfde; }
+        .details-body { padding: 0 15px 16px; color: #526178; }
         .details-body pre, .theory pre {
             overflow: auto; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px;
             background: #0f141d; color: #b6e4d7; white-space: pre-wrap; word-break: break-word;
         }
-        .theory { font-size: 13px; line-height: 1.65; }
+        .theory { font-size: 14px; line-height: 1.75; white-space: pre-line; }
         .theory b { color: var(--text); }
         .hints-card { padding-bottom: 13px; }
-        .hint-content { padding: 0 15px; color: #d7d2a3; min-height: 44px; }
+        .hint-content { padding: 0 15px; color: #705a13; min-height: 44px; }
         .hint-actions { padding: 0 15px; }
         .output-card { margin-top: 14px; overflow: hidden; }
         .output-heading { min-height: 47px; padding: 0 15px; }
         .output-state { color: var(--muted); font-size: 12px; }
         .output {
             min-height: 58px; max-height: 190px; overflow: auto; margin: 0; padding: 12px 15px;
-            border-top: 1px solid var(--line); color: #c7d2e2; white-space: pre-wrap; overflow-wrap: anywhere;
+            border-top: 1px solid var(--line); background: #f8fafc; color: #34445c; white-space: pre-wrap; overflow-wrap: anywhere;
             font: 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
         }
         .output.success { color: var(--accent); }
         .output.error { color: var(--danger); }
+        .stage-card { padding: 18px; margin-bottom: 14px; }
+        .stage-title { margin: 0 0 8px; font-size: 15px; }
+        .stage-copy { margin: 0; color: #526178; }
+        .fill-form { display: flex; gap: 9px; margin-top: 13px; }
+        .fill-input {
+            min-width: 0; flex: 1; padding: 10px 12px; border: 1px solid var(--line);
+            border-radius: 10px; outline: none; background: #ffffff; color: var(--text);
+        }
+        .fill-input:focus { border-color: var(--accent); }
+        .stage-feedback { min-height: 22px; margin: 9px 0 0; color: var(--muted); }
+        .stage-feedback.success { color: var(--accent); }
+        .stage-feedback.error { color: var(--danger); }
+        .locked { opacity: .58; }
+        .success-card { display: none; padding: 18px; margin-top: 14px; border-color: #3a705e; }
+        .success-card.show { display: block; }
+        .success-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 13px; }
+        .mentor-card { padding-bottom: 14px; }
+        .mentor-answer { padding: 0 15px; color: #526178; white-space: pre-line; }
+        [hidden] { display: none !important; }
         .loading {
             position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
-            padding: 24px; background: #0d1119f5; backdrop-filter: blur(12px);
+            padding: 24px; background: #f3f6fbeF; backdrop-filter: blur(12px);
         }
         .loading-card { width: min(360px, 100%); padding: 26px; text-align: center; }
         .loading-icon { font-size: 34px; }
         .loading-card h2 { margin: 8px 0; font-size: 19px; }
         .loading-card p { color: var(--muted); font-size: 13px; }
-        .loading-track { height: 7px; margin-top: 17px; overflow: hidden; border-radius: 99px; background: #2b3544; }
+        .loading-track { height: 7px; margin-top: 17px; overflow: hidden; border-radius: 99px; background: #e3eaf3; }
         .loading-fill { width: 4%; height: 100%; background: var(--accent); transition: width .3s ease; }
         .error-card { color: var(--danger); }
         @media (max-width: 760px) {
@@ -133,7 +152,7 @@
     <div class="loading" id="loading">
         <div class="card loading-card">
             <div class="loading-icon">🐍</div>
-            <h2>Подготавливаем Python Lab</h2>
+            <h2>Подготавливаем урок Python</h2>
             <p id="loading-text">Загружаем урок и среду Python…</p>
             <div class="loading-track"><div class="loading-fill" id="loading-progress"></div></div>
         </div>
@@ -141,31 +160,49 @@
 
     <main class="app">
         <header class="topbar">
-            <div class="brand"><span class="brand-mark">Py</span> Python Lab</div>
+            <div class="brand"><span class="brand-mark">Py</span> Школа Python</div>
             <span class="status" id="runtime-status">Подключаем интерпретатор</span>
         </header>
 
         <section class="card lesson-card">
             <div class="eyebrow" id="module-label">Практический урок</div>
             <h1 id="lesson-title">Загрузка урока…</h1>
-            <p class="task" id="lesson-task"></p>
             <div class="progress-row">
                 <span id="progress-label">Урок 1 из 200</span>
                 <div class="progress-track"><div class="progress-fill" id="lesson-progress"></div></div>
             </div>
         </section>
 
+        <section class="card stage-card" id="theory-card">
+            <div class="eyebrow">Шаг 1 · Немного теории</div>
+            <div class="theory" id="theory-content"></div>
+        </section>
+
+        <section class="card stage-card" id="fill-card">
+            <div class="eyebrow">Шаг 2 · Вставь пропуск</div>
+            <h2 class="stage-title">Проверьте, как усвоили материал</h2>
+            <p class="stage-copy" id="fill-question"></p>
+            <form class="fill-form" id="fill-form">
+                <input class="fill-input" id="fill-input" autocomplete="off" placeholder="Ваш ответ" aria-label="Ответ с пропуском">
+                <button class="btn btn-run" type="submit">Проверить</button>
+            </form>
+            <p class="stage-feedback" id="fill-feedback" aria-live="polite"></p>
+        </section>
+
         <nav class="lesson-nav" aria-label="Навигация по урокам" style="margin-bottom:14px">
             <button class="btn btn-nav" id="previous-button" type="button">← Назад</button>
             <span class="status" id="navigation-label">Урок 1</span>
-            <button class="btn btn-nav" id="next-button" type="button">Далее →</button>
+            <button class="btn btn-nav" id="next-button" type="button" disabled>Следующий →</button>
         </nav>
 
-        <div class="workspace">
+        <div class="workspace" id="practice-workspace" hidden>
             <section class="card editor-card">
                 <div class="section-heading">
-                    <span class="section-title">⌘ Редактор кода</span>
+                    <span class="section-title">Шаг 3 · Напишите программу</span>
                     <span class="file-pill">main.py</span>
+                </div>
+                <div class="details-body">
+                    <p class="task" id="practice-task"></p>
                 </div>
                 <div class="editor-wrap"><textarea id="code-editor" aria-label="Редактор Python"></textarea></div>
                 <div class="actions">
@@ -175,16 +212,15 @@
             </section>
 
             <aside class="side">
-                <details class="card" id="theory-details">
-                    <summary class="section-heading details-summary">
-                        <span class="section-title">📖 Теория и задание</span><span class="status">показать</span>
-                    </summary>
-                    <div class="details-body theory" id="theory-content"></div>
-                </details>
                 <section class="card hints-card">
                     <div class="section-heading"><span class="section-title">💡 Подсказка</span><span class="status" id="hint-counter"></span></div>
-                    <div class="hint-content" id="hint-content">Нужна небольшая подсказка? Открой её, когда будешь готов.</div>
+                    <div class="hint-content" id="hint-content">Если возникнет затруднение, откройте подсказку.</div>
                     <div class="hint-actions"><button class="btn" id="hint-button" type="button">Показать подсказку</button></div>
+                </section>
+                <section class="card mentor-card">
+                    <div class="section-heading"><span class="section-title">🧭 Помощник</span></div>
+                    <div class="mentor-answer" id="mentor-answer">Если появится ошибка, помогу понять, что проверить.</div>
+                    <div class="hint-actions"><button class="btn" id="mentor-button" type="button" disabled>Разобрать ошибку</button></div>
                 </section>
             </aside>
         </div>
@@ -196,6 +232,16 @@
             </div>
             <pre class="output" id="output">Здесь появится вывод программы.</pre>
         </section>
+
+        <section class="card success-card" id="success-card" aria-live="polite">
+            <div class="eyebrow">Урок пройден</div>
+            <h2 class="stage-title">Отличная работа! 🎉</h2>
+            <p class="stage-copy">Результат сохранён на этом устройстве. Можно сразу перейти к следующему уроку.</p>
+            <div class="success-actions">
+                <button class="btn btn-run" id="success-next-button" type="button">Следующий урок →</button>
+                <button class="btn" id="sync-button" type="button">Зачесть урок в Telegram</button>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -203,10 +249,14 @@
         if (tg) {
             tg.ready();
             tg.expand();
-            try { tg.setHeaderColor('#10141d'); tg.setBackgroundColor('#10141d'); } catch (_) {}
+            try { tg.setHeaderColor('#f3f6fb'); tg.setBackgroundColor('#f3f6fb'); } catch (_) {}
         }
 
-        const state = { lessons: [], lesson: null, index: 0, hintIndex: 0, pyodide: null, editor: null };
+        const state = {
+            lessons: [], lesson: null, index: 0, hintIndex: 0, pyodide: null, editor: null,
+            completed: new Set(), fillPassed: new Set(), lastError: ''
+        };
+        const progressKey = 'python-school-progress-v1';
         const byId = (id) => document.getElementById(id);
         const showLoading = (message, percent) => {
             byId('loading-text').textContent = message;
@@ -214,8 +264,21 @@
         };
         const normalized = (value) => String(value || '').replace(/\r\n/g, '\n').trim().split('\n').map(line => line.trim()).join('\n');
 
+        function loadProgress() {
+            const saved = JSON.parse(localStorage.getItem(progressKey) || '{"completed":[],"fillPassed":[]}');
+            state.completed = new Set((saved.completed || []).filter(index => Number.isInteger(index) && index >= 0 && index < 200));
+            state.fillPassed = new Set((saved.fillPassed || []).filter(index => Number.isInteger(index) && index >= 0 && index < 200));
+        }
+
+        function saveProgress() {
+            localStorage.setItem(progressKey, JSON.stringify({
+                completed: Array.from(state.completed).sort((a, b) => a - b),
+                fillPassed: Array.from(state.fillPassed).sort((a, b) => a - b)
+            }));
+        }
+
         async function loadLessons() {
-            const response = await fetch(`lessons.json?v=${encodeURIComponent(new URLSearchParams(location.search).get('v') || '200-lessons-20261126')}`, { cache: 'no-store' });
+            const response = await fetch(`lessons.json?v=${encodeURIComponent(new URLSearchParams(location.search).get('v') || 'russian-course-v1')}`, { cache: 'no-store' });
             if (!response.ok) throw new Error('Не удалось загрузить каталог уроков.');
             const lessons = await response.json();
             if (!Array.isArray(lessons) || lessons.length !== 200) throw new Error('Каталог уроков неполный или повреждён.');
@@ -225,7 +288,7 @@
         function updateAddress(index) {
             const url = new URL(location.href);
             url.searchParams.set('lesson', String(index));
-            if (!url.searchParams.has('v')) url.searchParams.set('v', '200-lessons-20261126');
+            if (!url.searchParams.has('v')) url.searchParams.set('v', 'russian-course-v1');
             history.replaceState({ lesson: index }, '', url);
         }
 
@@ -233,30 +296,68 @@
             state.index = Math.max(0, Math.min(index, state.lessons.length - 1));
             state.lesson = state.lessons[state.index];
             state.hintIndex = 0;
+            state.lastError = '';
             const lesson = state.lesson;
-            byId('module-label').textContent = `Python • урок ${lesson.index + 1}`;
+            byId('module-label').textContent = `Глава ${lesson.chapterIndex + 1} · ${lesson.chapterTitle}`;
             byId('lesson-title').textContent = lesson.title;
-            byId('lesson-task').textContent = `Ожидаемый вывод: ${lesson.expectedOutput}`;
-            byId('progress-label').textContent = `Урок ${lesson.index + 1} из ${state.lessons.length}`;
+            byId('progress-label').textContent = `Пройдено ${state.completed.size} из ${state.lessons.length} уроков`;
             byId('navigation-label').textContent = `${lesson.index + 1} / ${state.lessons.length}`;
-            byId('lesson-progress').style.width = `${((lesson.index + 1) / state.lessons.length) * 100}%`;
+            byId('lesson-progress').style.width = `${(state.completed.size / state.lessons.length) * 100}%`;
             byId('previous-button').disabled = lesson.index === 0;
-            byId('next-button').disabled = lesson.index === state.lessons.length - 1;
+            byId('next-button').disabled = lesson.index === state.lessons.length - 1 || !state.completed.has(lesson.index);
             byId('theory-content').innerHTML = lesson.theory || '<p>Теория для этого урока пока не добавлена.</p>';
-            byId('hint-content').textContent = 'Нужна небольшая подсказка? Открой её, когда будешь готов.';
+            byId('fill-question').textContent = lesson.fillQuestion;
+            byId('fill-input').value = '';
+            byId('fill-feedback').textContent = '';
+            byId('fill-feedback').className = 'stage-feedback';
+            const fillPassed = state.fillPassed.has(lesson.index);
+            byId('fill-input').disabled = fillPassed;
+            byId('fill-form').querySelector('button').disabled = fillPassed;
+            if (fillPassed) {
+                byId('fill-feedback').textContent = 'Верно! Теперь можно перейти к практике.';
+                byId('fill-feedback').classList.add('success');
+            }
+            byId('practice-workspace').hidden = !fillPassed;
+            byId('practice-task').textContent = lesson.task;
+            byId('hint-content').textContent = 'Если возникнет затруднение, откройте подсказку.';
             byId('hint-counter').textContent = `${(lesson.hints || []).length} шт.`;
             byId('output').textContent = 'Здесь появится вывод программы.';
             byId('output').className = 'output';
             byId('output-state').textContent = 'Готов к запуску';
             if (state.editor) state.editor.setValue(lesson.starterCode || '');
+            byId('mentor-answer').textContent = 'Если появится ошибка, помогу понять, что проверить.';
+            byId('mentor-button').disabled = true;
+            byId('success-card').classList.toggle('show', state.completed.has(lesson.index));
+            byId('success-next-button').disabled = lesson.index === state.lessons.length - 1;
             if (updateUrl) updateAddress(lesson.index);
         }
 
         function changeLesson(offset) {
             const target = state.index + offset;
             if (target < 0 || target >= state.lessons.length) return;
+            if (offset > 0 && !state.completed.has(state.index)) return;
             renderLesson(target);
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkFill(event) {
+            event.preventDefault();
+            const answer = byId('fill-input').value.trim().toLocaleLowerCase('ru-RU');
+            const expected = String(state.lesson.fillAnswer).trim().toLocaleLowerCase('ru-RU');
+            const feedback = byId('fill-feedback');
+            if (answer !== expected) {
+                feedback.textContent = 'Ответ не совпал. Перечитайте объяснение и попробуйте ещё раз.';
+                feedback.className = 'stage-feedback error';
+                return;
+            }
+            state.fillPassed.add(state.lesson.index);
+            saveProgress();
+            feedback.textContent = 'Отлично, верно! Переходим к следующему разбору.';
+            feedback.className = 'stage-feedback success';
+            byId('fill-input').disabled = true;
+            byId('fill-form').querySelector('button').disabled = true;
+            byId('practice-workspace').hidden = false;
+            byId('practice-workspace').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function capturePythonOutput(code) {
@@ -299,19 +400,26 @@ finally:
                     : result.output || '(программа завершилась без вывода)';
                 const passed = !result.error && normalized(result.output) === normalized(state.lesson.expectedOutput);
                 output.classList.add(passed ? 'success' : 'error');
-                byId('output-state').textContent = passed ? '✓ Задание выполнено' : 'Проверь код и попробуй ещё раз';
+                byId('output-state').textContent = passed ? '✓ Задание выполнено' : 'Проверьте код и попробуйте ещё раз';
                 if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred(passed ? 'success' : 'error');
-                if (passed && tg && tg.sendData) {
-                    tg.sendData(JSON.stringify({
-                        action: 'lesson_complete',
-                        lessonIndex: state.lesson.index,
-                        code: state.editor.getValue()
-                    }));
+                if (passed) {
+                    state.completed.add(state.lesson.index);
+                    saveProgress();
+                    state.lastError = '';
+                    byId('success-card').classList.add('show');
+                    byId('next-button').disabled = state.lesson.index === state.lessons.length - 1;
+                    byId('progress-label').textContent = `Пройдено ${state.completed.size} из ${state.lessons.length} уроков`;
+                    byId('lesson-progress').style.width = `${(state.completed.size / state.lessons.length) * 100}%`;
+                } else {
+                    state.lastError = result.error || 'Вывод программы не совпал с ожидаемым результатом.';
+                    byId('mentor-button').disabled = false;
                 }
             } catch (error) {
                 output.className = 'output error';
                 output.textContent = `Не удалось выполнить код:\n${error.message}`;
                 byId('output-state').textContent = 'Ошибка выполнения';
+                state.lastError = error.message;
+                byId('mentor-button').disabled = false;
             } finally {
                 button.disabled = false;
                 button.textContent = '▶ Запустить код';
@@ -333,13 +441,46 @@ finally:
             if (!state.lesson || !state.editor) return;
             state.editor.setValue('');
             state.editor.focus();
-            byId('output').textContent = 'Код очищен. Напиши решение и запусти его.';
+            byId('output').textContent = 'Код очищен. Напишите решение и запустите его.';
             byId('output').className = 'output';
             byId('output-state').textContent = 'Готов к запуску';
+            state.lastError = '';
+            byId('mentor-button').disabled = true;
+        }
+
+        function explainError() {
+            const error = state.lastError || '';
+            const explanations = [
+                [/SyntaxError/, 'Проверьте скобки, кавычки, двоеточия и написание команды. Сообщение обычно указывает место, где Python перестал понимать строку.'],
+                [/IndentationError/, 'Проверьте отступы: строки внутри if, цикла и функции должны иметь одинаковый отступ.'],
+                [/NameError/, 'Python не нашёл имя. Проверьте, объявлена ли переменная и одинаково ли она написана везде.'],
+                [/TypeError/, 'Операция получила значение неподходящего типа. Проверьте, не нужно ли преобразовать строку в число.'],
+                [/ValueError/, 'Тип значения подходит, но само значение неожиданное. Сверьте исходные данные с условием.'],
+                [/IndexError/, 'Программа обратилась к номеру элемента за пределами списка или строки. Помните, что счёт начинается с нуля.'],
+                [/KeyError/, 'В словаре нет такого ключа. Проверьте его написание или используйте безопасный метод get.'],
+                [/ZeroDivisionError/, 'Нельзя делить на ноль. Проверьте значение делителя перед вычислением.']
+            ];
+            const match = explanations.find(([pattern]) => pattern.test(error));
+            byId('mentor-answer').textContent = match
+                ? `${match[1]}\n\nОшибка: ${error}`
+                : `Проверьте условие задания, отступы и типы значений. Попробуйте упростить программу и запускать её по частям.\n\n${error}`;
+        }
+
+        function syncProgress() {
+            if (!tg || !tg.sendData) {
+                byId('mentor-answer').textContent = 'Открой урок из Telegram, чтобы отправить сохранённый прогресс боту.';
+                return;
+            }
+            tg.sendData(JSON.stringify({
+                action: 'lesson_complete',
+                lessonIndex: state.lesson.index,
+                code: state.editor.getValue()
+            }));
         }
 
         async function boot() {
             try {
+                loadProgress();
                 showLoading('Загружаем каталог из lessons.json…', 12);
                 const lessonPromise = loadLessons();
                 showLoading('Подготавливаем среду Python в браузере…', 35);
@@ -363,16 +504,20 @@ finally:
                 showLoading('Всё готово — приятного обучения!', 100);
                 setTimeout(() => { byId('loading').style.display = 'none'; }, 250);
             } catch (error) {
-                byId('loading').innerHTML = `<div class="card loading-card error-card"><div class="loading-icon">⚠️</div><h2>Не удалось открыть урок</h2><p>${String(error.message).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}</p><p>Проверь подключение и открой Mini App ещё раз.</p></div>`;
+                byId('loading').innerHTML = `<div class="card loading-card error-card"><div class="loading-icon">⚠️</div><h2>Не удалось открыть урок</h2><p>${String(error.message).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]))}</p><p>Проверьте подключение и откройте Mini App ещё раз.</p></div>`;
                 byId('runtime-status').textContent = 'Среда Python недоступна';
             }
         }
 
         byId('previous-button').addEventListener('click', () => changeLesson(-1));
         byId('next-button').addEventListener('click', () => changeLesson(1));
+        byId('success-next-button').addEventListener('click', () => changeLesson(1));
+        byId('fill-form').addEventListener('submit', checkFill);
         byId('run-button').addEventListener('click', runCode);
         byId('clear-button').addEventListener('click', clearCode);
         byId('hint-button').addEventListener('click', showHint);
+        byId('mentor-button').addEventListener('click', explainError);
+        byId('sync-button').addEventListener('click', syncProgress);
         boot();
     </script>
 </body>
